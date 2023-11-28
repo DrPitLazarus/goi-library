@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+    <title>GOI Library</title>
+</svelte:head>
+
+<h1>GOI Library</h1>
+<ul>
+    <li><a href="books">Books</a></li>
+</ul>
+
