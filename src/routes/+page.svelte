@@ -1,9 +1,11 @@
-<svelte:head>
-    <title>GOI Library</title>
-</svelte:head>
+<script>
+  /** @type {import('./$types').PageData} */
+  export let data;
+  export let title = data.title;
+  $title = "Home";
+</script>
 
-<h1>GOI Library</h1>
+<h1>{$title}</h1>
 <ul>
-    <li><a href="books">Books</a></li>
+  <li><a href="books">Books</a></li>
 </ul>
-
