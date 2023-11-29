@@ -1,3 +1,5 @@
+<svelte:head><title>Bloodshed Among the Factions!</title></svelte:head>
+
 <h1>Bloodshed Among the Factions!</h1>
 
 <details>
@@ -5,6 +7,7 @@
   <ol>
     <li><a href="#ridge-forest-brawl">Ridge Forest Brawl</a></li>
     <li><a href="#outsiders-war">Outsiders' War</a></li>
+    <li><a href="#midland-expansion">Midland Expansion</a></li>
     <li><a href="#the-dawns-attrition">The Dawn's Attrition</a></li>
     <li><a href="#liquid-acquisition">Liquid Acquisition</a></li>
     <li><a href="#the-great-reach">The Great Reach</a></li>
@@ -18,6 +21,16 @@
       <a href="#retribution-and-intrigue-ii">Retribution and Intrigue II</a>
     </li>
   </ol>
+</details>
+<details>
+  <summary>Data Source and Editor Notes</summary>
+  Date Accessed: 2023-11-23<br />
+  Obtained from the game via screenshots. Text copied with Windows' Snipping Tool
+  OCR feature. Some typos have been fixed. <br />
+  Added bolding to when an alliance is created/first mentioned in a section.
+  <br />
+  Added underline to highlight the result of a war. <br />
+  Players with no known faction allegiance are simply bold.
 </details>
 
 <h2 id="ridge-forest-brawl">Ridge Forest Brawl</h2>
@@ -101,8 +114,10 @@
     the dust to settle and for balance to be found. Perhaps, then, new alliances
     will be forged to fight for a different interpretation of the world.
   </p>
+</article>
 
-  <h2>Midland Expansion</h2>
+<h2 id="midland-expansion">Midland Expansion</h2>
+<article>
   <p>
     Careful and conservative skirmishes dotted the land for weeks on end. Each
     one seemed random and independent from every faction. The chaos of war
@@ -154,8 +169,8 @@
   </p>
   <p>
     While the governments talk peace, the world roils in chaos. In the wake of
-    destruction and with so many armed men seeking profit, piracy is on the rise
-    ...
+    destruction and with so many armed men seeking profit, piracy is on the
+    rise...
   </p>
 </article>
 
@@ -1474,12 +1489,6 @@
     been wearing full black gloves.
   </p>
 </article>
-
-<details>
-  <summary>Data Source</summary>
-  Obtained from the game via screenshots. Text copied with Windows' Snipping Tool
-  OCR feature.
-</details>
 
 <style>
   h3 {
