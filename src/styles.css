@@ -1,0 +1,40 @@
+@import "modern-normalize/modern-normalize.css";
+
+:root {
+  line-height: 1.5;
+  /* colors from the https://gunsoficarus.com/ website */
+  --color-heading: rgb(181, 153, 79);
+  --color-text: rgb(213, 194, 145);
+  --color-link: rgb(223, 188, 104);
+  --color-link-lighter: rgb(223 164 24);
+}
+
+/* what magic is this to fix chrome mobile bug https://stackoverflow.com/a/65536678 */
+* {
+  max-height: 999999px;
+}
+
+body {
+  background-color: #000;
+  color: var(--color-text);
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+}
+
+a {
+  color: var(--color-link);
+}
+a:hover {
+  color: var(--color-link-lighter);
+  transition: all 0.5s;
+}
