@@ -45,12 +45,12 @@
     Chaladonians whose small and nimble fleets wreaked havoc in the mainland. The Baronites
     suffered many losses but were able to maintain a hold of their rolling hills from the
     threats from all sides, but the constant bombardment from the southern Mercantile Guild
-    will likely put a strain on their future relationships.The Anglean Republic was a nation to
-    be feared, with the most members and deadliest weaponry, but it seemed like their icy
+    will likely put a strain on their future relationships. The Anglean Republic was a nation
+    to be feared, with the most members and deadliest weaponry, but it seemed like their icy
     exterior was quickly thawed by the Mercantile and Chaladonian advancements. Chaladon's
     momentum seemed unstoppable as they encroached further and further into the mainland, and
     eventually spreading both to the north and to the south. However, a Mercantile resistance
-    force was able to stymie the push and regain lost territories in the nigh hour.There was
+    force was able to stymie the push and regain lost territories in the nigh hour. There was
     much disagreement at the thought of an accord, but the Mercantile Guild ultimately realized
     that their trade would benefit in a calmer environment instead of their supply lines being
     constantly disrupted by chaos. If the accord was not reached, the skirmish would have
@@ -450,7 +450,7 @@
     formed a temporary armistice with Yesha, which was mistakenly ended due to some new, overly
     ambitious Yeshan privateers. Despite these setbacks, The Anglean Republic was able to take
     control of large swaths of the central badlands after a brief accord with the Baronites
-    reduced pressure on their eastern front.This was abandoned after the Arashi presented an
+    reduced pressure on their eastern front. This was abandoned after the Arashi presented an
     offer of supplies raided from Mercantile holdings and shipped through the desolate Red
     Range in exchange for Anglean technical expertise in maintaining their stockpiles of
     weapons raided from ancient military bases exhumed from the Arashi Desert sands.
@@ -496,7 +496,7 @@
     the people. It covers all as if in a wash of pale life-blood. Is it just the light, or does
     the still water of the morning light hold the spilled blood of heroes, villains, and
     innocents? What tales of woe do the gentle, wind teased ripples whisper? Perhaps I get
-    ahead of myself, since I know the answers to theses questions. It is best to start at the
+    ahead of myself, since I know the answers to these questions. It is best to start at the
     beginning, or at least a beginning.
   </p>
   <p>
@@ -1313,13 +1313,13 @@
     great war."
   </p>
   <p>
-    "I see." I answered. "Then you ... " my question was interpreted by loud banging on the
-    door. Three rapid thumps followed by two further apart. No one entered, but the tavern went
+    "I see." I answered. "Then you..." my question was interpreted by loud banging on the door.
+    Three rapid thumps followed by two further apart. No one entered, but the tavern went
     instantly silent.
   </p>
   <p>
-    "Speaking of Anglea ... " Bob spoke, looking up, eyes focusing beyond the ceiling, "Sorry
-    about this. You seem a nice enough chap. You might find answers in Suna ... "
+    "Speaking of Anglea..." Bob spoke, looking up, eyes focusing beyond the ceiling, "Sorry
+    about this. You seem a nice enough chap. You might find answers in Suna..."
   </p>
   <p>
     The last thing I saw before waking up on my ship the next morning with a pounding head was
