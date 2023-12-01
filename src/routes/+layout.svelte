@@ -1,15 +1,21 @@
 <script>
   import "../styles.css";
+  import { page } from "$app/stores";
 
   /** @type {import('./$types').LayoutData} */
   export let data;
   export let title = data.title;
+  $: fullTitle = `${$title} - ${data.APP_NAME}`;
+  // TODO: real breadcrumbs
+  $: showBreadcrumbs = $page.url.pathname.startsWith("/books/");
 </script>
 
 <svelte:head>
-  <title>{$title + data.TITLE_SUFFIX}</title>
+  <title>{fullTitle}</title>
 </svelte:head>
 
-<a href="/">Guns of Icarus Library</a>
-
+<a href="/">{data.APP_NAME}</a>
+{#if showBreadcrumbs}
+  / <a href="/books">Books</a>
+{/if}
 <slot />
