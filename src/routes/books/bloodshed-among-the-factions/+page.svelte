@@ -1,4 +1,6 @@
 <script>
+  import assetBookCover from "$lib/books/bloodshed-among-the-nations.png";
+
   /** @type {import('./$types').PageData} */
   export let data;
   export let title = data.title;
@@ -9,34 +11,73 @@
 
 <details>
   <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#ridge-forest-brawl">Ridge Forest Brawl</a></li>
-    <li><a href="#outsiders-war">Outsiders' War</a></li>
-    <li><a href="#midland-expansion">Midland Expansion</a></li>
-    <li><a href="#the-dawns-attrition">The Dawn's Attrition</a></li>
-    <li><a href="#liquid-acquisition">Liquid Acquisition</a></li>
-    <li><a href="#the-great-reach">The Great Reach</a></li>
-    <li><a href="#divided-lands">Divided Lands</a></li>
-    <li><a href="#allies-and-enemies">Allies and Enemies</a></li>
-    <li><a href="#blood-in-the-water">Blood in the Water</a></li>
-    <li><a href="#the-northwind-charge">The Northwind Charge</a></li>
-    <li><a href="#seven-day-strife">Seven Day Strife</a></li>
-    <li><a href="#retribution-and-intrigue">Retribution and Intrigue</a></li>
-    <li>
-      <a href="#retribution-and-intrigue-ii">Retribution and Intrigue II</a>
-    </li>
-  </ol>
+  <div>
+    <ol>
+      <li><a href="#description">Description</a></li>
+      <li><a href="#ridge-forest-brawl">Ridge Forest Brawl</a></li>
+      <li><a href="#outsiders-war">Outsiders' War</a></li>
+      <li><a href="#midland-expansion">Midland Expansion</a></li>
+      <li><a href="#the-dawns-attrition">The Dawn's Attrition</a></li>
+      <li><a href="#liquid-acquisition">Liquid Acquisition</a></li>
+      <li><a href="#the-great-reach">The Great Reach</a></li>
+      <li><a href="#divided-lands">Divided Lands</a></li>
+      <li><a href="#allies-and-enemies">Allies and Enemies</a></li>
+      <li><a href="#blood-in-the-water">Blood in the Water</a></li>
+      <li><a href="#the-northwind-charge">The Northwind Charge</a></li>
+      <li><a href="#seven-day-strife">Seven Day Strife</a></li>
+      <li><a href="#retribution-and-intrigue">Retribution and Intrigue</a></li>
+      <li><a href="#retribution-and-intrigue-ii">Retribution and Intrigue II</a></li>
+    </ol>
+  </div>
 </details>
 <details>
   <summary>Data Source and Editor Notes</summary>
-  Date Accessed: 2023-11-23<br />
-  Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature. Some
-  typos have been fixed. <br />
-  Added bolding to when an alliance is created/first mentioned in a section.
-  <br />
-  Added underline to highlight the result of a war. <br />
-  Players with no known faction allegiance are simply bold.
+  <div>
+    <p>
+      Date Accessed: 2023-11-23<br />
+      Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.
+      Some typos have been fixed.
+    </p>
+    <p>
+      Added bolding to when an alliance is created/first mentioned in a section.
+      <br />
+      Added underline to highlight the result of a war. <br />
+      Players with no known faction allegiance are simply bold.
+    </p>
+  </div>
 </details>
+
+<h2 id="description">Description</h2>
+<article>
+  <img
+    src={assetBookCover}
+    alt="Newspaper headline reads '{$title}'"
+    height="683px"
+    width="1024px"
+  />
+  <h3>HONOR, GLORY, AND DESTRUCTION IN THE NEW AGE.</h3>
+  <p>
+    Articles, newspaper clippings, and handwritten accounts from various presses and authors
+    are bound neatly to the pages of this book. While some of the pages are pristine, smelling
+    of freshly pressed paper, others are scorched and written over older faded pages torn from
+    other books. It is obvious that they come from vastly different regions. Each page details
+    the events of the greater conflicts in the modern wars between Factions. The first page
+    contains a short preface.
+  </p>
+  <p>
+    <em>
+      "History is written by the victors" -I can't recall where I heard this phrase, but there
+      aren't any truer words to address the ongoing strife between the factions. How much more
+      destruction will they wage on the world and what stories will be lost as a result?
+      Perhaps we'll never know. We're almost clueless about of the iron beasts and steel husks
+      littering the deserts and frozen wastelands because the dead can't write! Unfortunately,
+      there were no victors in that cataclysm. Just a whole bunch of mystery buried in the
+      rubble and not a single hand to jot down any notes of what happened. Hopefully we can get
+      it right this time around.
+    </em>
+  </p>
+  <p><em>-Alive and Writing</em></p>
+</article>
 
 <h2 id="ridge-forest-brawl">Ridge Forest Brawl</h2>
 <article>
@@ -847,7 +888,7 @@
     reflexively. I quickly flipped open my notebook to disguise the flinch, but the small
     shadow of a smile the man gave and the low chuckles from behind him left no doubt I had
     failed. "Well, yes." I cleared my throat. "Yes. It appears the conflicts of this war have
-    ended. Would you ... " He made a slashing gesture with his spear, the humor of a moment ago
+    ended. Would you..." He made a slashing gesture with his spear, the humor of a moment ago
     gone.
   </p>
   <p>
@@ -892,7 +933,7 @@
   </p>
   <p>
     "And what of the pirates now infesting the areas to the south of Cathedral? Even your ships
-    fear to cross ... "
+    fear to cross..."
   </p>
   <p>
     "We fear nothing." true anger filled his voice as he slammed his spear down on the table.
@@ -930,7 +971,7 @@
     was asked only to keep their names from the record.
   </p>
   <p>
-    "My Lady, my Lord, I have come to inquire as to the war ... " I paused, not sure how to
+    "My Lady, my Lord, I have come to inquire as to the war..." I paused, not sure how to
     continue, as the two in front of me were currently at war with each other.
   </p>
   <p>
@@ -1014,7 +1055,7 @@
     "We don't have it." she snapped angrily, cutting of anything I would have said, still not
     looking up from her labor.
   </p>
-  <p>"I didn't ... "</p>
+  <p>"I didn't..."</p>
   <p>
     "I said we don't have it. You think I don't know what you came here to ask about? Whatever
     cursed thing they dug up, it is not here." she made a sharp gesture pointing out smoke
@@ -1023,7 +1064,7 @@
     blame." her hand cut to the southwest. "Those mange infested foxes have manipulated the
     desert fools and imperial children into these actions."
   </p>
-  <p>"I would like ... "</p>
+  <p>"I would like..."</p>
   <p>
     "You would like?" She slammed her hammer down loudly, finally turning to address me
     directly, "Do you think I care what an Anvalan gossip hound would like? You sit behind your
@@ -1056,7 +1097,7 @@
     which, you have to rule."
   </p>
   <p>
-    She growled and turned back to her hammering. "Do ... something." She punctuated each word
+    She growled and turned back to her hammering. "Do... something." She punctuated each word
     with a hammer blow before paused again. "Swessland," she said quietly.
   </p>
   <p>"What?" I inquired, confused by the random word. "I don't understand."</p>
@@ -1068,8 +1109,8 @@
   <p>I have never heard this particular tale. "What happened?"</p>
   <p>
     "He made it. He took all of his people to safety. He is up there now, in a city made of
-    pearl, watching over the children of this world, promising to protect ... " she trailed
-    off, and it took a few moments for me to release that she was crying. Suddenly, the grand
+    pearl, watching over the children of this world, promising to protect..." she trailed off,
+    and it took a few moments for me to release that she was crying. Suddenly, the grand
     intrigue of the war seemed much smaller and less important than a little boy on the moon.
   </p>
   <p>
@@ -1090,7 +1131,7 @@
     blew a puff of smoke from his golden crested pipe.
   </p>
   <p>
-    "Talk is cheap. Information, on the other hand ... " he paused. Fully expecting this, I
+    "Talk is cheap. Information, on the other hand..." he paused. Fully expecting this, I
     pulled a purse from my pocket and tossed it to him. He caught it in one hand and hefted it,
     then ran his thumb along the side. "Eleven ferrens?" he asked. I was confused for a moment,
     sure that I had put twelve in the purse, the going rate for information. I patted my pocket
@@ -1113,7 +1154,7 @@
     Garrow, somehow avoiding the pirates infesting the restricted areas." he leaned forward
     through the trails of smoke to tap the tip of his pipe on the red lines laid out on the
     map. "No ships make it through there since the first conflicts a few years back. It makes
-    you wonder ... "
+    you wonder..."
   </p>
   <p>"You think the Angleans made a deal with the pirates?"</p>
   <p>
@@ -1256,13 +1297,13 @@
     rather dirty curia cardinal suit with his eyes covered in flight goggles. His head wavered
     back and forth as he seemed to talk to himself. A pipe rested on the table in front of him
     trickling a tendral of the odd smelling smoke. Bob glanced over at him after seeing my
-    look. "Don't mind him. Francois leCups [Trypta] is harmless ... off a ship. He does not
-    live in quite the same world as us." He turned back to me as he took one of the mugs in his
+    look. "Don't mind him. Francois leCups [Trypta] is harmless... off a ship. He does not live
+    in quite the same world as us." He turned back to me as he took one of the mugs in his
     battered gloves. "You wanted to talk."
   </p>
   <p>"Yes. I am hear to listen to your side of events."</p>
   <p>"Events?" he almost seemed amused, "An odd way to ask for the summary of a life."</p>
-  <p>"I am only asking about the events of the wars after the Angleans ... "</p>
+  <p>"I am only asking about the events of the wars after the Angleans..."</p>
   <p>
     Bob cut me off. "Boy, a story has no meaning if you skip to the end. You have to know where
     it started."
@@ -1359,6 +1400,22 @@
     }
     &.yesha {
       color: #66160d;
+    }
+  }
+  img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+  }
+  details {
+    & ol,
+    ul {
+      padding-left: 0;
+    }
+    & div {
+      border: 1px dashed;
+      padding-left: 40px;
+      padding-right: 40px;
     }
   }
 </style>
