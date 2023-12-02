@@ -1,5 +1,7 @@
 <script>
   import assetBookCover from "$lib/books/lusses-travels.png";
+  import assetDrowningWastes from "$lib/maps/drowning-wastes.png";
+  import assetSeasOfAlleron from "$lib/maps/seas-of-alleron.png";
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -14,6 +16,13 @@
   <div>
     <ol>
       <li><a href="#description">Description</a></li>
+      <li>
+        <a href="#arashi-desert">Arashi Desert</a>
+        <ol>
+          <li><a href="#drowning-wastes">Drowning Wastes</a></li>
+          <li><a href="#seas-of-alleron">Seas of Alleron</a></li>
+        </ol>
+      </li>
     </ol>
   </div>
 </details>
@@ -63,6 +72,30 @@
   </em>
 </article>
 
+<h2 id="arashi-desert">Arashi Desert</h2>
+<article>
+  <p>Sand, bluffs, and peril await those who trespass in the skies of the Arashi.</p>
+  <p>
+    Deep beneath the sand, there's evidence that this hell on earth was actually a body of
+    water. Maybe a great lake, or a splendid sea. Anything would be better than unrelenting
+    heat that makes everything burn to a crisp. The blue ocean may have dried up, but the black
+    one lies buried below. Harvesting the crude oil has attracted many to risk the dangers of
+    this forsaken place.
+  </p>
+  <h3 id="drowning-wastes">Drowning Wastes (+ Night)</h3>
+  <span>
+    Gamemode: Search & Destroy<br />
+    Ships: 1-4. Difficulty: Easy<br />
+  </span>
+  <img src={assetDrowningWastes} alt="" />
+  <h3 id="seas-of-alleron">Seas of Alleron</h3>
+  <span>
+    Gamemode: Assult<br />
+    Ships: 1-3. Difficulty: Easy<br />
+  </span>
+  <img src={assetSeasOfAlleron} alt="" />
+</article>
+
 <style>
   h3 {
     margin-bottom: 0;
@@ -76,6 +109,9 @@
     & ol,
     ul {
       padding-left: 0;
+    }
+    & li > ol {
+      padding-left: 16px;
     }
     & div {
       border: 1px dashed;
