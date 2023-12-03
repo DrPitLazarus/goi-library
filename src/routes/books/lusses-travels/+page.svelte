@@ -1,7 +1,14 @@
 <script>
   import assetBookCover from "$lib/books/lusses-travels.png";
-  import assetDrowningWastes from "$lib/maps/drowning-wastes.png";
-  import assetSeasOfAlleron from "$lib/maps/seas-of-alleron.png";
+  
+  const assetsMaps = import.meta.glob("$lib/maps/*.png", { eager: true });
+  /**
+   * @param {string} filename
+   */
+  function getMapImage(filename) {
+    // @ts-ignore
+    return assetsMaps[`/src/lib/maps/${filename}.png`].default;
+  }
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -87,13 +94,13 @@
     Gamemode: Search & Destroy<br />
     Ships: 1-4. Difficulty: Easy<br />
   </span>
-  <img src={assetDrowningWastes} alt="" />
+  <img src={getMapImage("drowning-wastes")} alt="" />
   <h3 id="seas-of-alleron">Seas of Alleron</h3>
   <span>
     Gamemode: Assault<br />
     Ships: 1-3. Difficulty: Easy<br />
   </span>
-  <img src={assetSeasOfAlleron} alt="" />
+  <img src={getMapImage("seas-of-alleron")} alt="" />
 </article>
 
 <style>
