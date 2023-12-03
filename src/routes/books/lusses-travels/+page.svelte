@@ -90,7 +90,7 @@
   <img src={assetDrowningWastes} alt="" />
   <h3 id="seas-of-alleron">Seas of Alleron</h3>
   <span>
-    Gamemode: Assult<br />
+    Gamemode: Assault<br />
     Ships: 1-3. Difficulty: Easy<br />
   </span>
   <img src={assetSeasOfAlleron} alt="" />
