@@ -1,6 +1,8 @@
 <script>
   import assetBookCover from "$lib/books/lusses-travels.png";
-  
+  import { maps } from "$lib/maps";
+  import { slugify } from "$lib/util";
+
   const assetsMaps = import.meta.glob("$lib/maps/*.png", { eager: true });
   /**
    * @param {string} filename
@@ -79,29 +81,25 @@
   </em>
 </article>
 
-<h2 id="arashi-desert">Arashi Desert</h2>
-<article>
-  <p>Sand, bluffs, and peril await those who trespass in the skies of the Arashi.</p>
-  <p>
-    Deep beneath the sand, there's evidence that this hell on earth was actually a body of
-    water. Maybe a great lake, or a splendid sea. Anything would be better than unrelenting
-    heat that makes everything burn to a crisp. The blue ocean may have dried up, but the black
-    one lies buried below. Harvesting the crude oil has attracted many to risk the dangers of
-    this forsaken place.
-  </p>
-  <h3 id="drowning-wastes">Drowning Wastes (+ Night)</h3>
-  <span>
-    Gamemode: Search & Destroy<br />
-    Ships: 1-4. Difficulty: Easy<br />
-  </span>
-  <img src={getMapImage("drowning-wastes")} alt="" />
-  <h3 id="seas-of-alleron">Seas of Alleron</h3>
-  <span>
-    Gamemode: Assault<br />
-    Ships: 1-3. Difficulty: Easy<br />
-  </span>
-  <img src={getMapImage("seas-of-alleron")} alt="" />
-</article>
+{#each maps as area}
+  <h2 id={slugify(area.areaTitle)}>{area.areaTitle}</h2>
+  <article>
+    {#each area.text as text}
+      <p>{text}</p>
+    {/each}
+    {#each area.maps as map}
+      <h3 id={slugify(map.mapTitle)}>{map.mapTitle}</h3>
+      <span
+        >Gamemode: {map.gamemode}<br />
+        Ships: {map.ships} Difficulty: {map.difficulty}<br />
+        {#if map.text}
+          <p>{map.text}</p>
+        {/if}
+      </span>
+      <img src={getMapImage(map.mapImage)} alt="" />
+    {/each}
+  </article>
+{/each}
 
 <style>
   h3 {
