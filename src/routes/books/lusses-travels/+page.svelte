@@ -28,8 +28,19 @@
       <li>
         <a href="#arashi-desert">Arashi Desert</a>
         <ol>
-          <li><a href="#drowning-wastes">Drowning Wastes</a></li>
+          <li><a href="#drowning-wastes-night">Drowning Wastes</a></li>
           <li><a href="#seas-of-alleron">Seas of Alleron</a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#burren">Burren</a>
+        <ol>
+          <li><a href="#city-hunter">City Hunter</a></li>
+          <li><a href="#crown-summit">Crown Summit</a></li>
+          <li><a href="#devils-eye">Devil's Eye</a></li>
+          <li><a href="#paritan-rumble">Paritan Rumble</a></li>
+          <li><a href="#pilot-training">Pilot Training</a></li>
+          <li><a href="#the-labyrinth">The Labyrinth</a></li>
         </ol>
       </li>
     </ol>
@@ -91,12 +102,13 @@
       <h3 id={slugify(map.mapTitle)}>{map.mapTitle}</h3>
       <span
         >Gamemode: {map.gamemode}<br />
-        Ships: {map.ships} Difficulty: {map.difficulty}<br />
+        Ships: {map.ships} <br />
+        Difficulty: {map.difficulty}<br />
         {#if map.text}
           <p>{map.text}</p>
         {/if}
       </span>
-      <img src={getMapImage(map.mapImage)} alt="" />
+      <img src={getMapImage(map.mapImage)} alt="" height="700px" width="700px" />
     {/each}
   </article>
 {/each}
