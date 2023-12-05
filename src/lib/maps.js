@@ -97,6 +97,60 @@ export const maps = [
       },
     ],
   },
+  {
+    areaTitle: "Black Channel",
+    text: [
+      "The beauty of the isles belays the dangerous teeth hidden just below the surface.",
+      `The Fjord Baronies control many industrial assets, including the Blackcliff Metal Works. Baronites must be
+      vigilant while transporting their labor forces from factory to factory because brigands wait for the chance to
+      plunder their rich ore and steel.`,
+      `Even after contesting the control for Blackcliff Metal Works, there are always reinforcements arriving to put up
+      a final fight. An already tired day turns to an even longer one as necessary cleanup transpires. Those who
+      quaffed moonshine in premature celebration are those in for trouble.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Blackcliff Butchery",
+        mapImage: "blackcliff-butchery",
+        gamemode: "King of the Hill",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Blackcliff Entourage",
+        mapImage: "blackcliff-entourage-and-clash-at-blackcliff",
+        gamemode: "VIP Deathmatch",
+        ships: "1v1, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Brawl at Blackcliff",
+        mapImage: "brawl-at-blackcliff",
+        gamemode: "Deathmatch",
+        ships: "2v2v2v2",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Clash at Blackcliff",
+        mapImage: "blackcliff-entourage-and-clash-at-blackcliff",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Raid on the Refinery",
+        mapImage: "raid-on-the-refinery",
+        gamemode: "Crazy King",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+    ],
+  },
 ];
 
 export function getToc() {
