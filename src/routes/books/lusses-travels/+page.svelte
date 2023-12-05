@@ -10,7 +10,7 @@
    */
   function getMapImage(filename) {
     // @ts-ignore
-    return assetsMaps[`/src/lib/maps/${filename}.png`].default;
+    return assetsMaps[`/src/lib/maps/${filename}`].default;
   }
 
   /** @type {import('./$types').PageData} */
