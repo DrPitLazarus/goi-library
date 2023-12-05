@@ -1,7 +1,8 @@
 <script>
   import assetBookCover from "$lib/books/lusses-travels.png";
-  import { maps } from "$lib/maps";
+  import { maps, getToc } from "$lib/maps";
   import { slugify } from "$lib/util";
+  import TOC from "$lib/TOC.svelte";
 
   const assetsMaps = import.meta.glob("$lib/maps/*.png", { eager: true });
   /**
@@ -16,36 +17,21 @@
   export let data;
   export let title = data.title;
   $title = "Lusse's Travels";
+
+  export const toc = [
+    {
+      name: "Description",
+      link: "#description",
+      children: [],
+    },
+    ...getToc(),
+  ];
 </script>
 
 <h1>{$title}</h1>
 
-<details>
-  <summary>Table of Contents</summary>
-  <div>
-    <ol>
-      <li><a href="#description">Description</a></li>
-      <li>
-        <a href="#arashi-desert">Arashi Desert</a>
-        <ol>
-          <li><a href="#drowning-wastes-night">Drowning Wastes</a></li>
-          <li><a href="#seas-of-alleron">Seas of Alleron</a></li>
-        </ol>
-      </li>
-      <li>
-        <a href="#burren">Burren</a>
-        <ol>
-          <li><a href="#city-hunter">City Hunter</a></li>
-          <li><a href="#crown-summit">Crown Summit</a></li>
-          <li><a href="#devils-eye">Devil's Eye</a></li>
-          <li><a href="#paritan-rumble">Paritan Rumble</a></li>
-          <li><a href="#pilot-training">Pilot Training</a></li>
-          <li><a href="#the-labyrinth">The Labyrinth</a></li>
-        </ol>
-      </li>
-    </ol>
-  </div>
-</details>
+<TOC {toc}></TOC>
+
 <details>
   <summary>Data Source and Editor Notes</summary>
   <div>

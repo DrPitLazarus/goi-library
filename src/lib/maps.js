@@ -1,3 +1,5 @@
+import { slugify } from "./util";
+
 export const maps = [
   {
     areaTitle: "Arashi Desert",
@@ -96,3 +98,20 @@ export const maps = [
     ],
   },
 ];
+
+export function getToc() {
+  let processed = maps.map((areaObj) => {
+    return {
+      name: areaObj.areaTitle,
+      link: `#${slugify(areaObj.areaTitle)}`,
+      children: areaObj.maps.map((mapObj) => {
+        return {
+          name: mapObj.mapTitle,
+          link: `#${slugify(mapObj.mapTitle)}`,
+        };
+      }),
+    };
+  });
+
+  return [...processed];
+}
