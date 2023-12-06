@@ -4,7 +4,7 @@
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";
 
-  const assetsMaps = import.meta.glob("$lib/maps/*.png", { eager: true });
+  const assetsMaps = import.meta.glob("$lib/maps/*.{png,webp}", { eager: true });
   /**
    * @param {string} filename
    */

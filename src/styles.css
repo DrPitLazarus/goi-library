@@ -38,3 +38,7 @@ a:hover {
   color: var(--color-link-lighter);
   transition: all 0.5s;
 }
+
+summary {
+  cursor: default;
+}

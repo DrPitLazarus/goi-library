@@ -151,6 +151,85 @@ export const maps = [
       },
     ],
   },
+  {
+    areaTitle: "Chattering Fjords",
+    text: [
+      "Even paradise can succumb to the darkness of war.",
+      `Ruins of old cities remain hidden under murky waters. The ancestors' tall 
+      obelisks only provide glimpses of lives past. They mainly serve as reminders of 
+      what could become. Will we ever be able to prevent such calamity? -Sage Arrat`,
+    ],
+    maps: [
+      {
+        mapTitle: "Misty Mutiny (+ Night)",
+        mapImage: "misty-mutiny.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Voyager's Cove (+ Night)",
+        mapImage: "voyagers-cove.webp",
+        gamemode: "Defense",
+        ships: "1-4",
+        difficulty: "Easy",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Firnfeld",
+    text: [
+      "The frigid north welcomes no one with its deathly chill embrace.",
+      `Those in Anglea live in austerity, wedged into frozen skyscrapers and husks 
+      of military bases. Their surroundings, though, are rich in old technology, 
+      attracting raiders to the poor town of Hanat. The tundra in disarray, none to 
+      keep raiders at bay.`,
+      `The hardy settlers of Hanat held their ground for generations, surviving harsh 
+      surroundings and perpetual onslaught of pillagers and bandits. They've found a 
+      new ally to aid in their protection. Can Chaladonian alliances protect the town 
+      from the Anglean Raiders?`,
+      `How many battles has Hanat seen recently? The sound of airships exploding is 
+      their morning call like the cock's crow everywhere else in the world. One more 
+      fleet hunting its prey won't make a difference. At least the skies are alight 
+      with daily fireworks.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Anglean Raiders",
+        mapImage: "anglean-raiders-and-fight-over-firnfield.webp",
+        gamemode: "Crazy King",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Breach Occupation",
+        mapImage: "breach-occupation-and-hunting-raiders.webp",
+        gamemode: "King of the Hill",
+        ships: "3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Fight Over Firnfeld",
+        mapImage: "anglean-raiders-and-fight-over-firnfield.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Hunting Raiders",
+        mapImage: "breach-occupation-and-hunting-raiders.webp",
+        gamemode: "VIP Deathmatch",
+        ships: "1v1, 3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+    ],
+  },
 ];
 
 export function getToc() {
