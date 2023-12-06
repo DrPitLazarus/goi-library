@@ -230,6 +230,62 @@ export const maps = [
       },
     ],
   },
+  {
+    areaTitle: "Midland Plains",
+    text: [
+      `Sometimes the most unremarkable places become the stage to enact the most 
+      influential moments in history.`,
+      `The Oblivion River holds a great enigma of the past: a black ship of unimaginable 
+      scale. It may even be larger than those consumed by The Wastes. Due to its 
+      dilapidation, its function is uncertain. Did it travel on the air, the sea, or 
+      even under the waves? Maybe by land? Further study is difficult, though, as 
+      the ruins hide as many enemies as it does secrets.`,
+      `The rocky mountains that run through the western territories have always been a 
+      favorite amongst smugglers and those who don't want to be seen. Deep canyons and 
+      crevices make for the perfect getaway routes and hiding holes. Anyone with half a 
+      brain knows these routes are best for smuggling, but anyone with the other half 
+      knows to avoid these treacherous passes.`,
+      `There's always ruckus near the Oblivion River. Excavation sites spring up like 
+      weeds. Rumors speak of a lost artifact with the destructive power of the black 
+      leviathan. Or it could just be a cache of gold, which is still good. Whatever it 
+      may be, scavengers are quick to move during any lulls in battle. Fortune and 
+      destruction tend to lead to the same result.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Derelict Deception",
+        mapImage: "derelict-deception.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Downfall Departure",
+        mapImage: "downfall-departure.webp",
+        gamemode: "Infiltration",
+        ships: "1-4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Oblivion Approach",
+        mapImage: "oblivion-approach.webp",
+        gamemode: "Intercept",
+        ships: "2-4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Relic",
+        mapImage: "relic.webp",
+        gamemode: "King of the Hill",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
 ];
 
 export function getToc() {
