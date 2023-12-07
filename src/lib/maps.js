@@ -410,6 +410,148 @@ export const maps = [
       },
     ],
   },
+  {
+    areaTitle: "The Wastes",
+    text: [
+      `Bitter battles are fought to this day over bones of the old world buried in the 
+      sands of the Wastes. More than a few brave, or perhaps foolhardy, souls have 
+      added their own bones to these relics.`,
+      `The cities of Nalm and Sylka—siblings locked in rivalry where both border opposite 
+      edges of a deadly stretch of barren wasteland. Sands that bind the family together. 
+      Rights to scraps littering the dunes, rights to route trade through its airspace. 
+      Generations of conflict.`,
+      `Over time, the forgotten are reclaimed by the earth. If one acts quickly enough, 
+      remains can be salvaged from the grips of nonexistence. After cutting into the 
+      ground, deep gashes are left behind and its treasures hauled out. No matter how 
+      much digging, riches are still unearthed. Excavations across the desert all look 
+      the same. Even the sand cannot outpace the shoveling to heal the scars and 
+      pockmarks that mark the earth.`,
+      `Sand slowly consumes the remains of the Juggernaut, a ship designed to end the 
+      Nalm-Sylka war. Slow but persistent, the desert eats the vessel away. Scavengers 
+      race against sandstorms that scour away. Maybe the Juggernaut will fly again.`,
+      `Some disputes are not about survival. Some are just a show of might. The Dust 
+      brought fierce winds Combined with the obelisk-like ribs of old vessels of 
+      destruction, battles fought in this edge of the desert are only for those with 
+      cunning... or nothing to lose.`,
+      `The ruins of forgotten machines lay scattered in seas of sand. No one claims the 
+      misplaced apparatuses except for pirates and scavengers. Who knows what's 
+      valuable and what's junk! The greedy opportunists will fight over
+      the smallest scrap.`,
+      `Violent winds are just a part of life in the desert. Sand is swept into the air 
+      and clogs any engine that may find its sorry way through the storm. Can you 
+      blame the navigator for this unforeseen force of nature? Is being thrown
+      overboard a yes?`,
+    ],
+    maps: [
+      {
+        mapTitle: "Battle on the Dunes",
+        mapImage: "battle-on-the-dunes.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Blistered Abyss",
+        mapImage: "blistered-abyss.webp",
+        gamemode: "Defense",
+        ships: "1-3",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Desert Scrap",
+        mapImage: "desert-scrap.webp",
+        gamemode: "King of the Hill",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Duel at Dawn",
+        mapImage: "duel-at-dawn.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Graveyard Rumble",
+        mapImage: "graveyard-rumble.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Hunt at Dawn",
+        mapImage: "hunt-at-dawn.webp",
+        gamemode: "VIP Deathmatch",
+        ships: "1v1, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Ash Mountains",
+    text: [
+      `Char and ash leave a bitter taste on the tongue. This has little comparison with 
+      the bitterness of the battles that one partakes in over these desolate lands of 
+      molten rock and fire.`,
+      `Northern territories have been known to hide caches of ancient technology. Buried 
+      deep and frozen over by ice, only those with indomitable determination can find 
+      them. Even if something is found, even fewer have the minds to decipher and restore 
+      these machines. Who can whisper and coax the secrets out of these metal souls?`,
+      `Beyond treacherous lava fields, in the northern edge of the Ash Mountain range, 
+      lie Yeshan strongholds of Yao Ling Pass. Previously inaccessible, air travel has 
+      allowed the snowy cliffs and wandering ridges to prosper. Though not as active as 
+      the central Ash Mountains, volcanic steam clouds blanket the industrial area. The
+      warmth trapped the mountains fuel the power of the Yeshan war machine.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Ashen King",
+        mapImage: "ashen-king-and-ashen-scuffle.webp",
+        gamemode: "King of the Hill",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Ashen Scuffle (+ Night)",
+        mapImage: "ashen-king-and-ashen-scuffle.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Burning Valley",
+        mapImage: "burning-valley.webp",
+        gamemode: "Search & Destroy",
+        ships: "1-4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Parous Glen (+ Night)",
+        mapImage: "parous-glen.webp",
+        gamemode: "Assault",
+        ships: "1-4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "Wandering Ridge",
+        mapImage: "wandering-ridge.webp",
+        gamemode: "Infiltration",
+        ships: "1-4",
+        difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
 ];
 
 export function getToc() {
