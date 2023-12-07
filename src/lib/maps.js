@@ -254,7 +254,7 @@ export const maps = [
     maps: [
       {
         mapTitle: "Derelict Deception",
-        mapImage: "derelict-deception.webp",
+        mapImage: "derelict-deception-and-relic.webp",
         gamemode: "Deathmatch",
         ships: "2v2, 3v3, 4v4",
         difficulty: "Hard",
@@ -278,10 +278,134 @@ export const maps = [
       },
       {
         mapTitle: "Relic",
-        mapImage: "relic.webp",
+        mapImage: "derelict-deception-and-relic.webp",
         gamemode: "King of the Hill",
         ships: "2v2, 3v3, 4v4",
         difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Northern Fjords",
+    text: [
+      `When traveling the fjords, one must wonder if the chill felt is born of the 
+      inclement weather, or the eyes of death watching from the ice.`,
+      `King Greger's influence, of the Fjord Baronies, is weak in this icy stretch 
+      north of Glowwater Bay. While an important foothold in Firnfeld, the area is rife 
+      with pirates and marauders that often come into contact with patrol ship from the 
+      Baronites. Cold cloudy combat climbs.`,
+      `All kinds of dignitaries travel back and forth through Glowwater Bay. Many are 
+      Baronite lords and ladies while others are unknown and on more secretive missions. 
+      Who knows who you might find. Cautious caravans cruelly caught.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Northern Fjords",
+        mapImage: "northern-fjords-and-northern-hunt.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Northern Hunt",
+        mapImage: "northern-fjords-and-northern-hunt.webp",
+        gamemode: "VIP Deathmatch",
+        ships: "1v1, 3v3, 4v4",
+        difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Rusted Range",
+    text: [
+      `Only a fool would think to travel the entire untamed badlands stretching from 
+      the Arashi Desert to the Anglean Sea of Graves.`,
+      `Merchants look at two things when deciding on a route: distance and chance of an 
+      ambush. While the Red Canyon is the shortest distance between the Yesha Empire 
+      and Anglean Republic, it is also littered with chasms and gullies—happy hunting, 
+      safe travels!`,
+      `The Flayed Hills harbor immense wealth and fortune for those brave enough to mine 
+      in disputed territory bordering the Yeshan Empire. Buried oil caches, forgotten 
+      wartime munitions, collapsed mines. Can you outrun the Yeshans with hulls 
+      brimming with cargo?`,
+      `Veins of the earth carry precious ores. Split the veins, process the ore, and 
+      create death machines to spill more precious resources from veins of our brothers. 
+      The earth weeps and our brethren scream in agony as their vessels fall out of 
+      the sky.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Canyon Ambush",
+        mapImage: "canyon-ambush.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+      {
+        mapTitle: "King of the Flayed Hills",
+        mapImage: "king-of-the-flayed-hills.webp",
+        gamemode: "Crazy King",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Red Sepulcher",
+        mapImage: "red-sepulcher.webp",
+        gamemode: "Deathmatch",
+        ships: "4v4",
+        difficulty: "Intermediate",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Vastness",
+    text: [
+      `This poisoned land spews forth the most toxic of dangers. Be wary the foot that 
+      treads here.`,
+      `They the narrows are haunted. The streams used to run clear but now they are red. 
+      Red with what? If you're so inclined to believe a spooky tale then its red with 
+      those who died from the accidents that were common in the refineries. It's unclear 
+      why there were so many mishaps, but it's clear that something doesn't want 
+      outsiders from staying too long.`,
+      `What flows through the massive pipes twisting through coastline of the Vastness? 
+      A Merchant would pretend not to hear. Ask again, and he'll tell your friends that 
+      you wandered off. Still, that doesn't stop raiders from crossing the Abyssal Gulf 
+      to try their luck leaching the pipes dry of whatever flows within. A risky endeavor
+      where many seemed to have wandered off.`,
+      `The land is unpredictable. On some days, villages are swallowed whole by floods. 
+      On others, mountains shear creating daunting cliff faces into nothingness. 
+      Occasionally, the changes reveal secrets and hidden treasure, but who knows when 
+      the earth will swallow it all again.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Blood Narrows",
+        mapImage: "blood-narrows.webp",
+        gamemode: "Infiltration",
+        ships: "1-4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Raid in the Abyss",
+        mapImage: "raid-in-the-abyss.webp",
+        gamemode: "Crazy King",
+        ships: "2v2, 3v3, 4v4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Sunken Reach",
+        mapImage: "sunken-reach.webp",
+        gamemode: "Blockade",
+        ships: "2-4",
+        difficulty: "Easy",
         text: "",
       },
     ],
@@ -302,5 +426,5 @@ export function getToc() {
     };
   });
 
-  return [...processed];
+  return processed;
 }
