@@ -9,7 +9,7 @@
 
 <h1>{$title}</h1>
 
-<details>
+<details class="dashed">
   <summary>Table of Contents</summary>
   <div>
     <ol>
@@ -17,7 +17,7 @@
     </ol>
   </div>
 </details>
-<details>
+<details class="dashed">
   <summary>Data Source and Editor Notes</summary>
   <div>
     <p>
@@ -75,16 +75,5 @@
     width: 100%;
     max-width: 700px;
     height: auto;
-  }
-  details {
-    & ol,
-    ul {
-      padding-left: 0;
-    }
-    & div {
-      border: 1px dashed;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
   }
 </style>

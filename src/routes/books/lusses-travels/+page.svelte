@@ -32,7 +32,7 @@
 
 <TOC {toc}></TOC>
 
-<details>
+<details class="dashed">
   <summary>Data Source and Editor Notes</summary>
   <div>
     <p>
@@ -107,19 +107,5 @@
     width: 100%;
     max-width: 700px;
     height: auto;
-  }
-  details {
-    & ol,
-    ul {
-      padding-left: 0;
-    }
-    & li > ol {
-      padding-left: 16px;
-    }
-    & div {
-      border: 1px dashed;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
   }
 </style>

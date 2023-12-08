@@ -42,3 +42,18 @@ a:hover {
 summary {
   cursor: default;
 }
+
+details.dashed {
+  & ol,
+  ul {
+    padding-left: 0;
+  }
+  & li > ol {
+    padding-left: 16px;
+  }
+  & div {
+    border: 1px dashed;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

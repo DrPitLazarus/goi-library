@@ -9,7 +9,7 @@
 
 <h1>{$title}</h1>
 
-<details>
+<details class="dashed">
   <summary>Table of Contents</summary>
   <div>
     <ol>
@@ -17,7 +17,7 @@
     </ol>
   </div>
 </details>
-<details>
+<details class="dashed">
   <summary>Data Source and Editor Notes</summary>
   <div>
     <p>
@@ -47,11 +47,11 @@
   </p>
   <em>
     <p>
-        By Gabe's back hairs! Twenty bloomin rockets? Twenty! I ain't seen that much firepower
-        since Mum's third wedding. Or was it the fifth? Reminds me. She's been hassling me again
-        about grands. I suppose I could teach the little tykes how to help clean the big guns
-        where I can't reach so easy. How do you go about attracting a mate? Ma'am, your eyes are
-        lovely in the light of the muzzle flash. Done deal! That would do it for me.
+      By Gabe's back hairs! Twenty bloomin rockets? Twenty! I ain't seen that much firepower
+      since Mum's third wedding. Or was it the fifth? Reminds me. She's been hassling me again
+      about grands. I suppose I could teach the little tykes how to help clean the big guns
+      where I can't reach so easy. How do you go about attracting a mate? Ma'am, your eyes are
+      lovely in the light of the muzzle flash. Done deal! That would do it for me.
     </p>
     <p>That didn't bloody work.</p>
     <p>-Wilson</p>
@@ -66,16 +66,5 @@
     width: 100%;
     max-width: 700px;
     height: auto;
-  }
-  details {
-    & ol,
-    ul {
-      padding-left: 0;
-    }
-    & div {
-      border: 1px dashed;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
   }
 </style>

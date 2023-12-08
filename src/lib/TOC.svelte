@@ -7,7 +7,7 @@
   export let toc;
 </script>
 
-<details>
+<details class="dashed">
   <summary>Table of Contents</summary>
   <div>
     <ol>
