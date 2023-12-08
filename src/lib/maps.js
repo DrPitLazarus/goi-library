@@ -552,6 +552,134 @@ export const maps = [
       },
     ],
   },
+  {
+    areaTitle: "Isles of Chaladon",
+    text: [
+      `The Isles of Chaladon are a green jewel in the sands and dust of the war torn 
+      lands. As with any jewel, this makes it of great value. This often leads to 
+      strife for those that do not possess such lands of their own.`,
+      `Many attempt to use the dense fogs and towering rock outcroppings to hide their 
+      getaway between the Black Channel and Chattering Fjords close to the Chaladon 
+      coastline. However, the same perceived advantages can also pose as significant 
+      threats to one's escape.`,
+      `Lutessa seems like an idyllic land on the southern tip of the Isles of Chaladon. 
+      The water is clear, and green fills the eye. On closer inspection, though, scars 
+      of the past reveal themselves readily. Recently, when a dam of the old world was 
+      repaired, further wounds were shown in the landscape. Massive bunkers hinted at 
+      mighty battles that happened in the past. Though these guns are no longer 
+      functional, the skies above often thunder with the sound of new strife, and the 
+      threat of new scars. The skies hold new danger.`,
+      `Anglean Raiders roam the Black Channel to hunt down Chaladonian freighters, 
+      hoping to steal technology. Fighting spills into the Chattering Fjords and north 
+      coast of Chaladon. Deadly raiders, research vessels, and vigilant patrols clash 
+      amongst the jagged spires. Watery graves await.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Hazardous Hunt",
+        mapImage: "hazardous-hunt-and-water-hazard.webp",
+        gamemode: "VIP Deathmatch",
+        ships: "1v1, 3v3, 4v4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Scars of Lutessa",
+        mapImage: "scars-of-lutessa.webp",
+        gamemode: "Assault",
+        ships: "1-4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Water Hazard",
+        mapImage: "hazardous-hunt-and-water-hazard.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4, 2v2v2v2",
+        difficulty: "Easy",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Ridge Forest",
+    text: [
+      `Occupying a large swath of Aspara and extending into Lookout, Sunder, and 
+      Bannen's Rest, the Ridge Forest and mountain range of the same name are equally 
+      wild and rough. There are rumors of pirates in the crags of the tall mountains 
+      and tree-filled valleys. The weather is often harsh and unpredictable. Often 
+      times, ships that enter never return, or sometimes drift back out, devoid of 
+      crew. Superstitious men whisper of voices being heard on any wind that passes the 
+      peaks. Be it rumors of pirates, or the untamed weather, normal trade ships avoid 
+      this area, lest they be added to the growing list of missing ships and crews.`,
+      `High in the Ridge Forest Mountains on the border of Aspara and Skyend resides a 
+      vast complex of uninhabited buildings. The crumbling buildings are plain on the 
+      outside, but adorned with what seems to be ornate religious carvings on the 
+      interior. Despite the age of the structures, there are many functional sky docks 
+      upon the rooftops. Until recently, the Fjord Baronites had kept this temple 
+      hidden from the outside world. An Anglean invasion stumbled upon the complex 
+      after cutting the Baronite territory in half. It is unknown what the Baronites 
+      were protecting here, but invaders and treasure hunters aim to find out. Outposts 
+      and mining rigs spring up like forests. Will their answers be found, or will 
+      they all be reduced to rubble?`,
+      `Over hundreds of years, river rapids carved out beautiful and treacherous 
+      canyons into the base of the Forest Ridge Mountains. The rivers are long gone, 
+      but they exposed valuable mineral deposits. Most would think it a fool's errand 
+      to work this particular land, but with enough time and desperation anything is 
+      possible. Maybe someday, we'll see the fish swim through these streams again.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Hidden Temple",
+        mapImage: "hidden-temple.webp",
+        gamemode: "Assault",
+        ships: "1-4",
+        difficulty: "Easy",
+        text: "",
+      },
+      {
+        mapTitle: "Thornholt Crest",
+        mapImage: "thornholt-crest.webp",
+        gamemode: "Intercept",
+        ships: "2-4",
+        difficulty: "Hard",
+        text: "",
+      },
+      {
+        mapTitle: "Thornholt Throwdown",
+        mapImage: "thornholt-throwdown.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2",
+        difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
+  {
+    areaTitle: "Anglea",
+    text: [
+      `The frozen Island of Anglea is home to the Anglean Republic. Little is known 
+      about the inter workings of the cities hidden in the Anglean snow and ice.`,
+      `A massive glacier marks the entrance to the Anglean capital of Kinforth. Almost 
+      nothing is known about what lies beyond the glacier, as trespass is met with 
+      instant and deadly force. The ruins of the ancient city at the base of the glacier 
+      are of little concern to the Angleans, however, having been picked clean of 
+      technology long ago. Squabbles between pirates on their doorstep are most often 
+      left to themselves, with crews emerging to salvage the aftermath. In a show of 
+      dark humor, the crews have been known to build large snowmen to observe the
+      battles from hidden places around the broken city.`,
+    ],
+    maps: [
+      {
+        mapTitle: "Assault on Kinforth",
+        mapImage: "assault-on-kinforth.webp",
+        gamemode: "Deathmatch",
+        ships: "2v2, 3v3, 4v4, 2v2v2v2",
+        difficulty: "Hard",
+        text: "",
+      },
+    ],
+  },
 ];
 
 export function getToc() {
