@@ -14,7 +14,7 @@ export const maps = [
     maps: [
       {
         mapTitle: "Drowning Wastes (+ Night)",
-        mapImage: "drowning-wastes.png",
+        mapImage: "drowning-wastes.webp",
         gamemode: "Search & Destroy",
         ships: "1-4",
         difficulty: "Easy",
@@ -22,7 +22,7 @@ export const maps = [
       },
       {
         mapTitle: "Seas of Alleron",
-        mapImage: "seas-of-alleron.png",
+        mapImage: "seas-of-alleron.webp",
         gamemode: "Search & Destroy",
         ships: "1-4",
         difficulty: "Easy",
@@ -36,7 +36,7 @@ export const maps = [
     maps: [
       {
         mapTitle: "City Hunter",
-        mapImage: "city-hunter.png",
+        mapImage: "city-hunter-and-paritan-rumble.webp",
         gamemode: "VIP Deathmatch",
         ships: "1v1, 3v3, 4v4",
         difficulty: "Intermediate",
@@ -46,7 +46,7 @@ export const maps = [
       },
       {
         mapTitle: "Crown Summit",
-        mapImage: "crown-summit.png",
+        mapImage: "crown-summit.webp",
         gamemode: "Blockade",
         ships: "2-4",
         difficulty: "Easy",
@@ -57,7 +57,7 @@ export const maps = [
       },
       {
         mapTitle: "Devil's Eye",
-        mapImage: "devils-eye.png",
+        mapImage: "devils-eye.webp",
         gamemode: "Defense",
         ships: "1-4",
         difficulty: "Easy",
@@ -67,7 +67,7 @@ export const maps = [
       },
       {
         mapTitle: "Paritan Rumble",
-        mapImage: "paritan-rumble.png",
+        mapImage: "city-hunter-and-paritan-rumble.webp",
         gamemode: "Deathmatch",
         ships: "2v2, 3v3, 4v4",
         difficulty: "Hard",
@@ -77,7 +77,7 @@ export const maps = [
       },
       {
         mapTitle: "Pilot Training",
-        mapImage: "pilot-training.png",
+        mapImage: "pilot-training.webp",
         gamemode: "Tutorial",
         ships: "1",
         difficulty: "Intermediate",
@@ -87,7 +87,7 @@ export const maps = [
       },
       {
         mapTitle: "The Labyrinth",
-        mapImage: "the-labyrinth.png",
+        mapImage: "the-labyrinth.webp",
         gamemode: "King of the Hill",
         ships: "2v2",
         difficulty: "Intermediate",
@@ -111,7 +111,7 @@ export const maps = [
     maps: [
       {
         mapTitle: "Blackcliff Butchery",
-        mapImage: "blackcliff-butchery.png",
+        mapImage: "blackcliff-butchery.webp",
         gamemode: "King of the Hill",
         ships: "2v2, 3v3",
         difficulty: "Intermediate",
@@ -119,7 +119,7 @@ export const maps = [
       },
       {
         mapTitle: "Blackcliff Entourage",
-        mapImage: "blackcliff-entourage-and-clash-at-blackcliff.png",
+        mapImage: "blackcliff-entourage-and-clash-at-blackcliff.webp",
         gamemode: "VIP Deathmatch",
         ships: "1v1, 3v3",
         difficulty: "Intermediate",
@@ -127,7 +127,7 @@ export const maps = [
       },
       {
         mapTitle: "Brawl at Blackcliff",
-        mapImage: "brawl-at-blackcliff.png",
+        mapImage: "brawl-at-blackcliff.webp",
         gamemode: "Deathmatch",
         ships: "2v2v2v2",
         difficulty: "Intermediate",
@@ -135,7 +135,7 @@ export const maps = [
       },
       {
         mapTitle: "Clash at Blackcliff",
-        mapImage: "blackcliff-entourage-and-clash-at-blackcliff.png",
+        mapImage: "blackcliff-entourage-and-clash-at-blackcliff.webp",
         gamemode: "Deathmatch",
         ships: "2v2, 3v3, 4v4",
         difficulty: "Intermediate",
@@ -143,7 +143,7 @@ export const maps = [
       },
       {
         mapTitle: "Raid on the Refinery",
-        mapImage: "raid-on-the-refinery.png",
+        mapImage: "raid-on-the-refinery.webp",
         gamemode: "Crazy King",
         ships: "2v2, 3v3",
         difficulty: "Intermediate",
