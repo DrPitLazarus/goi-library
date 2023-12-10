@@ -1,5 +1,5 @@
 <script>
-  import assetBookCover from "$lib/books/evadnes-ship-reports.png";
+  import assetBookCover from "$lib/books/evadnes-ship-reports.webp";
   import { ships, getToc } from "$lib/ships";
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";
@@ -48,18 +48,16 @@
     evenness of the text indicates that it is the result of machine printed typesetting rather
     than handwritten. The preface is short and concise.
   </p>
-  <p>
-    <em>
+  <em>
+    <p>
       Contained within these pages you will find a report on each of the ships I have recently
       studied. The information will be of value to anyone needing to purchase a ship, or repair
       a currently owned ship. If any errors are discovered in my calculations or measurements,
       do not hesitate to contact me at my press and shipyard in Anvala.
-    </em>
-  </p>
-  <p>
-    <em> Fair weather and safe travels, friend. </em>
-  </p>
-  <p><em>-Evadne</em></p>
+    </p>
+    <p>Fair weather and safe travels, friend.</p>
+    <p>-Evadne</p>
+  </em>
 </article>
 
 {#each ships as ship}

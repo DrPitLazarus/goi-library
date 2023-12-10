@@ -1,5 +1,5 @@
 <script>
-  import assetBookCover from "$lib/books/wilsons-notes-vol-2.png";
+  import assetBookCover from "$lib/books/wilsons-notes-vol-2.webp";
 
   /** @type {import('./$types').PageData} */
   export let data;

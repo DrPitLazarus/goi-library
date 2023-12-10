@@ -1,5 +1,5 @@
 <script>
-  import assetBookCover from "$lib/books/lusses-travels.png";
+  import assetBookCover from "$lib/books/lusses-travels.webp";
   import { maps, getToc } from "$lib/maps";
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";

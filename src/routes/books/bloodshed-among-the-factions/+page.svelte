@@ -1,5 +1,5 @@
 <script>
-  import assetBookCover from "$lib/books/bloodshed-among-the-nations.png";
+  import assetBookCover from "$lib/books/bloodshed-among-the-nations.webp";
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -64,8 +64,8 @@
     the events of the greater conflicts in the modern wars between Factions. The first page
     contains a short preface.
   </p>
-  <p>
-    <em>
+  <em>
+    <p>
       "History is written by the victors" -I can't recall where I heard this phrase, but there
       aren't any truer words to address the ongoing strife between the factions. How much more
       destruction will they wage on the world and what stories will be lost as a result?
@@ -74,9 +74,9 @@
       there were no victors in that cataclysm. Just a whole bunch of mystery buried in the
       rubble and not a single hand to jot down any notes of what happened. Hopefully we can get
       it right this time around.
-    </em>
-  </p>
-  <p><em>-Alive and Writing</em></p>
+    </p>
+    <p>-Alive and Writing</p>
+  </em>
 </article>
 
 <h2 id="ridge-forest-brawl">Ridge Forest Brawl</h2>
@@ -159,11 +159,10 @@
   <p>
     Careful and conservative skirmishes dotted the land for weeks on end. Each one seemed
     random and independent from every faction. The chaos of war covered the movements and
-    alliances shifting right below the surface. However, in a sudden strike, the <span
-      class="alliance">Northern Guard</span
-    > revealed themselves! The powerful group of Anglean and the Baronite ships descended quickly
-    on the weakened midlands. The many weeks of subtle feints and raids left the central territories
-    vulnerable to this tactical thrust.
+    alliances shifting right below the surface. However, in a sudden strike, the
+    <span class="alliance">Northern Guard</span> revealed themselves! The powerful group of Anglean
+    and the Baronite ships descended quickly on the weakened midlands. The many weeks of subtle
+    feints and raids left the central territories vulnerable to this tactical thrust.
   </p>
   <p>
     The <span class="alliance">Immortal Insurrection</span>, a defensive force of Chaladonians
@@ -173,9 +172,8 @@
   <p>
     At over 24,000 strong the Guard outnumbered the Insurrection almost two to one. To make
     matters worse KeijoPertti stood at the Guard's head directing ships and taking to the front
-    lines like a sledgehammer. To his sides stood the tacticians of Anglea, <span
-      class="player anglean">Aayra</span
-    >,
+    lines like a sledgehammer. To his sides stood the tacticians of Anglea,
+    <span class="player anglean">Aayra</span>,
     <span class="player anglean">Zero Zero Zero Zero</span>, and
     <span class="player anglean">Jonlrenicus</span>, and the heroes of the Baronies,
     <span class="player baron">Frostbound</span>,
@@ -183,9 +181,8 @@
     <span class="player baron">Skrimskraw</span>.
   </p>
   <p>
-    As the war reached its crescendo the Merchants <span class="player merchant"
-      >Desdemona Dreadless</span
-    >
+    As the war reached its crescendo the Merchants
+    <span class="player merchant">Desdemona Dreadless</span>
     and <span class="player merchant">Lord Rho of Sealand</span> spent over 200,000 of their coin
     to secure Virna. Their newly purchased mercenaries blunting the Northern Guard's advance and
     even holding their target if only for a few hours.
@@ -234,9 +231,9 @@
     scores.
   </p>
   <p>
-    Anglean and Chaladon forces once again found themselves unlikely allies as <span
-      class="player anglean">Hogg</span
-    >, <span class="player anglean">Alette Pegasus</span>, and
+    Anglean and Chaladon forces once again found themselves unlikely allies as
+    <span class="player anglean">Hogg</span>,
+    <span class="player anglean">Alette Pegasus</span>, and
     <span class="player anglean">Redzback</span>
     merged their mighty forces with the advanced fleets of
     <span class="player chaladon">Openart</span>,
@@ -312,9 +309,8 @@
   <p>
     The ruthless invasion struck against the forces of the other three factions, shattering the
     front lines almost instantly in the grasp for ever more water. Anglean, Arashi, and Yeshan
-    forces realised they faced a unified alliance, and formed an emergency coalition, the <span
-      class="alliance">Vanguard Liberators</span
-    >.
+    forces realised they faced a unified alliance, and formed an emergency coalition, the
+    <span class="alliance">Vanguard Liberators</span>.
     <span class="player anglean">NitroPunk</span>,
     <span class="player anglean">Gbohnen</span>, and
     <span class="player anglean">Scorban</span>
@@ -361,15 +357,14 @@
     start rebuilding the ancient train route between the Ash Mountains and Ridge Forest. Yesha
     formed a treaty with the Arashi, who agreed to stop raiding them on the condition that they
     may face the Anglean forces. "A worthy test." With plans set and allies gathered, the push
-    began. Only the Chaladon lands stood in their way, and the newly formed <span
-      class="alliance">Khanate Imperium</span
-    >
-    swore to take them. Chaladon was caught completely off guard by the sudden alliance and assault
-    on their holdings on the mainland. Trading posts began going dark within the Guild network of
-    spies. Chaladon and the Mercantile Guild found themselves in losing conflicts. With few options,
-    they were forced into an Alliance with their sworn enemies, each other. The Anglean Republic
-    could not abide by the thought of their two worst enemies, Yeshans and Baronites, being allied
-    against them. Word of this spread to Chaladon, which offered a treaty. Having had many treaties
+    began. Only the Chaladon lands stood in their way, and the newly formed
+    <span class="alliance">Khanate Imperium</span> swore to take them. Chaladon was caught
+    completely off guard by the sudden alliance and assault on their holdings on the mainland.
+    Trading posts began going dark within the Guild network of spies. Chaladon and the
+    Mercantile Guild found themselves in losing conflicts. With few options, they were forced
+    into an Alliance with their sworn enemies, each other. The Anglean Republic could not abide
+    by the thought of their two worst enemies, Yeshans and Baronites, being allied against
+    them. Word of this spread to Chaladon, which offered a treaty. Having had many treaties
     with Chaladon in the past, the Angleans accepted. The
     <span class="alliance">Emerald Horizon</span> alliance formed, and war was met in full.
   </p>
@@ -405,47 +400,48 @@
     Impossible happens as Arashi sign truce with Yeshan diplomats after bizarre combat ritual.
   </span>
   <h3>ANGLEAN FORCES TURN A COLD SHOULDER</h3>
-  <span
-    >"We have no interest in your technology." Republic satisfies itself with light supply
-    raids.</span
-  >
+  <span>
+    "We have no interest in your technology." Republic satisfies itself with light supply
+    raids.
+  </span>
   <h3>THE DREAM IS NEAR!</h3>
-  <span
-    >We have taken the mainland, citizens of the Empire. Nothing will stand in the way of
-    perfect order. Rejoice!</span
-  >
+  <span>
+    We have taken the mainland, citizens of the Empire. Nothing will stand in the way of
+    perfect order. Rejoice!
+  </span>
   <h3>MERCHANTS AT THE FRONT OF OPPORTUNITY</h3>
-  <span
-    >"Another war, another weapons sale" says spokesman as Guild joins the conflict with vigor.</span
-  >
+  <span>
+    "Another war, another weapons sale" says spokesman as Guild joins the conflict with vigor.
+  </span>
   <h3>CHALADON ON THE OFFENSIVE!</h3>
-  <span
-    >What do they really want? Southern territories lost as the push into the mainland
-    continues.</span
-  >
+  <span>
+    What do they really want? Southern territories lost as the push into the mainland
+    continues.
+  </span>
   <h3>THE TRUCE ENDS NOW</h3>
-  <span
-    >Yesha has again proven weak. Cast off the shackles of 'peace' and let the sands of the
-    Arashi people drift where the winds of battle demand.</span
-  >
+  <span>
+    Yesha has again proven weak. Cast off the shackles of 'peace' and let the sands of the
+    Arashi people drift where the winds of battle demand.
+  </span>
   <h3>THE EMPIRE FALLS BACK</h3>
-  <span
-    >Yeshan forces buckle under pressure from Chaladon, Arashi, and Mercantile attacks. "We
-    will dream another day."</span
-  >
+  <span>
+    Yeshan forces buckle under pressure from Chaladon, Arashi, and Mercantile attacks. "We will
+    dream another day."
+  </span>
   <h3>WAR BETWEEN ALLIANCES!</h3>
-  <span
-    >Republic agrees to supplies deal with Guild. "Your fight is ours this day." claim Arashi
-    tribes. Concord of Paragons is formed.</span
-  ><br /><span
-    >Weakened Baronite and Yeshan forces make deal with Chaladon. "This is far from over."
-    states new alliance Trident Entente.</span
-  >
+  <span>
+    Republic agrees to supplies deal with Guild. "Your fight is ours this day." claim Arashi
+    tribes. Concord of Paragons is formed.
+  </span><br />
+  <span>
+    Weakened Baronite and Yeshan forces make deal with Chaladon. "This is far from over."
+    states new alliance Trident Entente.
+  </span>
   <h3>CASUALTIES MOUNT!</h3>
-  <span
-    >Loses high on all fronts in wake of merciless privateers. Reports of these privateers
-    inflicting the most havoc for Faction glory.</span
-  >
+  <span>
+    Loses high on all fronts in wake of merciless privateers. Reports of these privateers
+    inflicting the most havoc for Faction glory.
+  </span>
   <p>
     <span>Fjord Baronies- </span><span class="player baron">MataDewa</span>,
     <span class="player baron">Alyr von Valentine</span>,
@@ -467,16 +463,16 @@
     <span class="player yesha">MataDewa</span>
   </p>
   <h3>ANGLEAN MIGHT FUELS STRONG FRONT FOR ALLIANCE</h3>
-  <span
-    >"We have no need of your lands or squabbles over dirt. We only want resources." Anglean
-    envoy claims.</span
-  >
+  <span>
+    "We have no need of your lands or squabbles over dirt. We only want resources." Anglean
+    envoy claims.
+  </span>
   <h3>CONCORD OF PARAGONS TRIUMPHS OVER TRIDENT ENTENTE</h3>
-  <span
-    >Trident shatters and retreats as Concord slashes through their lands. Anglean forces pull
+  <span>
+    Trident shatters and retreats as Concord slashes through their lands. Anglean forces pull
     back to frozen north with won supplies as the Guild pulls south with profits. Arashi
-    warriors return west to their desert with battle lust sated.</span
-  >
+    warriors return west to their desert with battle lust sated.
+  </span>
 </article>
 
 <h2 id="allies-and-enemies">Allies and Enemies</h2>
@@ -558,12 +554,11 @@
     rebellion soon became an open revolt as Chaladonian privateers found their pockets being
     lined to turn their backs on the people they were contracted to protect. One pilot more
     than any other caused mayhem in the Chaladon ranks, diverting supplies where there was no
-    need, and shifting forces to strategically insignificant territories. <span
-      class="player chaladon">Sterbehilfe e.V.</span
-    >, driven by mad hate of the Mercantile Guild, declared war on his own allies. In the
-    confusion, it is uncertain if fellow privateer
-    <span class="player chaladon">Sungsoo Jung</span>
-    also turned away as Chaladon cities were raided one after the other by the Sanguine March, though
+    need, and shifting forces to strategically insignificant territories.
+    <span class="player chaladon">Sterbehilfe e.V.</span>, driven by mad hate of the Mercantile
+    Guild, declared war on his own allies. In the confusion, it is uncertain if fellow
+    privateer <span class="player chaladon">Sungsoo Jung</span> also turned away as Chaladon
+    cities were raided one after the other by the Sanguine March, though
     <span class="player chaladon">Arramus</span> rejected the rebellion. Alliance loyalists comprised
     of Chaladonian, Mercantile, and Baronite privateers also formed a secret group to combat the
     actions of the rebels, though with little success.
@@ -587,10 +582,9 @@
     with Arashi forces in renewed effort to cut off supply routes at Ravenrock and Vama Rea.
   </p>
   <p>
-    Secretly, Chaladon rebels had been making deals with Yesha. <span class="player yesha"
-      >-Bob</span
-    >, allied to Yesha and credited with forming many alliances with other factions, cautioned
-    the Arashi raiders
+    Secretly, Chaladon rebels had been making deals with Yesha.
+    <span class="player yesha">-Bob</span>, allied to Yesha and credited with forming many
+    alliances with other factions, cautioned the Arashi raiders
     <span class="player arashi">Non-existant</span>,
     <span class="player arashi">Bemapo</span>, and
     <span class="player arashi">Mister BOOM</span>
@@ -604,9 +598,8 @@
   </p>
   <p>
     The final holdout proved difficult to assault. Heavy coastal defenses and a steady stream
-    of supplies from Vyshtorg prevented attack on Vama Rea. Mercantile privateers <span
-      class="player merchant">Tinker Belle</span
-    >,
+    of supplies from Vyshtorg prevented attack on Vama Rea. Mercantile privateers
+    <span class="player merchant">Tinker Belle</span>,
     <span class="player merchant">Lopt</span>, and the
     <span class="player merchant">Duke of Bradford</span> patrolled tirelessly. Alas, for
     naught, as an Arashi night raid broke the blockade. Sanguine March forces poured into Vama
@@ -701,15 +694,15 @@
     the shores of Hanat.
   </p>
   <p>
-    <em
-      >Many battles ago, you showed your strength in pushing us to our own borders. You also
+    <em>
+      Many battles ago, you showed your strength in pushing us to our own borders. You also
       showed your honor by ceasing this assault and leaving us a challenge. We have decided to
       accept this challenge of facing your warriors on your own lands. There is but one issue.
       The pitiful Yeshen Armada stands between us, blocking our honorable duel with their
       treacherous, backstabbing ways. Let us be the Hammer and Anvil that crushes this unworthy
       foe, so that we may join in battle at an agreed upon place and time. Let us discuss the
-      terms of this honor duel and reap the spoils of War!</em
-    >
+      terms of this honor duel and reap the spoils of War!
+    </em>
   </p>
   <p>
     Unable and unwilling to refuse, the Arashi completely ignored any allegiance attempts made
@@ -762,15 +755,15 @@
 <h2 id="seven-day-strife">Seven Day Strife</h2>
 <article>
   <p>
-    <em
-      >This set of missives was recovered from an Anglean courier ship shot down by an unknown
+    <em>
+      This set of missives was recovered from an Anglean courier ship shot down by an unknown
       assailant on the border of Garrow and Oblivion Pass. It was heavily encrypted with a
       cypher. Not knowing what to make of it, the salvagers sold the papers to the Anvala
       Press, where our people worked diligently to uncover their secrets. Though we were not
       able to recover all pages or information due to damage and unknown code words, the story
       presented is fascinating. These short passages only deepen the mystery of the Seven Days
-      Strife. -Anvala Press</em
-    >
+      Strife. -Anvala Press
+    </em>
   </p>
   <p>
     <em>-Command-</em> Northwind Operation proceeding on schedule. The Arashi have taken the
@@ -851,16 +844,16 @@
     message reach you. Cathedral is not safe.
   </p>
   <p>
-    <em
-      >That is all we could extract from the missives. We have sent requests for information to
+    <em>
+      That is all we could extract from the missives. We have sent requests for information to
       all factions, but so far have been met with silence. Events seem to line up with the
       decoded messages as Yeshan, Arashi, and Mercantile forces have flooded back into the
       territories abandoned so suddenly by Anglea. Chaladon and Baronties have also settled
       into the areas that they had held before the war started, gathering up extra territories
       as Anglea vanished from the field. Pure chaos has descended as the factions renew their
       efforts. The question remains, though. Which of them attacked the Anglean scouts in
-      Garrow? History will tell. -Anvala Press</em
-    >
+      Garrow? History will tell. -Anvala Press
+    </em>
   </p>
 </article>
 
