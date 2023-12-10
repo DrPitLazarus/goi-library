@@ -1,9 +1,5 @@
 import { slugify } from "./util";
 
-/**
- * @namespace
- * @property {Number} longitudinalSpeed - m/s
- */
 class Ship {
   name = "";
   difficulty = "";
