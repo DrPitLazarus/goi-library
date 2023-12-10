@@ -1,18 +1,36 @@
+import { slugify } from "./util";
+
+/**
+ * @namespace
+ * @property {Number} longitudinalSpeed - m/s
+ */
 class Ship {
   name = "";
   difficulty = "";
   description = "";
-  longitudinalSpeed = "";
-  longitudinalAccel = "";
-  turnSpeed = "";
-  turnAccel = "";
-  mass = "";
-  verticalSpeed = "";
-  verticalAccel = "";
-  ratingSpeed = "";
-  ratingManeuverability = "";
-  ratingDurability = "";
-  ratingArmor = "";
+  /** @property In m/s. */
+  longitudinalSpeed = 0;
+  /** @property In m/s^2. */
+  longitudinalAccel = 0;
+  /** @property In deg/s. */
+  turnSpeed = 0;
+  /** @property In deg/s^2. */
+  turnAccel = 0;
+  /** @property In tonnes. */
+  mass = 0;
+  /** @property In m/s. */
+  verticalSpeed = 0;
+  /** @property In m/s^2. */
+  verticalAccel = 0;
+  /** @property Equal to longitudinalSpeed. Squid with 47 is the highest. */
+  ratingSpeed = 0;
+  /** @property Not sure how it's calculated. Squid with 0.4 is the highest. */
+  ratingManeuverability = 0;
+  /** @property Hull HP value. Galleon with 1750 is the highest. */
+  ratingDurability = 0;
+  /** @property Armor HP value. Galleon with 820 is the highest. */
+  ratingArmor = 0;
+  /** @property Sum of weapons. Heavy weapons worth 1.25. Galleon with 7 is the highest. */
   ratingFirepower = 0;
 
   /**
@@ -340,3 +358,12 @@ export const ships = [
     ratingFirepower: 4.25,
   }),
 ];
+
+export function getToc() {
+  return ships.map((ship) => {
+    return {
+      name: ship.name,
+      link: `#${slugify(ship.name)}`,
+    };
+  });
+}
