@@ -19,7 +19,7 @@ class Gun {
    * @param {number} [gunObj.optAdditionalShellDrop] - In m/s^2.
    * @param {number} [gunObj.optFireChance] - Fire Ignition percent chance.
    * @param {number[]} [gunObj.optFireChanceStacks] - Fire Ignition stacks. Array to specify range of stacks.
-   * @param {number} [gunObj.optAoeRadius] - In meters.
+   * @param {(number|number[])} [gunObj.optAoeRadius] - In meters. Array if a range.
    * @param {number} [gunObj.optBuckshots]
    * @param {number} [gunObj.optPullStrength] - In kN*s.
    * @param {number} [gunObj.optPullDuration] - In seconds.
@@ -305,5 +305,239 @@ export const guns = [
     optFireChanceStacks: [5],
     optAoeRadius: 60,
     optMineImpulse: 80,
+  }),
+  new Gun({
+    name: "Hades Light Cannon",
+    type: "Light",
+    description: `A mid to long-range armor melting weapon with arcing shots. A higher 
+    skilled gun that can be terrifying in the right hands. Arming time of 0.6s, no AoE 
+    under 150m with default ammo. Ammo types that will reduce arming range list either 
+    reduced velocity or reduced arming time.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.FIRE,
+    primaryDamageValue: 30,
+    secondaryDamageType: DAMAGE_TYPES.PIERCING,
+    secondaryDamageValue: 45,
+    rateOfFire: 1.25,
+    reloadTime: 5.5,
+    magazineSize: 8,
+    projectileSpeed: 250,
+    range: 1400,
+    angles: [40, 40, 40, 50],
+    optAdditionalShellDrop: 15,
+    optFireChance: 45,
+    optFireChanceStacks: [1],
+    optAoeRadius: 5,
+  }),
+  new Gun({
+    name: "Februus Weaponized Coil",
+    type: "Light",
+    description: `Fires an electrical discharge that arcs between multiple enemies. 
+    Hold the trigger to charge up to 5 seconds; damage and number of jumps increases
+    with charge time. Minimum charge time of 1.25s.`,
+    effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 20,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 22.5,
+    rateOfFire: 2.0,
+    reloadTime: 1.0,
+    magazineSize: 1,
+    projectileSpeed: -1,
+    range: 1000,
+    angles: [55, 55, 40, 50],
+    optFireChance: 25,
+    optFireChanceStacks: [2, 4],
+    optAoeRadius: [6, 75],
+  }),
+  new Gun({
+    name: "Kalakuta Gas Mortar",
+    type: "Light",
+    description: `Fires canisters of caustic chemicals, which create a cloud of 
+    disabling gas when they explode. Gas clouds slow and deals damage over time, each 
+    cloud lasts 13 seconds. Secondary-fire detonates the canister. Arming distance of 60m.`,
+    effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.SHATTER,
+    primaryDamageValue: 3,
+    secondaryDamageType: DAMAGE_TYPES.PIERCING,
+    secondaryDamageValue: 5,
+    rateOfFire: 0.5,
+    reloadTime: 8.0,
+    magazineSize: 2,
+    projectileSpeed: 200,
+    range: 800,
+    angles: [30, 30, 25, 25],
+    optAdditionalShellDrop: 8,
+    optAoeRadius: 100,
+  }),
+  new Gun({
+    name: "Seraph Tempest Missiles",
+    type: "Light",
+    description: `Fires remote-guided missiles; reticle must bet kept on a target to 
+    direct missiles towards it. Main missile splits into guided submunitions after 0.25
+    seconds (50m). Submunitions have random velocity between 150m/s and 200m/s. 
+    Submunitions begin randomly detonating after 600m with missiles rarely reaching 
+    beyond 1700m.`,
+    effectiveVs: [COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 19,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 11,
+    rateOfFire: 0.5,
+    reloadTime: 7.0,
+    magazineSize: 2,
+    projectileSpeed: 150,
+    range: 600,
+    angles: [50, 50, 40, 40],
+    optFireChance: 7,
+    optFireChanceStacks: [1, 2],
+    optAoeRadius: 7,
+  }),
+  new Gun({
+    name: "Aten Lens Array",
+    type: "Light",
+    description: `Hold down trigger to start charging. Starts dealing damage after 0.75
+    seconds of charge. Will increase damage to 400% base damage over 4 seconds of 
+    continuous fire at the cost of 30% reduced turn speed. Releasing trigger restarts 
+    the charge and damage ramp. Reduced damage starting after 300m. 50% damage at 
+    800m. Passes through targets, damaging all components and ships in line-of-sight.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 2,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 1,
+    rateOfFire: 10.0,
+    reloadTime: 10.0,
+    magazineSize: 200,
+    projectileSpeed: 2000,
+    range: 1100,
+    angles: [35, 35, 25, 25],
+    optFireChance: 3,
+    optFireChanceStacks: [1],
+  }),
+  new Gun({
+    name: "Februus Weaponized Coil [Mk. II]",
+    type: "Light",
+    description: `Modified coils allows for short charge time and multiple shots per clip.
+    Despite 400m range, it is highly effective against groups of enemies with its
+    higher chance to arc.`,
+    effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 25,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 25,
+    rateOfFire: 1.0,
+    reloadTime: 6.0,
+    magazineSize: 6,
+    projectileSpeed: -1,
+    range: 400,
+    angles: [55, 55, 40, 50],
+    optFireChance: 25,
+    optFireChanceStacks: [2, 4],
+    optAoeRadius: 16,
+  }),
+  new Gun({
+    name: "Aten Lens Array [Mk. II]",
+    type: "Light",
+    description: `Large burst of super heated beams that extend to 450m. Slightly reduced
+    damage after 150m.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.FIRE,
+    primaryDamageValue: 14.00001,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 14.00001,
+    rateOfFire: 5.0,
+    reloadTime: 6.0,
+    magazineSize: 60,
+    projectileSpeed: 2000,
+    range: 450,
+    angles: [40, 40, 40, 40],
+    optFireChance: 3,
+    optFireChanceStacks: [1],
+    optBuckshots: 3,
+  }),
+  new Gun({
+    name: "Kalakuta Gas Mortar [Mk. II]",
+    type: "Light",
+    description: `Higher rate of fire with experimental gas shells that deals high 
+    damage but dissipates quickly.`,
+    effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.SHATTER,
+    primaryDamageValue: 16,
+    secondaryDamageType: DAMAGE_TYPES.PIERCING,
+    secondaryDamageValue: 22,
+    rateOfFire: 2.0,
+    reloadTime: 8.0,
+    magazineSize: 5,
+    projectileSpeed: 600,
+    range: 798,
+    angles: [30, 30, 25, 25],
+    optFireChance: 5,
+    optFireChanceStacks: [1],
+    optAoeRadius: 60,
+  }),
+  new Gun({
+    name: "Seraph Tempest Missiles [Mk. II]",
+    type: "Light",
+    description: `Fires a single slow moving incendiary missile that can be guided to 
+    a target. Deals substantial hull damage and starts fires in a large radius.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 240,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 1,
+    rateOfFire: 0.87,
+    reloadTime: 3.0,
+    magazineSize: 1,
+    projectileSpeed: 150,
+    range: 1500,
+    angles: [65, 65, 30, 30],
+    optFireChance: 40,
+    optFireChanceStacks: [2],
+    optAoeRadius: 10,
+  }),
+  new Gun({
+    name: "Seraph Tempest Missiles [Mk. S]",
+    type: "Light",
+    description: `Fires remote-guided missiles; reticle must be kept on a target to direct
+    missiles towards it. Main missile splits into 7 guided submunitions after 0.01
+    seconds. Submunitions have random velocity between 250m/s and 300m/s. Submunitions 
+    begin randomly detonating after 600m with missiles rarely reaching beyond 1700m.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 9,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 9,
+    rateOfFire: 0.5,
+    reloadTime: 8.0,
+    magazineSize: 3,
+    projectileSpeed: 250,
+    range: 600,
+    angles: [50, 50, 30, 10],
+    optFireChance: 7,
+    optFireChanceStacks: [1],
+    optAoeRadius: 7,
+  }),
+  new Gun({
+    name: "Aten Lens Array [Mk. S]",
+    type: "Light",
+    description: `Hold down trigger to start charging. Starts dealing damage after 1.75
+    seconds of charge. Will increase damage to 400% base damage over 8 seconds of 
+    continuous fire at the cost of 30% reduced turn speed. Releasing trigger restarts 
+    the charge and damage ramp. Reduced damage starting after 300m. 50% damage at 800m. 
+    Passes through targets, damaging all components and ships in line-of-sight.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 1,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 0.4,
+    rateOfFire: 10.0,
+    reloadTime: 10.0,
+    magazineSize: 200,
+    projectileSpeed: 2000,
+    range: 800,
+    angles: [35, 35, 15, 10],
+    optFireChance: 3,
+    optFireChanceStacks: [1],
   }),
 ];
