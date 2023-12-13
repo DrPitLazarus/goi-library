@@ -26,6 +26,7 @@ class Gun {
    * @param {number} [gunObj.optFlareIllumination] - In lx (lux).
    * @param {number} [gunObj.optFlareDuration] - In seconds.
    * @param {number} [gunObj.optMineImpulse] - In kN*s.
+   * @param {number} [gunObj.optKnockback] - In kN*s.
    */
   constructor(gunObj) {
     this.name = gunObj.name;
@@ -54,7 +55,7 @@ class Gun {
     this.optFireChance = gunObj.optFireChance;
     /** @prop Fire Ignition stacks. Array to specify range of stacks. */
     this.optFireChanceStacks = gunObj.optFireChanceStacks;
-    /** @prop In meters. */
+    /** @prop In meters. Array if a range. */
     this.optAoeRadius = gunObj.optAoeRadius;
     this.optBuckshots = gunObj.optBuckshots;
     /** @prop In kN*s. */
@@ -65,8 +66,10 @@ class Gun {
     this.optFlareIllumination = gunObj.optFlareIllumination;
     /** @prop In seconds. */
     this.optFlareDuration = gunObj.optFlareDuration;
-    /** @prop In kN*s */
+    /** @prop In kN*s. */
     this.optMineImpulse = gunObj.optMineImpulse;
+    /** @prop In kN*s. */
+    this.optKnockback = gunObj.optKnockback;
   }
 }
 
@@ -539,5 +542,279 @@ export const guns = [
     angles: [35, 35, 15, 10],
     optFireChance: 3,
     optFireChanceStacks: [1],
+  }),
+  // heavy guns
+  new Gun({
+    name: "Typhon Heavy Flak Cannon [Mk. I]",
+    type: "Heavy",
+    description: `A medium/long-range cannon that fires explosive projectiles dealing
+    substantial damage with a wide area of effect. Arming time of 2/3s, no
+    secondary AoE under 200m.`,
+    effectiveVs: [COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 115,
+    secondaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    secondaryDamageValue: 50,
+    rateOfFire: 2.0,
+    reloadTime: 4.0,
+    magazineSize: 4,
+    projectileSpeed: 300,
+    range: 2400,
+    angles: [40, 40, 30, 40],
+    optAdditionalShellDrop: 6,
+    optFireChance: 12.5,
+    optFireChanceStacks: [1, 3],
+    optAoeRadius: 7,
+  }),
+  new Gun({
+    name: "Manticore Heavy Hwacha",
+    type: "Heavy",
+    description: `Fires a blinding barrage of 20 rockets for a powerful area-of-denial 
+    effect in close to mid range engagements. While devastating up close, this gun 
+    quickly loses effectiveness due to a high missile spread and jaw rattling gun recoil.
+    
+    Missiles will start detonating at 750 meters due to crude and inaccurate
+    timer fuses. Detonations will continue for approximately 1 more second with
+    a few missiles reaching targets 1060 meters away. Don't let this range fool
+    you, as this beast can't barely hit the broad side of a Galleon at those ranges.
+    Best to hold your shots and wait for the buggers to get closer. - Wilson`,
+    effectiveVs: [COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 15,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 50,
+    rateOfFire: 8.33,
+    reloadTime: 14.0,
+    magazineSize: 20,
+    projectileSpeed: 300,
+    range: 750,
+    angles: [30, 30, 20, 20],
+    optFireChance: 6.3,
+    optFireChanceStacks: [1],
+    optAoeRadius: 5,
+  }),
+  new Gun({
+    name: "Hellhound Heavy Twin Carronade",
+    type: "Heavy",
+    description: `A larger, slower, more powerful Carronade that fires a piercing 
+    short-range shotgun burst. Effective against balloons and components.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    primaryDamageValue: 350,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 200,
+    rateOfFire: 0.83,
+    reloadTime: 7.5,
+    magazineSize: 2,
+    projectileSpeed: 800,
+    range: 400,
+    angles: [35, 35, 30, 10],
+    optBuckshots: 20,
+  }),
+  new Gun({
+    name: "Lumberjack Heavy Mortar",
+    type: "Heavy",
+    description: `High arcing weapon with balloon damaging Flechette AoE. Arming time of
+    0.727s, Guns with arming time do not inflict the second listed damage before
+    arming. No AoE damage under 200m.
+    
+    High parabolic arc, narrow range of motion, and slow projectile velocity
+    make this a difficult gun to master, requiring high skill and experience.`,
+    effectiveVs: [COMPONENTS.BALLOON],
+    primaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    primaryDamageValue: 50,
+    secondaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    secondaryDamageValue: 250,
+    rateOfFire: 0.8,
+    reloadTime: 8.0,
+    magazineSize: 6,
+    projectileSpeed: 275,
+    range: 1650,
+    angles: [15, 15, 65, 25],
+    optAdditionalShellDrop: 20,
+    optAoeRadius: 8,
+  }),
+  new Gun({
+    name: "Minotaur Heavy Cannon",
+    type: "Heavy",
+    description: `A specialized support weapon that knocks back enemy ships. The 
+    farther you shoot from a ship's center of mass, the more spin it will add to push a 
+    ship off its gun arcs.`,
+    effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 72,
+    secondaryDamageType: DAMAGE_TYPES.SHATTER,
+    secondaryDamageValue: 180,
+    rateOfFire: 0.67,
+    reloadTime: 10.0,
+    magazineSize: 5,
+    projectileSpeed: 700,
+    range: 1800,
+    angles: [40, 40, 30, 20],
+    optBuckshots: 4,
+    optKnockback: 120,
+  }),
+  new Gun({
+    name: "Roaring Tiger Heavy Detonator",
+    type: "Heavy",
+    description: `Launches a volley of slow-moving projectiles that will detonate 4 times
+    when Secondary Fire is pressed. Otherwise, projectile will hit enemy and detonate once.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    primaryDamageValue: 30,
+    secondaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    secondaryDamageValue: 30,
+    rateOfFire: 2.5,
+    reloadTime: 10.0,
+    magazineSize: 4,
+    projectileSpeed: 80,
+    range: 800,
+    angles: [40, 40, 40, 30],
+    optAdditionalShellDrop: 2,
+    optAoeRadius: 70,
+  }),
+  new Gun({
+    name: "Immortal Gaze Heavy Accelerator",
+    type: "Heavy",
+    description: `Fires magnetically charged, ultra-high-velocity shells capable of 
+    piercing through ships. Damages and pulls in its wake any enemy unit it passes near.
+    Charge to increase damage and radius.`,
+    effectiveVs: [COMPONENTS.ARMOR],
+    primaryDamageType: DAMAGE_TYPES.PIERCING,
+    primaryDamageValue: 250,
+    secondaryDamageType: DAMAGE_TYPES.PIERCING,
+    secondaryDamageValue: 125,
+    rateOfFire: 2.0,
+    reloadTime: 10.0,
+    magazineSize: 4,
+    projectileSpeed: 800,
+    range: 2400,
+    angles: [60, 60, 40, 40],
+    optAoeRadius: 6,
+    optKnockback: 400,
+  }),
+  new Gun({
+    name: "Roaring Tiger Heavy Detonator [Mk. II]",
+    type: "Heavy",
+    description: `Multiple mines per shot that detonate once, Secondary Fire to detonate.
+    Arming distance 100m.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    primaryDamageValue: 15,
+    secondaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    secondaryDamageValue: 30,
+    rateOfFire: 0.5,
+    reloadTime: 8.0,
+    magazineSize: 4,
+    projectileSpeed: 200,
+    range: 600,
+    angles: [40, 40, 40, 30],
+    optAdditionalShellDrop: 16,
+    optAoeRadius: 50,
+  }),
+  new Gun({
+    name: "Immortal Gaze Heavy Accelerator [Mk. II]",
+    type: "Heavy",
+    description: `Short charging high velocity rounds that pierces through and pulls 
+    enemy ships trapped in the weapon's wake towards your ship. Modified rounds to
+    deal more killing damage.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.SHATTER,
+    primaryDamageValue: 130,
+    secondaryDamageType: DAMAGE_TYPES.FIRE,
+    secondaryDamageValue: 70,
+    rateOfFire: 0.5,
+    reloadTime: 10.0,
+    magazineSize: 8,
+    projectileSpeed: 800,
+    range: 1600,
+    angles: [40, 40, 60, 30],
+    optAoeRadius: 10,
+  }),
+  new Gun({
+    name: "Typhon Heavy Flak Cannon [Mk. II]",
+    type: "Heavy",
+    description: `Same DPS but packed into 2 shots instead of 4. A medium/long-range
+    cannon that fires explosive projectiles dealing substantial damage with a
+    wide area of effect. Arming time of 2/3s, no secondary AoE under 200m.`,
+    effectiveVs: [COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    primaryDamageValue: 150,
+    secondaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    secondaryDamageValue: 180,
+    rateOfFire: 0.8,
+    reloadTime: 4.0,
+    magazineSize: 2,
+    projectileSpeed: 300,
+    range: 2400,
+    angles: [40, 40, 30, 40],
+    optAdditionalShellDrop: 6,
+    optFireChance: 12.5,
+    optFireChanceStacks: [1, 5],
+    optAoeRadius: 7,
+  }),
+  new Gun({
+    name: "Nemesis Heavy Carronade",
+    type: "Heavy",
+    description: `Harkening to the olden days of naval warfare, this powerful 
+    carronade fires iron cannonballs instead of buckshot. High damage to guns and engines.
+    Moderate damage to Armor and Hull integrity.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.SHATTER,
+    primaryDamageValue: 125,
+    secondaryDamageType: DAMAGE_TYPES.IMPACT,
+    secondaryDamageValue: 100,
+    rateOfFire: 0.6,
+    reloadTime: 6.0,
+    magazineSize: 4,
+    projectileSpeed: 400,
+    range: 1500,
+    angles: [40, 40, 25, 15],
+    optAdditionalShellDrop: 11,
+    optAoeRadius: 2,
+    optKnockback: 200,
+  }),
+  new Gun({
+    name: "Nemesis Heavy Carronade",
+    type: "Heavy",
+    description: `Harkening to the olden days of naval warfare, this powerful 
+    carronade fires iron cannonballs instead of buckshot. High damage to guns and engines.
+    Moderate damage to Armor and Hull integrity.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
+    primaryDamageType: DAMAGE_TYPES.SHATTER,
+    primaryDamageValue: 125,
+    secondaryDamageType: DAMAGE_TYPES.IMPACT,
+    secondaryDamageValue: 100,
+    rateOfFire: 0.6,
+    reloadTime: 6.0,
+    magazineSize: 4,
+    projectileSpeed: 400,
+    range: 1500,
+    angles: [40, 40, 25, 15],
+    optAdditionalShellDrop: 11,
+    optAoeRadius: 2,
+    optKnockback: 200,
+  }),
+  new Gun({
+    name: "Roaring Tiger Heavy Detonator [Mk. S]",
+    type: "Heavy",
+    description: `Launches a volley of 5 slow-moving projectiles that will detonate twice
+    when Secondary Fire is pressed. Direct hits will only do flechette damage and then 
+    explode once. Practice detonating just after the projectiles start lighting up the target.`,
+    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
+    primaryDamageType: DAMAGE_TYPES.FLECHETTE,
+    primaryDamageValue: 8,
+    secondaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
+    secondaryDamageValue: 34,
+    rateOfFire: 0.5,
+    reloadTime: 5.0,
+    magazineSize: 1,
+    projectileSpeed: 150,
+    range: 300,
+    angles: [50, 50, 30, 30],
+    optAdditionalShellDrop: 2,
+    optFireChance: 4,
+    optFireChanceStacks: [1],
+    optAoeRadius: 20,
   }),
 ];
