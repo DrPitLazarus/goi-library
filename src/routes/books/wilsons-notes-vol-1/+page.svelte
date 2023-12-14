@@ -121,7 +121,7 @@
         {#if gun.opt.knockback}
           <tr><th>Knockback:</th><td>{gun.opt.knockback} kN*s</td></tr>
         {/if}
-        {#if gun.opt.knockback}
+        {#if gun.opt.mineImpulse}
           <tr><th>Mine Impulse:</th><td>{gun.opt.mineImpulse} kN*s</td></tr>
         {/if}
         {#if gun.opt.pullDuration && gun.opt.pullStrength}
