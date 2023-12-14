@@ -101,7 +101,7 @@
           </tr>
         {/if}
         {#if gun.opt.aoeRadius}
-          <tr><th>AoE Radius:</th><td>{gun.opt.aoeRadius} m</td></tr>
+          <tr><th>AoE Radius:</th><td>{gun.opt.aoeRadius.join("-")} m</td></tr>
         {/if}
         {#if gun.opt.buckshots}
           <tr><th>Buckshots:</th><td>{gun.opt.buckshots}</td></tr>

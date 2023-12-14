@@ -21,8 +21,8 @@ class Gun {
    * @param {Object} [gunObj.opt] - Optional properties.
    * @param {number} [gunObj.opt.additionalShellDrop] - In m/s^2.
    * @param {number} [gunObj.opt.fireChance] - Fire Ignition percent chance.
-   * @param {number[]} [gunObj.opt.fireChanceStacks] - Fire Ignition stacks. Array to specify range of stacks.
-   * @param {(number|number[])} [gunObj.opt.aoeRadius] - In meters. Array if a range.
+   * @param {number[]} [gunObj.opt.fireChanceStacks] - Fire Ignition stacks. Array for range.
+   * @param {number[]} [gunObj.opt.aoeRadius] - In meters. Array for range.
    * @param {number} [gunObj.opt.buckshots]
    * @param {number} [gunObj.opt.pullStrength] - In kN*s.
    * @param {number} [gunObj.opt.pullDuration] - In seconds.
@@ -59,9 +59,9 @@ class Gun {
       (this.opt.additionalShellDrop = gunObj.opt?.additionalShellDrop);
     /** @prop Fire Ignition percent chance. */
     gunObj.opt?.fireChance && (this.opt.fireChance = gunObj.opt?.fireChance);
-    /** @prop Fire Ignition stacks. Array to specify range of stacks. */
+    /** @prop Fire Ignition stacks. Array for range. */
     gunObj.opt?.fireChanceStacks && (this.opt.fireChanceStacks = gunObj.opt?.fireChanceStacks);
-    /** @prop In meters. Array if a range. */
+    /** @prop In meters. Array for range. */
     gunObj.opt?.aoeRadius && (this.opt.aoeRadius = gunObj.opt?.aoeRadius);
     gunObj.opt?.buckshots && (this.opt.buckshots = gunObj.opt?.buckshots);
     /** @prop In kN*s. */
@@ -130,7 +130,7 @@ export const guns = [
     opt: {
       fireChance: 17.5,
       fireChanceStacks: [1],
-      aoeRadius: 2.5,
+      aoeRadius: [2.5],
     },
   }),
   new Gun({
@@ -154,7 +154,7 @@ export const guns = [
       additionalShellDrop: 5,
       fireChance: 7.5,
       fireChanceStacks: [1],
-      aoeRadius: 4,
+      aoeRadius: [4],
     },
   }),
   new Gun({
@@ -189,7 +189,7 @@ export const guns = [
     range: 158,
     angles: [70, 70, 35, 35],
     opt: {
-      aoeRadius: 7,
+      aoeRadius: [7],
       fireChance: 22,
       fireChanceStacks: [1],
     },
@@ -255,7 +255,7 @@ export const guns = [
       additionalShellDrop: 3,
       fireChance: 100,
       fireChanceStacks: [15],
-      aoeRadius: 3,
+      aoeRadius: [3],
       flareIllumination: 600,
       flareDuration: 25,
     },
@@ -275,7 +275,10 @@ export const guns = [
     projectileSpeed: 750,
     range: 2250,
     angles: [15, 15, 15, 5],
-    opt: { additionalShellDrop: 15, aoeRadius: 1.25 },
+    opt: {
+      additionalShellDrop: 15,
+      aoeRadius: [1.25],
+    },
   }),
   new Gun({
     name: "Scylla Double-Barreled Mortar",
@@ -293,7 +296,12 @@ export const guns = [
     projectileSpeed: 125,
     range: 400,
     angles: [40, 40, 30, 50],
-    opt: { additionalShellDrop: 7, fireChance: 7.5, fireChanceStacks: [1], aoeRadius: 8 },
+    opt: {
+      additionalShellDrop: 7,
+      fireChance: 7.5,
+      fireChanceStacks: [1],
+      aoeRadius: [8],
+    },
   }),
   new Gun({
     name: "Banshee Light Rocket Carousel",
@@ -315,7 +323,7 @@ export const guns = [
       additionalShellDrop: 7,
       fireChance: 32,
       fireChanceStacks: [1, 2],
-      aoeRadius: 3,
+      aoeRadius: [3],
     },
   }),
   new Gun({
@@ -339,7 +347,7 @@ export const guns = [
       additionalShellDrop: 13,
       fireChance: 25,
       fireChanceStacks: [5],
-      aoeRadius: 60,
+      aoeRadius: [60],
       mineImpulse: 80,
     },
   }),
@@ -365,7 +373,7 @@ export const guns = [
       additionalShellDrop: 15,
       fireChance: 45,
       fireChanceStacks: [1],
-      aoeRadius: 5,
+      aoeRadius: [5],
     },
   }),
   new Gun({
@@ -410,7 +418,7 @@ export const guns = [
     angles: [30, 30, 25, 25],
     opt: {
       additionalShellDrop: 8,
-      aoeRadius: 100,
+      aoeRadius: [100],
     },
   }),
   new Gun({
@@ -435,7 +443,7 @@ export const guns = [
     opt: {
       fireChance: 7,
       fireChanceStacks: [1, 2],
-      aoeRadius: 7,
+      aoeRadius: [7],
     },
   }),
   new Gun({
@@ -482,7 +490,7 @@ export const guns = [
     opt: {
       fireChance: 25,
       fireChanceStacks: [2, 4],
-      aoeRadius: 16,
+      aoeRadius: [16],
     },
   }),
   new Gun({
@@ -526,7 +534,7 @@ export const guns = [
     opt: {
       fireChance: 5,
       fireChanceStacks: [1],
-      aoeRadius: 60,
+      aoeRadius: [60],
     },
   }),
   new Gun({
@@ -548,7 +556,7 @@ export const guns = [
     opt: {
       fireChance: 40,
       fireChanceStacks: [2],
-      aoeRadius: 10,
+      aoeRadius: [10],
     },
   }),
   new Gun({
@@ -572,7 +580,7 @@ export const guns = [
     opt: {
       fireChance: 7,
       fireChanceStacks: [1],
-      aoeRadius: 7,
+      aoeRadius: [7],
     },
   }),
   new Gun({
@@ -621,7 +629,7 @@ export const guns = [
       additionalShellDrop: 6,
       fireChance: 12.5,
       fireChanceStacks: [1, 3],
-      aoeRadius: 7,
+      aoeRadius: [7],
     },
   }),
   new Gun({
@@ -650,7 +658,7 @@ export const guns = [
     opt: {
       fireChance: 6.3,
       fireChanceStacks: [1],
-      aoeRadius: 5,
+      aoeRadius: [5],
     },
   }),
   new Gun({
@@ -695,7 +703,7 @@ export const guns = [
     angles: [15, 15, 65, 25],
     opt: {
       additionalShellDrop: 20,
-      aoeRadius: 8,
+      aoeRadius: [8],
     },
   }),
   new Gun({
@@ -738,7 +746,7 @@ export const guns = [
     angles: [40, 40, 40, 30],
     opt: {
       additionalShellDrop: 2,
-      aoeRadius: 70,
+      aoeRadius: [70],
     },
   }),
   new Gun({
@@ -759,7 +767,7 @@ export const guns = [
     range: 2400,
     angles: [60, 60, 40, 40],
     opt: {
-      aoeRadius: 6,
+      aoeRadius: [6],
       knockback: 400,
     },
   }),
@@ -781,7 +789,7 @@ export const guns = [
     angles: [40, 40, 40, 30],
     opt: {
       additionalShellDrop: 16,
-      aoeRadius: 50,
+      aoeRadius: [50],
     },
   }),
   new Gun({
@@ -802,7 +810,7 @@ export const guns = [
     range: 1600,
     angles: [40, 40, 60, 30],
     opt: {
-      aoeRadius: 10,
+      aoeRadius: [10],
     },
   }),
   new Gun({
@@ -826,7 +834,7 @@ export const guns = [
       additionalShellDrop: 6,
       fireChance: 12.5,
       fireChanceStacks: [1, 5],
-      aoeRadius: 7,
+      aoeRadius: [7],
     },
   }),
   new Gun({
@@ -848,7 +856,7 @@ export const guns = [
     angles: [40, 40, 25, 15],
     opt: {
       additionalShellDrop: 11,
-      aoeRadius: 2,
+      aoeRadius: [2],
       knockback: 200,
     },
   }),
@@ -871,7 +879,7 @@ export const guns = [
     angles: [40, 40, 25, 15],
     opt: {
       additionalShellDrop: 11,
-      aoeRadius: 2,
+      aoeRadius: [2],
       knockback: 200,
     },
   }),
@@ -896,7 +904,7 @@ export const guns = [
       additionalShellDrop: 2,
       fireChance: 4,
       fireChanceStacks: [1],
-      aoeRadius: 20,
+      aoeRadius: [20],
     },
   }),
 ];
