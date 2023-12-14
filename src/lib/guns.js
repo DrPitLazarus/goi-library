@@ -1,3 +1,5 @@
+import { slugify } from "./util";
+
 class Gun {
   /**
    * Create a gun.
@@ -16,17 +18,18 @@ class Gun {
    * @param {number} gunObj.projectileSpeed - In m/s.
    * @param {number} gunObj.range - In meters.
    * @param {number[]} gunObj.angles - Angles of gun movement in degrees. Left, Right, Up, Down.
-   * @param {number} [gunObj.optAdditionalShellDrop] - In m/s^2.
-   * @param {number} [gunObj.optFireChance] - Fire Ignition percent chance.
-   * @param {number[]} [gunObj.optFireChanceStacks] - Fire Ignition stacks. Array to specify range of stacks.
-   * @param {(number|number[])} [gunObj.optAoeRadius] - In meters. Array if a range.
-   * @param {number} [gunObj.optBuckshots]
-   * @param {number} [gunObj.optPullStrength] - In kN*s.
-   * @param {number} [gunObj.optPullDuration] - In seconds.
-   * @param {number} [gunObj.optFlareIllumination] - In lx (lux).
-   * @param {number} [gunObj.optFlareDuration] - In seconds.
-   * @param {number} [gunObj.optMineImpulse] - In kN*s.
-   * @param {number} [gunObj.optKnockback] - In kN*s.
+   * @param {Object} [gunObj.opt] - Optional properties.
+   * @param {number} [gunObj.opt.additionalShellDrop] - In m/s^2.
+   * @param {number} [gunObj.opt.fireChance] - Fire Ignition percent chance.
+   * @param {number[]} [gunObj.opt.fireChanceStacks] - Fire Ignition stacks. Array to specify range of stacks.
+   * @param {(number|number[])} [gunObj.opt.aoeRadius] - In meters. Array if a range.
+   * @param {number} [gunObj.opt.buckshots]
+   * @param {number} [gunObj.opt.pullStrength] - In kN*s.
+   * @param {number} [gunObj.opt.pullDuration] - In seconds.
+   * @param {number} [gunObj.opt.flareIllumination] - In lx (lux).
+   * @param {number} [gunObj.opt.flareDuration] - In seconds.
+   * @param {number} [gunObj.opt.mineImpulse] - In kN*s.
+   * @param {number} [gunObj.opt.knockback] - In kN*s.
    */
   constructor(gunObj) {
     this.name = gunObj.name;
@@ -49,27 +52,31 @@ class Gun {
     this.range = gunObj.range;
     /** @prop Angles of gun movement in degrees. Left, Right, Up, Down. */
     this.angles = gunObj.angles;
+    /** @prop Optional properties. */
+    this.opt = gunObj.opt || {};
     /** @prop In m/s^2. */
-    this.optAdditionalShellDrop = gunObj.optAdditionalShellDrop;
+    gunObj.opt?.additionalShellDrop &&
+      (this.opt.additionalShellDrop = gunObj.opt?.additionalShellDrop);
     /** @prop Fire Ignition percent chance. */
-    this.optFireChance = gunObj.optFireChance;
+    gunObj.opt?.fireChance && (this.opt.fireChance = gunObj.opt?.fireChance);
     /** @prop Fire Ignition stacks. Array to specify range of stacks. */
-    this.optFireChanceStacks = gunObj.optFireChanceStacks;
+    gunObj.opt?.fireChanceStacks && (this.opt.fireChanceStacks = gunObj.opt?.fireChanceStacks);
     /** @prop In meters. Array if a range. */
-    this.optAoeRadius = gunObj.optAoeRadius;
-    this.optBuckshots = gunObj.optBuckshots;
+    gunObj.opt?.aoeRadius && (this.opt.aoeRadius = gunObj.opt?.aoeRadius);
+    gunObj.opt?.buckshots && (this.opt.buckshots = gunObj.opt?.buckshots);
     /** @prop In kN*s. */
-    this.optPullStrength = gunObj.optPullStrength;
+    gunObj.opt?.pullStrength && (this.opt.pullStrength = gunObj.opt?.pullStrength);
     /** @prop In seconds. */
-    this.optPullDuration = gunObj.optPullDuration;
+    gunObj.opt?.pullDuration && (this.opt.pullDuration = gunObj.opt?.pullDuration);
     /** @prop In lx (lux). */
-    this.optFlareIllumination = gunObj.optFlareIllumination;
+    gunObj.opt?.flareIllumination &&
+      (this.opt.flareIllumination = gunObj.opt?.flareIllumination);
     /** @prop In seconds. */
-    this.optFlareDuration = gunObj.optFlareDuration;
+    gunObj.opt?.flareDuration && (this.opt.flareDuration = gunObj.opt?.flareDuration);
     /** @prop In kN*s. */
-    this.optMineImpulse = gunObj.optMineImpulse;
+    gunObj.opt?.mineImpulse && (this.opt.mineImpulse = gunObj.opt?.mineImpulse);
     /** @prop In kN*s. */
-    this.optKnockback = gunObj.optKnockback;
+    gunObj.opt?.knockback && (this.opt.knockback = gunObj.opt?.knockback);
   }
 }
 
@@ -90,6 +97,20 @@ export const DAMAGE_TYPES = {
   SHATTER: "Shatter",
 };
 
+/**
+ *  @param {string} type - Light or Heavy gun.
+ */
+export function getToc(type) {
+  return guns
+    .filter((gun) => gun.type === type)
+    .map((gun) => {
+      return {
+        name: gun.name,
+        link: `#${slugify(gun.name)}`,
+      };
+    });
+}
+
 export const guns = [
   new Gun({
     name: "Artemis Light Rocket Launcher",
@@ -106,9 +127,11 @@ export const guns = [
     projectileSpeed: 575,
     range: 1334,
     angles: [65, 65, 10, 35],
-    optFireChance: 17.5,
-    optFireChanceStacks: [1],
-    optAoeRadius: 2.5,
+    opt: {
+      fireChance: 17.5,
+      fireChanceStacks: [1],
+      aoeRadius: 2.5,
+    },
   }),
   new Gun({
     name: "Echidna Light Flak Cannon",
@@ -127,10 +150,12 @@ export const guns = [
     projectileSpeed: 400,
     range: 1200,
     angles: [65, 65, 35, 35],
-    optAdditionalShellDrop: 5,
-    optFireChance: 7.5,
-    optFireChanceStacks: [1],
-    optAoeRadius: 4,
+    opt: {
+      additionalShellDrop: 5,
+      fireChance: 7.5,
+      fireChanceStacks: [1],
+      aoeRadius: 4,
+    },
   }),
   new Gun({
     name: "Whirlwind Light Gatling Gun",
@@ -148,6 +173,7 @@ export const guns = [
     projectileSpeed: 500,
     range: 405,
     angles: [50, 50, 25, 50],
+    opt: {},
   }),
   new Gun({
     name: "Dragon Tongue Light Flamethrower",
@@ -162,9 +188,11 @@ export const guns = [
     projectileSpeed: 180,
     range: 158,
     angles: [70, 70, 35, 35],
-    optAoeRadius: 7,
-    optFireChance: 22,
-    optFireChanceStacks: [1],
+    opt: {
+      aoeRadius: 7,
+      fireChance: 22,
+      fireChanceStacks: [1],
+    },
   }),
   new Gun({
     name: "Barking Dog Light Carronade",
@@ -181,7 +209,9 @@ export const guns = [
     projectileSpeed: 600,
     range: 375,
     angles: [55, 55, 40, 15],
-    optBuckshots: 16,
+    opt: {
+      buckshots: 16,
+    },
   }),
   new Gun({
     name: "Javelin Light Harpoon Gun",
@@ -198,9 +228,11 @@ export const guns = [
     projectileSpeed: 250,
     range: 600,
     angles: [60, 60, 40, 20],
-    optAdditionalShellDrop: 12,
-    optPullStrength: 1500,
-    optPullDuration: 6,
+    opt: {
+      additionalShellDrop: 12,
+      pullStrength: 1500,
+      pullDuration: 6,
+    },
   }),
   new Gun({
     name: "Beacon Flare Gun",
@@ -219,12 +251,14 @@ export const guns = [
     projectileSpeed: 300,
     range: 750,
     angles: [80, 80, 50, 50],
-    optAdditionalShellDrop: 3,
-    optFireChance: 100,
-    optFireChanceStacks: [15],
-    optAoeRadius: 3,
-    optFlareIllumination: 600,
-    optFlareDuration: 25,
+    opt: {
+      additionalShellDrop: 3,
+      fireChance: 100,
+      fireChanceStacks: [15],
+      aoeRadius: 3,
+      flareIllumination: 600,
+      flareDuration: 25,
+    },
   }),
   new Gun({
     name: "Mercury Field Gun",
@@ -241,8 +275,7 @@ export const guns = [
     projectileSpeed: 750,
     range: 2250,
     angles: [15, 15, 15, 5],
-    optAdditionalShellDrop: 15,
-    optAoeRadius: 1.25,
+    opt: { additionalShellDrop: 15, aoeRadius: 1.25 },
   }),
   new Gun({
     name: "Scylla Double-Barreled Mortar",
@@ -260,10 +293,7 @@ export const guns = [
     projectileSpeed: 125,
     range: 400,
     angles: [40, 40, 30, 50],
-    optAdditionalShellDrop: 7,
-    optFireChance: 7.5,
-    optFireChanceStacks: [1],
-    optAoeRadius: 8,
+    opt: { additionalShellDrop: 7, fireChance: 7.5, fireChanceStacks: [1], aoeRadius: 8 },
   }),
   new Gun({
     name: "Banshee Light Rocket Carousel",
@@ -281,10 +311,12 @@ export const guns = [
     projectileSpeed: 450,
     range: 1170,
     angles: [60, 60, 35, 35],
-    optAdditionalShellDrop: 7,
-    optFireChance: 32,
-    optFireChanceStacks: [1, 2],
-    optAoeRadius: 3,
+    opt: {
+      additionalShellDrop: 7,
+      fireChance: 32,
+      fireChanceStacks: [1, 2],
+      aoeRadius: 3,
+    },
   }),
   new Gun({
     name: "Phobos Light Mine Launcher",
@@ -303,11 +335,13 @@ export const guns = [
     projectileSpeed: 55,
     range: 200,
     angles: [60, 60, 45, 15],
-    optAdditionalShellDrop: 13,
-    optFireChance: 25,
-    optFireChanceStacks: [5],
-    optAoeRadius: 60,
-    optMineImpulse: 80,
+    opt: {
+      additionalShellDrop: 13,
+      fireChance: 25,
+      fireChanceStacks: [5],
+      aoeRadius: 60,
+      mineImpulse: 80,
+    },
   }),
   new Gun({
     name: "Hades Light Cannon",
@@ -327,10 +361,12 @@ export const guns = [
     projectileSpeed: 250,
     range: 1400,
     angles: [40, 40, 40, 50],
-    optAdditionalShellDrop: 15,
-    optFireChance: 45,
-    optFireChanceStacks: [1],
-    optAoeRadius: 5,
+    opt: {
+      additionalShellDrop: 15,
+      fireChance: 45,
+      fireChanceStacks: [1],
+      aoeRadius: 5,
+    },
   }),
   new Gun({
     name: "Februus Weaponized Coil",
@@ -349,9 +385,11 @@ export const guns = [
     projectileSpeed: -1,
     range: 1000,
     angles: [55, 55, 40, 50],
-    optFireChance: 25,
-    optFireChanceStacks: [2, 4],
-    optAoeRadius: [6, 75],
+    opt: {
+      fireChance: 25,
+      fireChanceStacks: [2, 4],
+      aoeRadius: [6, 75],
+    },
   }),
   new Gun({
     name: "Kalakuta Gas Mortar",
@@ -370,8 +408,10 @@ export const guns = [
     projectileSpeed: 200,
     range: 800,
     angles: [30, 30, 25, 25],
-    optAdditionalShellDrop: 8,
-    optAoeRadius: 100,
+    opt: {
+      additionalShellDrop: 8,
+      aoeRadius: 100,
+    },
   }),
   new Gun({
     name: "Seraph Tempest Missiles",
@@ -392,9 +432,11 @@ export const guns = [
     projectileSpeed: 150,
     range: 600,
     angles: [50, 50, 40, 40],
-    optFireChance: 7,
-    optFireChanceStacks: [1, 2],
-    optAoeRadius: 7,
+    opt: {
+      fireChance: 7,
+      fireChanceStacks: [1, 2],
+      aoeRadius: 7,
+    },
   }),
   new Gun({
     name: "Aten Lens Array",
@@ -415,8 +457,10 @@ export const guns = [
     projectileSpeed: 2000,
     range: 1100,
     angles: [35, 35, 25, 25],
-    optFireChance: 3,
-    optFireChanceStacks: [1],
+    opt: {
+      fireChance: 3,
+      fireChanceStacks: [1],
+    },
   }),
   new Gun({
     name: "Februus Weaponized Coil [Mk. II]",
@@ -435,9 +479,11 @@ export const guns = [
     projectileSpeed: -1,
     range: 400,
     angles: [55, 55, 40, 50],
-    optFireChance: 25,
-    optFireChanceStacks: [2, 4],
-    optAoeRadius: 16,
+    opt: {
+      fireChance: 25,
+      fireChanceStacks: [2, 4],
+      aoeRadius: 16,
+    },
   }),
   new Gun({
     name: "Aten Lens Array [Mk. II]",
@@ -455,9 +501,11 @@ export const guns = [
     projectileSpeed: 2000,
     range: 450,
     angles: [40, 40, 40, 40],
-    optFireChance: 3,
-    optFireChanceStacks: [1],
-    optBuckshots: 3,
+    opt: {
+      fireChance: 3,
+      fireChanceStacks: [1],
+      buckshots: 3,
+    },
   }),
   new Gun({
     name: "Kalakuta Gas Mortar [Mk. II]",
@@ -475,9 +523,11 @@ export const guns = [
     projectileSpeed: 600,
     range: 798,
     angles: [30, 30, 25, 25],
-    optFireChance: 5,
-    optFireChanceStacks: [1],
-    optAoeRadius: 60,
+    opt: {
+      fireChance: 5,
+      fireChanceStacks: [1],
+      aoeRadius: 60,
+    },
   }),
   new Gun({
     name: "Seraph Tempest Missiles [Mk. II]",
@@ -495,9 +545,11 @@ export const guns = [
     projectileSpeed: 150,
     range: 1500,
     angles: [65, 65, 30, 30],
-    optFireChance: 40,
-    optFireChanceStacks: [2],
-    optAoeRadius: 10,
+    opt: {
+      fireChance: 40,
+      fireChanceStacks: [2],
+      aoeRadius: 10,
+    },
   }),
   new Gun({
     name: "Seraph Tempest Missiles [Mk. S]",
@@ -517,9 +569,11 @@ export const guns = [
     projectileSpeed: 250,
     range: 600,
     angles: [50, 50, 30, 10],
-    optFireChance: 7,
-    optFireChanceStacks: [1],
-    optAoeRadius: 7,
+    opt: {
+      fireChance: 7,
+      fireChanceStacks: [1],
+      aoeRadius: 7,
+    },
   }),
   new Gun({
     name: "Aten Lens Array [Mk. S]",
@@ -540,8 +594,10 @@ export const guns = [
     projectileSpeed: 2000,
     range: 800,
     angles: [35, 35, 15, 10],
-    optFireChance: 3,
-    optFireChanceStacks: [1],
+    opt: {
+      fireChance: 3,
+      fireChanceStacks: [1],
+    },
   }),
   // heavy guns
   new Gun({
@@ -561,10 +617,12 @@ export const guns = [
     projectileSpeed: 300,
     range: 2400,
     angles: [40, 40, 30, 40],
-    optAdditionalShellDrop: 6,
-    optFireChance: 12.5,
-    optFireChanceStacks: [1, 3],
-    optAoeRadius: 7,
+    opt: {
+      additionalShellDrop: 6,
+      fireChance: 12.5,
+      fireChanceStacks: [1, 3],
+      aoeRadius: 7,
+    },
   }),
   new Gun({
     name: "Manticore Heavy Hwacha",
@@ -577,7 +635,7 @@ export const guns = [
     timer fuses. Detonations will continue for approximately 1 more second with
     a few missiles reaching targets 1060 meters away. Don't let this range fool
     you, as this beast can't barely hit the broad side of a Galleon at those ranges.
-    Best to hold your shots and wait for the buggers to get closer. - Wilson`,
+    Best to hold your shots and wait for the buggers to get closer. -Wilson`,
     effectiveVs: [COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
     primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
     primaryDamageValue: 15,
@@ -589,9 +647,11 @@ export const guns = [
     projectileSpeed: 300,
     range: 750,
     angles: [30, 30, 20, 20],
-    optFireChance: 6.3,
-    optFireChanceStacks: [1],
-    optAoeRadius: 5,
+    opt: {
+      fireChance: 6.3,
+      fireChanceStacks: [1],
+      aoeRadius: 5,
+    },
   }),
   new Gun({
     name: "Hellhound Heavy Twin Carronade",
@@ -609,7 +669,9 @@ export const guns = [
     projectileSpeed: 800,
     range: 400,
     angles: [35, 35, 30, 10],
-    optBuckshots: 20,
+    opt: {
+      buckshots: 20,
+    },
   }),
   new Gun({
     name: "Lumberjack Heavy Mortar",
@@ -631,8 +693,10 @@ export const guns = [
     projectileSpeed: 275,
     range: 1650,
     angles: [15, 15, 65, 25],
-    optAdditionalShellDrop: 20,
-    optAoeRadius: 8,
+    opt: {
+      additionalShellDrop: 20,
+      aoeRadius: 8,
+    },
   }),
   new Gun({
     name: "Minotaur Heavy Cannon",
@@ -651,8 +715,10 @@ export const guns = [
     projectileSpeed: 700,
     range: 1800,
     angles: [40, 40, 30, 20],
-    optBuckshots: 4,
-    optKnockback: 120,
+    opt: {
+      buckshots: 4,
+      knockback: 120,
+    },
   }),
   new Gun({
     name: "Roaring Tiger Heavy Detonator",
@@ -670,8 +736,10 @@ export const guns = [
     projectileSpeed: 80,
     range: 800,
     angles: [40, 40, 40, 30],
-    optAdditionalShellDrop: 2,
-    optAoeRadius: 70,
+    opt: {
+      additionalShellDrop: 2,
+      aoeRadius: 70,
+    },
   }),
   new Gun({
     name: "Immortal Gaze Heavy Accelerator",
@@ -690,8 +758,10 @@ export const guns = [
     projectileSpeed: 800,
     range: 2400,
     angles: [60, 60, 40, 40],
-    optAoeRadius: 6,
-    optKnockback: 400,
+    opt: {
+      aoeRadius: 6,
+      knockback: 400,
+    },
   }),
   new Gun({
     name: "Roaring Tiger Heavy Detonator [Mk. II]",
@@ -709,8 +779,10 @@ export const guns = [
     projectileSpeed: 200,
     range: 600,
     angles: [40, 40, 40, 30],
-    optAdditionalShellDrop: 16,
-    optAoeRadius: 50,
+    opt: {
+      additionalShellDrop: 16,
+      aoeRadius: 50,
+    },
   }),
   new Gun({
     name: "Immortal Gaze Heavy Accelerator [Mk. II]",
@@ -729,7 +801,9 @@ export const guns = [
     projectileSpeed: 800,
     range: 1600,
     angles: [40, 40, 60, 30],
-    optAoeRadius: 10,
+    opt: {
+      aoeRadius: 10,
+    },
   }),
   new Gun({
     name: "Typhon Heavy Flak Cannon [Mk. II]",
@@ -748,10 +822,12 @@ export const guns = [
     projectileSpeed: 300,
     range: 2400,
     angles: [40, 40, 30, 40],
-    optAdditionalShellDrop: 6,
-    optFireChance: 12.5,
-    optFireChanceStacks: [1, 5],
-    optAoeRadius: 7,
+    opt: {
+      additionalShellDrop: 6,
+      fireChance: 12.5,
+      fireChanceStacks: [1, 5],
+      aoeRadius: 7,
+    },
   }),
   new Gun({
     name: "Nemesis Heavy Carronade",
@@ -770,9 +846,11 @@ export const guns = [
     projectileSpeed: 400,
     range: 1500,
     angles: [40, 40, 25, 15],
-    optAdditionalShellDrop: 11,
-    optAoeRadius: 2,
-    optKnockback: 200,
+    opt: {
+      additionalShellDrop: 11,
+      aoeRadius: 2,
+      knockback: 200,
+    },
   }),
   new Gun({
     name: "Nemesis Heavy Carronade",
@@ -791,9 +869,11 @@ export const guns = [
     projectileSpeed: 400,
     range: 1500,
     angles: [40, 40, 25, 15],
-    optAdditionalShellDrop: 11,
-    optAoeRadius: 2,
-    optKnockback: 200,
+    opt: {
+      additionalShellDrop: 11,
+      aoeRadius: 2,
+      knockback: 200,
+    },
   }),
   new Gun({
     name: "Roaring Tiger Heavy Detonator [Mk. S]",
@@ -812,9 +892,11 @@ export const guns = [
     projectileSpeed: 150,
     range: 300,
     angles: [50, 50, 30, 30],
-    optAdditionalShellDrop: 2,
-    optFireChance: 4,
-    optFireChanceStacks: [1],
-    optAoeRadius: 20,
+    opt: {
+      additionalShellDrop: 2,
+      fireChance: 4,
+      fireChanceStacks: [1],
+      aoeRadius: 20,
+    },
   }),
 ];
