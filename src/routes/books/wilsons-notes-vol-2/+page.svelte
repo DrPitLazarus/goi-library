@@ -1,22 +1,28 @@
 <script>
   import assetBookCover from "$lib/books/wilsons-notes-vol-2.webp";
+  import { guns, getToc } from "$lib/guns";
+  import { slugify } from "$lib/util";
+  import TOC from "$lib/TOC.svelte";
 
   /** @type {import('./$types').PageData} */
   export let data;
   export let title = data.title;
   $title = "Wilson's Notes Vol. 2";
+
+  export const toc = [
+    {
+      name: "Description",
+      link: "#description",
+      children: [],
+    },
+    ...getToc("Heavy"),
+  ];
 </script>
 
 <h1>{$title}</h1>
 
-<details class="dashed">
-  <summary>Table of Contents</summary>
-  <div>
-    <ol>
-      <li><a href="#description">Description</a></li>
-    </ol>
-  </div>
-</details>
+<TOC {toc}></TOC>
+
 <details class="dashed">
   <summary>Data Source and Editor Notes</summary>
   <div>
@@ -58,6 +64,81 @@
   </em>
 </article>
 
+{#each guns.filter((gun) => gun.type === "Heavy") as gun}
+  <h2 id={slugify(gun.name)}>{gun.name}</h2>
+  <article>
+    <p>{gun.description}</p>
+    <table>
+      <tr><th colspan="2">Main Properties</th></tr>
+      <tr><th>Effective vs:</th><td>{gun.effectiveVs.join(", ")}</td></tr>
+      <tr><th>{gun.primaryDamageType}:</th><td>{gun.primaryDamageValue}</td></tr>
+      {#if gun.secondaryDamageType}
+        <tr><th>{gun.secondaryDamageType}:</th><td>{gun.secondaryDamageValue}</td></tr>
+      {/if}
+      <tr><th>Rate of Fire:</th><td>{gun.rateOfFire} shots/s</td></tr>
+      <tr><th>Reload Time:</th><td>{gun.reloadTime} s</td></tr>
+      <tr><th>Magazine Size:</th><td>{gun.magazineSize}</td></tr>
+      <tr><th>Projectile Speed:</th><td>{gun.projectileSpeed} m/s</td></tr>
+      <tr><th>Range:</th><td>{gun.range} m</td></tr>
+    </table>
+
+    {#if Object.keys(gun.opt).length}
+      <table>
+        <tr><th colspan="2">Additional Properties</th></tr>
+        {#if gun.opt.additionalShellDrop}
+          <tr>
+            <th>Additional Shell Drop:</th>
+            <td>{gun.opt.additionalShellDrop} m/s<sup>2</sup></td>
+          </tr>
+        {/if}
+        {#if gun.opt.aoeRadius}
+          <tr><th>AoE Radius:</th><td>{gun.opt.aoeRadius.join("-")} m</td></tr>
+        {/if}
+        {#if gun.opt.buckshots}
+          <tr><th>Buckshots:</th><td>{gun.opt.buckshots}</td></tr>
+        {/if}
+        {#if gun.opt.fireChance && gun.opt.fireChanceStacks}
+          <tr>
+            <th>Fire Ignition:</th>
+            <td>
+              {gun.opt.fireChance}% chance of {gun.opt.fireChanceStacks.join("-")} fire stacks
+            </td>
+          </tr>
+        {/if}
+        {#if gun.opt.flareDuration && gun.opt.flareIllumination}
+          <tr><th>Flare Duration:</th><td>{gun.opt.flareDuration} s</td></tr>
+          <tr><th>Flare Illumination:</th><td>{gun.opt.flareIllumination} lux</td></tr>
+        {/if}
+        {#if gun.opt.knockback}
+          <tr><th>Knockback:</th><td>{gun.opt.knockback} kN*s</td></tr>
+        {/if}
+        {#if gun.opt.mineImpulse}
+          <tr><th>Mine Impulse:</th><td>{gun.opt.mineImpulse} kN*s</td></tr>
+        {/if}
+        {#if gun.opt.pullDuration && gun.opt.pullStrength}
+          <tr><th>Pull Duration:</th><td>{gun.opt.pullDuration}s</td></tr>
+          <tr><th>Pull Strength:</th><td>{gun.opt.pullStrength} kN*s</td></tr>
+        {/if}
+      </table>
+    {/if}
+    <table>
+      <tr>
+        <th colspan="3">Movement and Arcs</th>
+      </tr>
+      <tr>
+        <th>Left/Right:</th>
+        <td>{gun.angles[0]}&deg;</td>
+        <td>{gun.angles[1]}&deg;</td>
+      </tr>
+      <tr>
+        <th>Up/Down:</th>
+        <td>{gun.angles[2]}&deg;</td>
+        <td>{gun.angles[3]}&deg;</td>
+      </tr>
+    </table>
+  </article>
+{/each}
+
 <style>
   h3 {
     margin-bottom: 0;
@@ -66,5 +147,16 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+  }
+  table {
+    display: inline-table;
+
+    & tr:first-child > th {
+      border-bottom: 1px solid var(--color-heading);
+    }
+
+    & th {
+      text-align: left;
+    }
   }
 </style>
