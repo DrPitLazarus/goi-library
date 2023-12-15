@@ -73,7 +73,7 @@
   </em>
 </article>
 
-{#each guns as gun}
+{#each guns.filter((gun) => gun.type === "Light") as gun}
   <h2 id={slugify(gun.name)}>{gun.name}</h2>
   <article>
     <p>{gun.description}</p>
