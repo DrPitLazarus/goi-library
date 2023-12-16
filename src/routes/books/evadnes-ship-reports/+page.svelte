@@ -4,6 +4,15 @@
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";
 
+  const assetsShips = import.meta.glob("$lib/ships/*.webp", { eager: true });
+  /**
+   * @param {string} filename
+   */
+  function getShipImage(filename) {
+    // @ts-ignore
+    return assetsShips[`/src/lib/ships/${filename}.webp`].default;
+  }
+
   /** @type {import('./$types').PageData} */
   export let data;
   export let title = data.title;
@@ -63,6 +72,13 @@
 {#each ships as ship}
   <h2 id={slugify(ship.name)}>{ship.name}</h2>
   <article>
+    <img
+      class="ship"
+      src={getShipImage(ship.name.toLowerCase())}
+      alt={`The airship ${ship.name}.`}
+      height="512"
+      width="512"
+    />
     <p>Difficulty: {ship.difficulty}</p>
     <p>{ship.description}</p>
     <table>
@@ -119,6 +135,10 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+
+    &.ship {
+      max-width: 300px;
+    }
   }
   table {
     display: inline-table;
