@@ -4,6 +4,16 @@
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";
 
+  const assetsGuns = import.meta.glob("$lib/items/guns-light/*.webp", { eager: true });
+  console.log(assetsGuns);
+  /**
+   * @param {string} filename
+   */
+  function getGunImage(filename) {
+    // @ts-ignore
+    return assetsGuns[`/src/lib/items/${filename}.webp`].default;
+  }
+
   /** @type {import('./$types').PageData} */
   export let data;
   export let title = data.title;
@@ -28,7 +38,8 @@
   <div>
     <p>
       Date Accessed: 2023-11-23<br />
-      Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.
+      Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.<br />
+      Images of the guns extracted from the game.
     </p>
   </div>
 </details>
@@ -76,6 +87,13 @@
 {#each guns.filter((gun) => gun.type === "Light") as gun}
   <h2 id={slugify(gun.name)}>{gun.name}</h2>
   <article>
+    <img
+      class="gun"
+      src={getGunImage(gun.itemIdPath)}
+      alt={`The gun ${gun.name}.`}
+      height="512"
+      width="512"
+    />
     <p>{gun.description}</p>
     <table>
       <tr><th colspan="2">Main Properties</th></tr>
@@ -156,6 +174,10 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+
+    &.gun {
+      max-width: 300px;
+    }
   }
   table {
     display: inline-table;
