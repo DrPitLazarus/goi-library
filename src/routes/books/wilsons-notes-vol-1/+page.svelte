@@ -5,7 +5,6 @@
   import TOC from "$lib/TOC.svelte";
 
   const assetsGuns = import.meta.glob("$lib/items/guns-light/*.webp", { eager: true });
-  console.log(assetsGuns);
   /**
    * @param {string} filename
    */
@@ -38,8 +37,8 @@
   <div>
     <p>
       Date Accessed: 2023-11-23<br />
-      Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.<br />
-      Images of the guns extracted from the game.
+      Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.
+      <br />Images of the guns extracted from the game.
     </p>
   </div>
 </details>
