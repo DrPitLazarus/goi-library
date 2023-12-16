@@ -6,6 +6,7 @@ class Gun {
    * @param {Object} gunObj
    * @param {string} gunObj.name
    * @param {string} gunObj.type - Light or Heavy gun.
+   * @param {string} gunObj.itemIdPath
    * @param {string} gunObj.description
    * @param {string[]} gunObj.effectiveVs
    * @param {string} gunObj.primaryDamageType
@@ -35,6 +36,7 @@ class Gun {
     this.name = gunObj.name;
     /** @prop Light or Heavy gun. */
     this.type = gunObj.type;
+    this.itemIdPath = gunObj.itemIdPath;
     this.description = gunObj.description;
     this.effectiveVs = gunObj.effectiveVs;
     this.primaryDamageType = gunObj.primaryDamageType;
@@ -115,6 +117,7 @@ export const guns = [
   new Gun({
     name: "Artemis Light Rocket Launcher",
     type: "Light",
+    itemIdPath: "guns-light/item114",
     description: `Launches a single explosive rocket over medium/long range.`,
     effectiveVs: [COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
     primaryDamageType: DAMAGE_TYPES.EXPLOSIVE,
@@ -136,6 +139,7 @@ export const guns = [
   new Gun({
     name: "Echidna Light Flak Cannon",
     type: "Light",
+    itemIdPath: "guns-light/item117",
     description: `A smaller Flak Cannon, this gun fires explosive rounds over a medium 
     to long range with a high rate of fire. Arming time of 0.5 seconds, no AoE Burst 
     damage under 200m.`,
@@ -160,6 +164,7 @@ export const guns = [
   new Gun({
     name: "Whirlwind Light Gatling Gun",
     type: "Light",
+    itemIdPath: "guns-light/item171",
     description: `A close-range piercing weapon with a very high rate of fire, 
     singularly effective against armor.`,
     effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
@@ -178,6 +183,7 @@ export const guns = [
   new Gun({
     name: "Dragon Tongue Light Flamethrower",
     type: "Light",
+    itemIdPath: "guns-light/item172",
     description: `Unleash all hell on an enemy ship at close range with a jet of fire.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
     primaryDamageType: DAMAGE_TYPES.FIRE,
@@ -197,6 +203,7 @@ export const guns = [
   new Gun({
     name: "Barking Dog Light Carronade",
     type: "Light",
+    itemIdPath: "guns-light/item194",
     description: `Fires a wide shotgun burst of shredding projectiles at close range.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.GUNS, COMPONENTS.ENGINES],
     primaryDamageType: DAMAGE_TYPES.FLECHETTE,
@@ -216,6 +223,7 @@ export const guns = [
   new Gun({
     name: "Javelin Light Harpoon Gun",
     type: "Light",
+    itemIdPath: "guns-light/item195",
     description: `Will attach to hulls and reel enemies in when secondary fire button is held.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.ARMOR],
     primaryDamageType: DAMAGE_TYPES.FLECHETTE,
@@ -237,6 +245,7 @@ export const guns = [
   new Gun({
     name: "Beacon Flare Gun",
     type: "Light",
+    itemIdPath: "guns-light/item198",
     description: `Fires a brightly burning flare that hovers in the air to reveal ships 
     hidden in cloud cover. Can also be used as a weapon to cause fire damage. 
     Arming time of 0.6667s.`,
@@ -263,6 +272,7 @@ export const guns = [
   new Gun({
     name: "Mercury Field Gun",
     type: "Light",
+    itemIdPath: "guns-light/item199",
     description: `A slow-firing, long-range scoped cannon that fires powerful explosive rounds.`,
     effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
     primaryDamageType: DAMAGE_TYPES.SHATTER,
@@ -283,6 +293,7 @@ export const guns = [
   new Gun({
     name: "Scylla Double-Barreled Mortar",
     type: "Light",
+    itemIdPath: "guns-light/item204",
     description: `Capable of firing heavy explosive shells over short/medium range, 
     but with limited accuracy.`,
     effectiveVs: [COMPONENTS.HULL],
@@ -306,6 +317,7 @@ export const guns = [
   new Gun({
     name: "Banshee Light Rocket Carousel",
     type: "Light",
+    itemIdPath: "guns-light/item206",
     description: `Rapidly fires a stream of explosive rockets that have a chance to 
     light components on fire.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
@@ -329,6 +341,7 @@ export const guns = [
   new Gun({
     name: "Phobos Light Mine Launcher",
     type: "Light",
+    itemIdPath: "guns-light/item951",
     description: `Lays proximity-detonated floating mines at short range. Mines will 
     arm and deploy after 3 seconds. Each gun supports 5 mines at a time; extras will 
     self-destruct.`,
@@ -354,6 +367,7 @@ export const guns = [
   new Gun({
     name: "Hades Light Cannon",
     type: "Light",
+    itemIdPath: "guns-light/item1013",
     description: `A mid to long-range armor melting weapon with arcing shots. A higher 
     skilled gun that can be terrifying in the right hands. Arming time of 0.6s, no AoE 
     under 150m with default ammo. Ammo types that will reduce arming range list either 
@@ -379,6 +393,7 @@ export const guns = [
   new Gun({
     name: "Februus Weaponized Coil",
     type: "Light",
+    itemIdPath: "guns-light/item1328",
     description: `Fires an electrical discharge that arcs between multiple enemies. 
     Hold the trigger to charge up to 5 seconds; damage and number of jumps increases
     with charge time. Minimum charge time of 1.25s.`,
@@ -402,6 +417,7 @@ export const guns = [
   new Gun({
     name: "Kalakuta Gas Mortar",
     type: "Light",
+    itemIdPath: "guns-light/item1329",
     description: `Fires canisters of caustic chemicals, which create a cloud of 
     disabling gas when they explode. Gas clouds slow and deals damage over time, each 
     cloud lasts 13 seconds. Secondary-fire detonates the canister. Arming distance of 60m.`,
@@ -424,6 +440,7 @@ export const guns = [
   new Gun({
     name: "Seraph Tempest Missiles",
     type: "Light",
+    itemIdPath: "guns-light/item1374",
     description: `Fires remote-guided missiles; reticle must bet kept on a target to 
     direct missiles towards it. Main missile splits into guided submunitions after 0.25
     seconds (50m). Submunitions have random velocity between 150m/s and 200m/s. 
@@ -449,6 +466,7 @@ export const guns = [
   new Gun({
     name: "Aten Lens Array",
     type: "Light",
+    itemIdPath: "guns-light/item1411",
     description: `Hold down trigger to start charging. Starts dealing damage after 0.75
     seconds of charge. Will increase damage to 400% base damage over 4 seconds of 
     continuous fire at the cost of 30% reduced turn speed. Releasing trigger restarts 
@@ -473,6 +491,7 @@ export const guns = [
   new Gun({
     name: "Februus Weaponized Coil [Mk. II]",
     type: "Light",
+    itemIdPath: "guns-light/item1773",
     description: `Modified coils allows for short charge time and multiple shots per clip.
     Despite 400m range, it is highly effective against groups of enemies with its
     higher chance to arc.`,
@@ -496,6 +515,7 @@ export const guns = [
   new Gun({
     name: "Aten Lens Array [Mk. II]",
     type: "Light",
+    itemIdPath: "guns-light/item1775",
     description: `Large burst of super heated beams that extend to 450m. Slightly reduced
     damage after 150m.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
@@ -518,6 +538,7 @@ export const guns = [
   new Gun({
     name: "Kalakuta Gas Mortar [Mk. II]",
     type: "Light",
+    itemIdPath: "guns-light/item1776",
     description: `Higher rate of fire with experimental gas shells that deals high 
     damage but dissipates quickly.`,
     effectiveVs: [COMPONENTS.GUNS, COMPONENTS.ENGINES, COMPONENTS.ARMOR],
@@ -540,6 +561,7 @@ export const guns = [
   new Gun({
     name: "Seraph Tempest Missiles [Mk. II]",
     type: "Light",
+    itemIdPath: "guns-light/item1777",
     description: `Fires a single slow moving incendiary missile that can be guided to 
     a target. Deals substantial hull damage and starts fires in a large radius.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
@@ -562,6 +584,7 @@ export const guns = [
   new Gun({
     name: "Seraph Tempest Missiles [Mk. S]",
     type: "Light",
+    itemIdPath: "guns-light/item1884",
     description: `Fires remote-guided missiles; reticle must be kept on a target to direct
     missiles towards it. Main missile splits into 7 guided submunitions after 0.01
     seconds. Submunitions have random velocity between 250m/s and 300m/s. Submunitions 
@@ -586,6 +609,7 @@ export const guns = [
   new Gun({
     name: "Aten Lens Array [Mk. S]",
     type: "Light",
+    itemIdPath: "guns-light/item1943",
     description: `Hold down trigger to start charging. Starts dealing damage after 1.75
     seconds of charge. Will increase damage to 400% base damage over 8 seconds of 
     continuous fire at the cost of 30% reduced turn speed. Releasing trigger restarts 
@@ -611,6 +635,7 @@ export const guns = [
   new Gun({
     name: "Typhon Heavy Flak Cannon [Mk. I]",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item173",
     description: `A medium/long-range cannon that fires explosive projectiles dealing
     substantial damage with a wide area of effect. Arming time of 2/3s, no
     secondary AoE under 200m.`,
@@ -635,6 +660,7 @@ export const guns = [
   new Gun({
     name: "Manticore Heavy Hwacha",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item203",
     description: `Fires a blinding barrage of 20 rockets for a powerful area-of-denial 
     effect in close to mid range engagements. While devastating up close, this gun 
     quickly loses effectiveness due to a high missile spread and jaw rattling gun recoil.
@@ -664,6 +690,7 @@ export const guns = [
   new Gun({
     name: "Hellhound Heavy Twin Carronade",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item838",
     description: `A larger, slower, more powerful Carronade that fires a piercing 
     short-range shotgun burst. Effective against balloons and components.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.GUNS, COMPONENTS.ENGINES],
@@ -684,6 +711,7 @@ export const guns = [
   new Gun({
     name: "Lumberjack Heavy Mortar",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item920",
     description: `High arcing weapon with balloon damaging Flechette AoE. Arming time of
     0.727s, Guns with arming time do not inflict the second listed damage before
     arming. No AoE damage under 200m.
@@ -709,6 +737,7 @@ export const guns = [
   new Gun({
     name: "Minotaur Heavy Cannon",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1086",
     description: `A specialized support weapon that knocks back enemy ships. The 
     farther you shoot from a ship's center of mass, the more spin it will add to push a 
     ship off its gun arcs.`,
@@ -731,6 +760,7 @@ export const guns = [
   new Gun({
     name: "Roaring Tiger Heavy Detonator",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1660",
     description: `Launches a volley of slow-moving projectiles that will detonate 4 times
     when Secondary Fire is pressed. Otherwise, projectile will hit enemy and detonate once.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
@@ -752,6 +782,7 @@ export const guns = [
   new Gun({
     name: "Immortal Gaze Heavy Accelerator",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1661",
     description: `Fires magnetically charged, ultra-high-velocity shells capable of 
     piercing through ships. Damages and pulls in its wake any enemy unit it passes near.
     Charge to increase damage and radius.`,
@@ -774,6 +805,7 @@ export const guns = [
   new Gun({
     name: "Roaring Tiger Heavy Detonator [Mk. II]",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1774",
     description: `Multiple mines per shot that detonate once, Secondary Fire to detonate.
     Arming distance 100m.`,
     effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL],
@@ -795,6 +827,7 @@ export const guns = [
   new Gun({
     name: "Immortal Gaze Heavy Accelerator [Mk. II]",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1778",
     description: `Short charging high velocity rounds that pierces through and pulls 
     enemy ships trapped in the weapon's wake towards your ship. Modified rounds to
     deal more killing damage.`,
@@ -816,6 +849,7 @@ export const guns = [
   new Gun({
     name: "Typhon Heavy Flak Cannon [Mk. II]",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item1779",
     description: `Same DPS but packed into 2 shots instead of 4. A medium/long-range
     cannon that fires explosive projectiles dealing substantial damage with a
     wide area of effect. Arming time of 2/3s, no secondary AoE under 200m.`,
@@ -840,29 +874,7 @@ export const guns = [
   new Gun({
     name: "Nemesis Heavy Carronade",
     type: "Heavy",
-    description: `Harkening to the olden days of naval warfare, this powerful 
-    carronade fires iron cannonballs instead of buckshot. High damage to guns and engines.
-    Moderate damage to Armor and Hull integrity.`,
-    effectiveVs: [COMPONENTS.BALLOON, COMPONENTS.HULL, COMPONENTS.GUNS, COMPONENTS.ENGINES],
-    primaryDamageType: DAMAGE_TYPES.SHATTER,
-    primaryDamageValue: 125,
-    secondaryDamageType: DAMAGE_TYPES.IMPACT,
-    secondaryDamageValue: 100,
-    rateOfFire: 0.6,
-    reloadTime: 6.0,
-    magazineSize: 4,
-    projectileSpeed: 400,
-    range: 1500,
-    angles: [40, 40, 25, 15],
-    opt: {
-      additionalShellDrop: 11,
-      aoeRadius: [2],
-      knockback: 200,
-    },
-  }),
-  new Gun({
-    name: "Nemesis Heavy Carronade",
-    type: "Heavy",
+    itemIdPath: "guns-heavy/item1885",
     description: `Harkening to the olden days of naval warfare, this powerful 
     carronade fires iron cannonballs instead of buckshot. High damage to guns and engines.
     Moderate damage to Armor and Hull integrity.`,
@@ -886,6 +898,7 @@ export const guns = [
   new Gun({
     name: "Roaring Tiger Heavy Detonator [Mk. S]",
     type: "Heavy",
+    itemIdPath: "guns-heavy/item2069",
     description: `Launches a volley of 5 slow-moving projectiles that will detonate twice
     when Secondary Fire is pressed. Direct hits will only do flechette damage and then 
     explode once. Practice detonating just after the projectiles start lighting up the target.`,
