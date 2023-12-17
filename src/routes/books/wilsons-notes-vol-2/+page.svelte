@@ -1,6 +1,6 @@
 <script>
   import assetBookCover from "$lib/books/wilsons-notes-vol-2.webp";
-  import { guns, getToc } from "$lib/guns";
+  import { guns, getToc, getRangeCategory } from "$lib/guns";
   import { slugify } from "$lib/util";
   import TOC from "$lib/TOC.svelte";
 
@@ -84,7 +84,7 @@
       height="512"
       width="512"
     />
-    <p>{gun.description}</p>
+    <p><strong>{getRangeCategory(gun.range)}</strong>. {gun.description}</p>
     <table>
       <tr><th colspan="2">Main Properties</th></tr>
       <tr><th>Effective vs:</th><td>{gun.effectiveVs.join(", ")}</td></tr>

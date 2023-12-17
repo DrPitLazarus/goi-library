@@ -56,6 +56,7 @@ class Gun {
     this.angles = gunObj.angles;
     /** @prop Optional properties. */
     this.opt = gunObj.opt || {};
+    // Looks like this to only add the property if there's a value
     /** @prop In m/s^2. */
     gunObj.opt?.additionalShellDrop &&
       (this.opt.additionalShellDrop = gunObj.opt?.additionalShellDrop);
@@ -98,6 +99,18 @@ export const DAMAGE_TYPES = {
   PIERCING: "Piercing",
   SHATTER: "Shatter",
 };
+
+/** 
+ * @param {number} range - Range in meters.
+ * @returns {string} Range category text. "Short Range"
+ * */
+export function getRangeCategory(range) {
+  if (range < 200) return "Close Range";
+  if (range < 500) return "Short Range";
+  if (range < 800) return "Medium Range";
+  if (range <= 1200) return "Long Range";
+  return "Very Long Range";
+}
 
 /**
  *  @param {string} type - Light or Heavy gun.
