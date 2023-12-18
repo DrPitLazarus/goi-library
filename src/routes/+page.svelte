@@ -9,3 +9,7 @@
 <ul>
   <li><a href="books">Books</a></li>
 </ul>
+<h2>Reference</h2>
+<ul>
+  <li><a href="reference/decals">Decals</a></li>
+</ul>
