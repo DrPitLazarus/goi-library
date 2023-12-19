@@ -12,4 +12,5 @@
 <h2>Reference</h2>
 <ul>
   <li><a href="reference/decals">Decals</a></li>
+  <li><a href="reference/figureheads">Figureheads</a></li>
 </ul>
