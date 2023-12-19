@@ -13,4 +13,5 @@
 <ul>
   <li><a href="reference/decals">Decals</a></li>
   <li><a href="reference/figureheads">Figureheads</a></li>
+  <li><a href="reference/themes">Themes</a></li>
 </ul>
