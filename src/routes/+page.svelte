@@ -11,6 +11,7 @@
 </ul>
 <h2>Reference</h2>
 <ul>
+  <li><a href="reference/badges">Badges</a></li>
   <li><a href="reference/decals">Decals</a></li>
   <li><a href="reference/figureheads">Figureheads</a></li>
   <li><a href="reference/profile-pictures">Profile Pictures</a></li>
