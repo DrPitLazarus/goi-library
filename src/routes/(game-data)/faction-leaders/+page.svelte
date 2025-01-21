@@ -28,7 +28,7 @@
 
 	function nextLeaderCycleDate() {
 		// New leaders chosen every Tuesday at 9:21 AM UTC. -Pit 2025-01-20.
-		// Copilot helped me with this ＞﹏＜
+		// Copilot helped me with this (had to fix bugs twice) ＞﹏＜
 		const now = new Date();
 		const nextTuesday = new Date(now);
 
@@ -37,6 +37,10 @@
 		const daysUntilNextTuesday = (dayOfWeek + 7 - now.getUTCDay()) % 7;
 		nextTuesday.setUTCDate(now.getUTCDate() + daysUntilNextTuesday);
 		nextTuesday.setUTCHours(9, 21, 0, 0); // Set the time to 9:21 AM UTC
+		// Check if this date is in the past. If so, set it to next week.
+		if (isBefore(nextTuesday, now)) {
+			nextTuesday.setUTCDate(nextTuesday.getUTCDate() + 7);
+		}
 		return nextTuesday;
 	}
 </script>
