@@ -35,10 +35,11 @@
           alt="Profile avatar."
           height="256"
           width="256"
+          loading="lazy"
         />
       </td>
       <td>
-        <h2>{profilePicture.name}</h2>
+        <h3 class="mt-0">{profilePicture.name}</h3>
         <p>{@html profilePicture.descriptionTextEn}</p>
       </td>
     </tr>

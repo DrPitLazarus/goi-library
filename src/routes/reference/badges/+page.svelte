@@ -30,10 +30,10 @@
   {#each badges as badge}
     <tr>
       <td>
-        <img src={getImage(badge.id.toString())} alt="Badge." height="256" width="256" />
+        <img src={getImage(badge.id.toString())} alt="Badge." height="256" width="256" loading="lazy" />
       </td>
       <td>
-        <h2>{badge.nameTextEn || badge.name}</h2>
+        <h3 class="mt-0">{badge.nameTextEn || badge.name}</h3>
         <p>
           {badge.descriptionTextEn}
           {#if badge.nameTextEn !== badge.name && badge.nameTextEn.length}({badge.name}){/if}

@@ -1,25 +1,30 @@
-@import "modern-normalize/modern-normalize.css";
+/* @import "modern-normalize/modern-normalize.css"; */
 
 :root {
-  line-height: 1.5;
-  /* colors from the https://gunsoficarus.com/ website */
-  --color-heading: rgb(181, 153, 79);
-  --color-text: rgb(213, 194, 145);
-  --color-link: rgb(223, 188, 104);
-  --color-link-lighter: rgb(223 164 24);
+	line-height: 1.5;
+	/* colors from the https://gunsoficarus.com/ website */
+	--color-heading: rgb(181, 153, 79);
+	--color-text: rgb(213, 194, 145);
+	--color-link: rgb(223, 188, 104);
+	--color-link-lighter: rgb(223 164 24);
 }
 
 /* what magic is this to fix chrome mobile bug https://stackoverflow.com/a/65536678 */
 * {
-  max-height: 999999px;
+	max-height: 999999px;
+}
+
+html {
+	overflow-x: hidden;
+  
 }
 
 body {
-  background-color: #000;
-  color: var(--color-text);
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 8px;
+	background-color: #000;
+	color: var(--color-text);
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 8px !important;
 }
 
 h1,
@@ -28,32 +33,40 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-heading);
+	color: var(--color-heading);
 }
 
 a {
-  color: var(--color-link);
+	color: var(--color-link);
 }
 a:hover {
-  color: var(--color-link-lighter);
-  transition: all 0.5s;
+	color: var(--color-link-lighter);
+	transition: all 0.5s;
 }
 
 summary {
-  cursor: default;
+	cursor: default;
 }
 
 details.dashed {
-  & ol,
-  ul {
-    padding-left: 0;
-  }
-  & li > ol {
-    padding-left: 16px;
-  }
-  & div {
-    border: 1px dashed;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+	& ol,
+	ul {
+		padding-left: 0;
+	}
+	& li > ol {
+		padding-left: 16px;
+	}
+	& div {
+		border: 1px dashed;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+table > tr {
+	vertical-align: top;
+}
+
+.text-right-align {
+	text-align: right;
 }

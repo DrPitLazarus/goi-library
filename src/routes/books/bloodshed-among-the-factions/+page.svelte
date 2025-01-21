@@ -9,10 +9,10 @@
 
 <h1>{$title}</h1>
 
-<details class="dashed">
+<details class="dashed mt-4">
   <summary>Table of Contents</summary>
   <div>
-    <ol>
+    <ol class="list-decimal m-4">
       <li><a href="#description">Description</a></li>
       <li><a href="#ridge-forest-brawl">Ridge Forest Brawl</a></li>
       <li><a href="#outsiders-war">Outsiders' War</a></li>
@@ -1399,5 +1399,8 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+  }
+  p {
+    @apply my-4;
   }
 </style>

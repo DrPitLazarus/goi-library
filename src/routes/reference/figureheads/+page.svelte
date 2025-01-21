@@ -27,10 +27,10 @@
   {#each figureheads as figurehead}
     <tr>
       <td>
-        <img src={getImage(figurehead.id.toString())} alt="Figurehead." height="256" width="256" />
+        <img src={getImage(figurehead.id.toString())} alt="Figurehead." height="256" width="256" loading="lazy" />
       </td>
       <td>
-        <h2>{figurehead.name}</h2>
+        <h3 class="mt-0">{figurehead.name}</h3>
         <p>{figurehead.descriptionTextEn}</p>
       </td>
     </tr>
@@ -39,7 +39,7 @@
 
 <style>
   table img {
-    height: 175px;
-    width: 175px;
+    /* height: 175px; */
+    min-width: 175px;
   }
 </style>

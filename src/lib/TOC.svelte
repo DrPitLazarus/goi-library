@@ -7,10 +7,10 @@
   export let toc;
 </script>
 
-<details class="dashed">
+<details class="dashed mt-4">
   <summary>Table of Contents</summary>
   <div>
-    <ol>
+    <ol class="list-decimal m-4">
       {#each toc as link}
         <li>
           <a href={link.link}>{link.name}</a>

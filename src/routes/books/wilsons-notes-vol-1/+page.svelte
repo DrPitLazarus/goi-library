@@ -35,7 +35,7 @@
 <details class="dashed">
   <summary>Data Source and Editor Notes</summary>
   <div>
-    <p>
+    <p class="my-4">
       Date Accessed: 2023-11-23<br />
       Obtained from the game via screenshots. Text copied with Windows' Snipping Tool OCR feature.
       <br />Images of the guns extracted from the game.
@@ -188,5 +188,8 @@
     & th {
       text-align: left;
     }
+  }
+  p {
+    @apply my-4;
   }
 </style>

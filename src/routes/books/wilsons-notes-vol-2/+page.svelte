@@ -180,4 +180,7 @@
       text-align: left;
     }
   }
+  p {
+    @apply my-4;
+  }
 </style>

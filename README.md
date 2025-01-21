@@ -22,12 +22,9 @@ pnpm i
 
 Run vite development server:
 
-```
+```bash
 pnpm dev
-```
 
-## Build and Deploy to Vercel
-
-```
-vercel
+# To build for production:
+pnpm build
 ```

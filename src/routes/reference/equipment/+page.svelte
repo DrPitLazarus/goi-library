@@ -6,18 +6,18 @@
   export let equipment = data.equipment;
   let sortById = (/** @type {{ id: number; }} */ a, /** @type {{ id: number; }} */ b) =>
     a.id - b.id;
-  export let pilot = equipment.filter((item) => item.type === "Helm").toSorted(sortById);
-  export let gunner = equipment.filter((item) => item.type === "Gun").toSorted(sortById);
-  export let engineer = equipment.filter((item) => item.type === "Repair").toSorted(sortById);
+  export let pilot = equipment.filter((item) => item.type === "Helm").sort(sortById);
+  export let gunner = equipment.filter((item) => item.type === "Gun").sort(sortById);
+  export let engineer = equipment.filter((item) => item.type === "Repair").sort(sortById);
   export let specialPilot = equipment
     .filter((item) => item.type === "SpecialPilot")
-    .toSorted(sortById);
+    .sort(sortById);
   export let specialGunner = equipment
     .filter((item) => item.type === "SpecialGunner")
-    .toSorted(sortById);
+    .sort(sortById);
   export let specialEngineer = equipment
     .filter((item) => item.type === "SpecialEngineer")
-    .toSorted(sortById);
+    .sort(sortById);
   export let equipmentCount = [
     ...pilot,
     ...gunner,
@@ -53,10 +53,10 @@
   {#each pilot as item}
     <tr>
       <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" loading="lazy" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3 class="mt-0">{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -74,7 +74,7 @@
         <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3>{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -92,7 +92,7 @@
         <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3>{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -110,7 +110,7 @@
         <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3>{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -128,7 +128,7 @@
         <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3>{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -146,7 +146,7 @@
         <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
       </td>
       <td>
-        <h2>{item.nameTextEn}</h2>
+        <h3>{item.nameTextEn}</h3>
         <p>
           {item.descriptionTextEn}
         </p>
@@ -174,7 +174,8 @@
 <style>
   table {
     & img {
-      height: 128px;
+      /* height: 128px; */
+      min-width: 128px;
       width: 128px;
     }
     & h2 {

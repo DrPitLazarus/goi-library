@@ -108,4 +108,7 @@
     max-width: 700px;
     height: auto;
   }
+  p {
+    @apply my-4;
+  }
 </style>

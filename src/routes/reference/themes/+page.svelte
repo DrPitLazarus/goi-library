@@ -27,10 +27,10 @@
   {#each themes as theme}
     <tr>
       <td>
-        <img src={getImage(theme.id.toString())} alt="Theme." height="256" width="256" />
+        <img src={getImage(theme.id.toString())} alt="Theme." height="256" width="256" loading="lazy"/>
       </td>
       <td>
-        <h2>{theme.name}</h2>
+        <h3 class="mt-0">{theme.name}</h3>
         <p>{@html theme.descriptionTextEn}</p>
       </td>
     </tr>
@@ -40,8 +40,8 @@
 <style>
   table {
     & img {
-      height: 175px;
-      width: 175px;
+      /* height: 175px; */
+      min-width: 175px;
     }
     & h2 {
       margin-top: 0;
