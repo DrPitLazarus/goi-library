@@ -66,9 +66,9 @@
 							<Table.Root>
 								<Table.Header>
 									<Table.Row>
-										<Table.Head class="w-[50px]">Rank</Table.Head>
-										<Table.Head>Name</Table.Head>
-										<Table.Head class="text-right">Effort</Table.Head>
+										<Table.Head class="px-2">Rank</Table.Head>
+										<Table.Head class="w-full px-2">Name</Table.Head>
+										<Table.Head class="px-2 text-right">Effort</Table.Head>
 									</Table.Row>
 								</Table.Header>
 								<Table.Body>
