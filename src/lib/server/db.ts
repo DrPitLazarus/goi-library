@@ -2,7 +2,7 @@ import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { DB_URL } from '$env/static/private';
 import { clan, factionLeader, player, schema } from "./schema";
-import { asc, count, desc, eq, getTableColumns, or, inArray, like, sql } from "drizzle-orm";
+import { asc, count, desc, eq, or, inArray, like, sum, and } from "drizzle-orm";
 import { alias, MySqlColumn } from "drizzle-orm/mysql-core";
 import { building } from "$app/environment";
 
@@ -405,6 +405,36 @@ export const getFactionLeaders = async (submissionId: number) => {
     return { success: true, results };
 };
 
+export const getFactionLeaderSubmissions = async () => {
+    console.time("getFactionLeaderSubmissions");
+    // Sum efforts for each faction per submissionId.
+    const subquery = db.select({
+        submissionId: factionLeader.submissionId,
+        factionEfforts: sum(factionLeader.efforts).mapWith(Number).as('faction_efforts'),
+        factionId: factionLeader.factionId,
+    })
+        .from(factionLeader)
+        .groupBy(factionLeader.submissionId, factionLeader.factionId)
+        .as('sq');
+
+    const results = await db.select({
+        submissionId: factionLeader.submissionId,
+        updatedAt: factionLeader.updatedAt,
+        totalEfforts: sum(factionLeader.efforts).mapWith(Number),
+        topFactionEffortsId: subquery.factionId,
+        topFactionEfforts: subquery.factionEfforts,
+    })
+        .from(factionLeader)
+        .innerJoin(subquery, and(
+            eq(factionLeader.submissionId, subquery.submissionId),
+            eq(factionLeader.factionId, subquery.factionId))
+        )
+        .groupBy(factionLeader.submissionId)
+        .orderBy(desc(factionLeader.submissionId));
+    console.timeEnd("getFactionLeaderSubmissions");
+    return { success: true, results };
+}
+
 
 export const query = {
     getCachedRepository,
@@ -423,4 +453,5 @@ export const query = {
     getClanMembers,
     getFactionLeaderLastSubmissionId,
     getFactionLeaders,
+    getFactionLeaderSubmissions,
 };
