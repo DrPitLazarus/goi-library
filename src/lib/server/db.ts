@@ -435,6 +435,31 @@ export const getFactionLeaderSubmissions = async () => {
     return { success: true, results };
 }
 
+export const getTerritoryStateLastSubmissionId = async () => {
+    console.time("getTerritoryStateLastSubmissionId");
+    const results = await db.select({
+        submissionId: schema.territoryState.submissionId,
+    })
+        .from(schema.territoryState)
+        .orderBy(desc(schema.territoryState.submissionId))
+        .limit(1);
+    console.timeEnd("getTerritoryStateLastSubmissionId");
+    if (results.length === 0) {
+        results.push({ submissionId: 0 });
+    }
+    return { success: true, results };
+};
+
+export const getTerritoryStates = async (submissionId: number) => {
+    console.time("getTerritoryStates");
+    const results = await db.select()
+        .from(schema.territoryState)
+        .where(eq(schema.territoryState.submissionId, submissionId))
+        .orderBy(asc(schema.territoryState.factionId), asc(schema.territoryState.territoryId))
+    console.timeEnd("getTerritoryStates");
+    return { success: true, results };
+};
+
 
 export const query = {
     getCachedRepository,
@@ -454,4 +479,6 @@ export const query = {
     getFactionLeaderLastSubmissionId,
     getFactionLeaders,
     getFactionLeaderSubmissions,
+    getTerritoryStateLastSubmissionId,
+    getTerritoryStates,
 };

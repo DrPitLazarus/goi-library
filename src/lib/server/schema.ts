@@ -254,6 +254,15 @@ export const factionLeader = mysqlTable("faction_leader", {
   }
 );
 
+export const territoryState = mysqlTable("territory_state", {
+  ...timestampColumns,
+  id: int().primaryKey().autoincrement(),
+  submissionId: int().notNull(),
+  territoryId: int().notNull(),
+  factionId: int().notNull(),
+  allianceId: int().notNull(),
+});
+
 
 export const schema = {
   cachedRepository,
@@ -271,4 +280,5 @@ export const schema = {
   clan,
   player,
   factionLeader,
+  territoryState,
 };
