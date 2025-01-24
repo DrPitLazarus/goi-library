@@ -9,7 +9,7 @@ import { building } from "$app/environment";
 let drizzleDb: MySql2Database | null = null;
 // if (!building) {
 let connection = mysql.createPool(DB_URL);
-drizzleDb = drizzle(connection);
+drizzleDb = drizzle({ client: connection, casing: 'snake_case' });
 // }
 export const db = drizzleDb;
 
