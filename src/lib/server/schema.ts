@@ -2,8 +2,14 @@ import { SQL, sql } from "drizzle-orm";
 import { int, text, mysqlTable, json, timestamp, double, varchar, index, boolean, float } from "drizzle-orm/mysql-core";
 
 
+export const timestampColumns = {
+  createdAt: timestamp().notNull().default(sql`(utc_timestamp())`),
+  updatedAt: timestamp().notNull().default(sql`(utc_timestamp())`),
+}
+
+
 export const cachedRepository = mysqlTable("cached_repository", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey().autoincrement(),
   json: json("json").default({}),
 }, (table) => {
@@ -13,13 +19,13 @@ export const cachedRepository = mysqlTable("cached_repository", {
 });
 
 export const cachedRepositoryFloatConstant = mysqlTable("cached_repository_float_constant", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   key: varchar("key", { length: 255 }).primaryKey(),
   value: double("value").notNull(),
 });
 
 export const cachedRepositorySystemConfiguration = mysqlTable("cached_repository_system_configuration", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   key: varchar("key", { length: 255 }).primaryKey(),
   value: text("value").notNull(),
 });
@@ -27,14 +33,14 @@ export const cachedRepositorySystemConfiguration = mysqlTable("cached_repository
 // Not very much in here, but noticed NameText, DescriptionText, TitleText, Description, 
 // FullDescriptionText have the same 3 fields. Reminder: Going to dump those entries in here.
 export const cachedRepositoryText = mysqlTable("cached_repository_text", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
   key: varchar("key", { length: 255 }).notNull(),
   en: text("en").notNull(),
 });
 
 export const cachedRepositorySkillConfig = mysqlTable("cached_repository_skill_config", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   activationId: int("activation_id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   nameTextId: int("name_text_id").notNull(),
@@ -73,7 +79,7 @@ export type SkillConfig = typeof cachedRepositorySkillConfig.$inferSelect;
 
 // Made Effects its own table. Created because of skillConfig table.
 export const cachedRepositorySkillEffect = mysqlTable("cached_repository_skill_effect", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
   activationId: int("activation_id").notNull(),
   unlockLevel: int("unlock_level").notNull(),
@@ -94,7 +100,7 @@ export const cachedRepositorySkillEffect = mysqlTable("cached_repository_skill_e
 );
 
 export const cachedRepositorySkillEffectDescriptor = mysqlTable("cached_repository_skill_effect_descriptor", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
   type: varchar("type", { length: 255 }).notNull(),
   context: text("context").notNull(),
@@ -104,7 +110,7 @@ export const cachedRepositorySkillEffectDescriptor = mysqlTable("cached_reposito
 });
 
 export const cachedRepositorySpecialAbility = mysqlTable("cached_repository_special_ability", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
   activationId: int("activation_id").notNull(),
   className: varchar("class_name", { length: 255 }).notNull(),
@@ -125,7 +131,7 @@ export const cachedRepositorySpecialAbility = mysqlTable("cached_repository_spec
 
 // Reminder: Convert the object to an array!
 export const cachedRepositorySpecialAbilityParam = mysqlTable("cached_repository_special_ability_param", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey().autoincrement(),
   specialAbilityId: int("special_ability_id").notNull(),
   key: varchar("key", { length: 255 }).notNull(),
@@ -143,12 +149,12 @@ export const cachedRepositorySpecialAbilityParam = mysqlTable("cached_repository
 );
 
 export const cachedRepositoryItem = mysqlTable("cached_repository_item", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
 });
 
 export const cachedRepositoryDifficultyLevel = mysqlTable("cached_repository_difficulty_level", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   id: int("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   public: boolean("public").notNull(),
@@ -159,7 +165,7 @@ export const cachedRepositoryDifficultyLevel = mysqlTable("cached_repository_dif
 });
 
 export const cachedRepositoryDifficultyLevelModifier = mysqlTable("cached_repository_difficulty_level_modifier", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
+  createdAt: timestampColumns.createdAt,
   difficultyLevelId: int("difficulty_level_id").notNull(),
   id: int("id").primaryKey(),
   team: varchar("team", { length: 25 }).notNull(),
@@ -171,8 +177,7 @@ export const cachedRepositoryDifficultyLevelModifier = mysqlTable("cached_reposi
 
 
 export const clan = mysqlTable("clan", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
-  updatedAt: timestamp('updated_at').notNull().default(sql`(utc_timestamp())`),
+  ...timestampColumns,
   id: int("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
   tag: varchar("tag", { length: 4 }).notNull(),
@@ -186,8 +191,7 @@ export const clan = mysqlTable("clan", {
 });
 
 export const player = mysqlTable("player", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
-  updatedAt: timestamp('updated_at').notNull().default(sql`(utc_timestamp())`),
+  ...timestampColumns,
   id: int("id").primaryKey(),
   name: varchar("name", { length: 32 }).notNull(),
   lastOnline: timestamp('last_online').notNull(),
@@ -233,8 +237,7 @@ export const player = mysqlTable("player", {
 );
 
 export const factionLeader = mysqlTable("faction_leader", {
-  createdAt: timestamp('created_at').notNull().default(sql`(utc_timestamp())`),
-  updatedAt: timestamp('updated_at').notNull().default(sql`(utc_timestamp())`),
+  ...timestampColumns,
   id: int("id").primaryKey().autoincrement(),
   submissionId: int("submission_id").notNull(),
   factionId: int("faction_id").notNull(),
