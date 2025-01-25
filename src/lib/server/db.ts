@@ -460,6 +460,32 @@ export const getTerritoryStates = async (submissionId: number) => {
     return { success: true, results };
 };
 
+export const getTerritoryConflictLastSubmissionId = async () => {
+    console.time("getTerritoryConflictLastSubmissionId");
+    const results = await db.select({
+        submissionId: schema.territoryConflict.submissionId,
+    })
+        .from(schema.territoryConflict)
+        .orderBy(desc(schema.territoryConflict.submissionId))
+        .limit(1);
+    console.timeEnd("getTerritoryConflictLastSubmissionId");
+    if (results.length === 0) {
+        results.push({ submissionId: 0 });
+    }
+    return { success: true, results };
+};
+
+export const getTerritoryConflicts = async (submissionId: number) => {
+    console.time("getTerritoryConflicts");
+    const results = await db.select()
+        .from(schema.territoryConflict)
+        .where(eq(schema.territoryConflict.submissionId, submissionId))
+        // orderBy is important for the isEqual check.
+        .orderBy(asc(schema.territoryConflict.territoryId), asc(schema.territoryConflict.isDefender));
+    console.timeEnd("getTerritoryConflicts");
+    return { success: true, results };
+};
+
 
 export const query = {
     getCachedRepository,
@@ -481,4 +507,6 @@ export const query = {
     getFactionLeaderSubmissions,
     getTerritoryStateLastSubmissionId,
     getTerritoryStates,
+    getTerritoryConflictLastSubmissionId,
+    getTerritoryConflicts,
 };

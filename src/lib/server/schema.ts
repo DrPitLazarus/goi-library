@@ -263,6 +263,19 @@ export const territoryState = mysqlTable("territory_state", {
   allianceId: int().notNull(),
 });
 
+export const territoryConflict = mysqlTable("territory_conflict", {
+  ...timestampColumns,
+  id: int().primaryKey().autoincrement(),
+  submissionId: int().notNull(),
+  territoryId: int().notNull(),
+  factionId: int().notNull(),
+  isDefender: boolean().notNull(),
+  efforts: int().notNull(),
+  goal: int().notNull(),
+  additionalGoal: int().notNull(),
+  wall: int().notNull(),
+  leadersDeployedCount: int().notNull(),
+});
 
 export const schema = {
   cachedRepository,
@@ -281,4 +294,5 @@ export const schema = {
   player,
   factionLeader,
   territoryState,
+  territoryConflict,
 };
