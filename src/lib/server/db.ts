@@ -2,7 +2,7 @@ import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { DB_URL } from '$env/static/private';
 import { clan, factionLeader, player, schema } from "./schema";
-import { asc, count, desc, eq, or, inArray, like, sum, and } from "drizzle-orm";
+import { asc, count, desc, eq, or, inArray, like, sum, sql } from "drizzle-orm";
 import { alias, MySqlColumn } from "drizzle-orm/mysql-core";
 import { building } from "$app/environment";
 
@@ -408,29 +408,38 @@ export const getFactionLeaders = async (submissionId: number) => {
 export const getFactionLeaderSubmissions = async () => {
     console.time("getFactionLeaderSubmissions");
     // Sum efforts for each faction per submissionId.
-    const subquery = db.select({
+    const factionEfforts = db.select({
         submissionId: factionLeader.submissionId,
         factionEfforts: sum(factionLeader.efforts).mapWith(Number).as('faction_efforts'),
         factionId: factionLeader.factionId,
     })
         .from(factionLeader)
         .groupBy(factionLeader.submissionId, factionLeader.factionId)
+        .orderBy(desc(sql<number>`faction_efforts`))
         .as('sq');
-
-    const results = await db.select({
+    // Sum efforts for each submissionId.
+    const submissionEfforts = db.select({
+        submissionId: factionEfforts.submissionId,
+        totalEfforts: sum(factionEfforts.factionEfforts).mapWith(Number).as('total_efforts'),
+    })
+        .from(factionEfforts)
+        .groupBy(factionEfforts.submissionId)
+        .as('sq2');
+    // Main query.
+    let query = db.select({
         submissionId: factionLeader.submissionId,
         updatedAt: factionLeader.updatedAt,
-        totalEfforts: sum(factionLeader.efforts).mapWith(Number),
-        topFactionEffortsId: subquery.factionId,
-        topFactionEfforts: subquery.factionEfforts,
+        totalEfforts: submissionEfforts.totalEfforts,
+        topFactionEffortsId: factionEfforts.factionId,
+        topFactionEfforts: factionEfforts.factionEfforts,
     })
         .from(factionLeader)
-        .innerJoin(subquery, and(
-            eq(factionLeader.submissionId, subquery.submissionId),
-            eq(factionLeader.factionId, subquery.factionId))
-        )
+        .leftJoin(factionEfforts, eq(factionLeader.submissionId, factionEfforts.submissionId))
+        .leftJoin(submissionEfforts, eq(factionLeader.submissionId, submissionEfforts.submissionId))
         .groupBy(factionLeader.submissionId)
-        .orderBy(desc(factionLeader.submissionId));
+        .orderBy(desc(factionLeader.submissionId))
+        .$dynamic();
+    const results = await query;
     console.timeEnd("getFactionLeaderSubmissions");
     return { success: true, results };
 }
