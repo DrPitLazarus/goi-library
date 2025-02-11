@@ -12,8 +12,11 @@ type TerritoryState = {
     territoryId: number,
 }
 
-export const GET: RequestHandler = async ({ url }) => {
-    return json("Hi");
+export const GET: RequestHandler = async () => {
+    const lastSubmissionId = (await query.getTerritoryStateLastSubmissionId())
+    .results[0].submissionId;
+    const lastStates = await query.getTerritoryStates(lastSubmissionId)
+    return json(lastStates);
 };
 
 export const POST: RequestHandler = async ({ request }) => {
