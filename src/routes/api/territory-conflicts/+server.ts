@@ -1,12 +1,15 @@
 import type { RequestHandler } from './$types';
 import { json } from "@sveltejs/kit";
 import { db, query } from "$lib/server/db";
-import { territoryConflict, territoryState } from "$lib/server/schema";
+import { territoryConflict } from "$lib/server/schema";
 import { sql } from "drizzle-orm";
 import isEqual from "lodash/isEqual";
 
-export const GET: RequestHandler = async ({ url }) => {
-    return json("Hi");
+export const GET: RequestHandler = async () => {
+    const lastSubmissionId = (await query.getTerritoryConflictLastSubmissionId())
+        .results[0].submissionId;
+    const lastConflicts = (await query.getTerritoryConflicts(lastSubmissionId))
+    return json(lastConflicts);
 };
 
 export const POST: RequestHandler = async ({ request }) => {
