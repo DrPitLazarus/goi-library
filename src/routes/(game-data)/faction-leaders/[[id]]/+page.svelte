@@ -90,7 +90,7 @@
 									<Table.Row>
 										<Table.Head class="px-2">Rank</Table.Head>
 										<Table.Head class="w-full px-2">Name</Table.Head>
-										<Table.Head class="px-2 text-right">Efforts</Table.Head>
+										<Table.Head class="px-2 text-right">Effort</Table.Head>
 									</Table.Row>
 								</Table.Header>
 								<Table.Body>
@@ -110,7 +110,7 @@
 								</Table.Body>
 								<Table.Footer>
 									<Table.Row>
-										<Table.Cell class="p-2" colspan={2}>Total Efforts</Table.Cell>
+										<Table.Cell class="p-2" colspan={2}>Total Effort</Table.Cell>
 										<Table.Cell class="p-2 text-right">
 											{$page.url && factionTotalLeaderEffort(factionIndex).toLocaleString()}
 										</Table.Cell>
@@ -135,8 +135,8 @@
 						<Table.Head class="px-2">ID</Table.Head>
 						<Table.Head class="min-w-24 px-2">Date</Table.Head>
 						<Table.Head class="px-2">Top Faction</Table.Head>
-						<Table.Head class="px-2 text-right">Top Efforts</Table.Head>
-						<Table.Head class="px-2 text-right">Total Efforts</Table.Head>
+						<Table.Head class="px-2 text-right">Top Effort</Table.Head>
+						<Table.Head class="px-2 text-right">Total Effort</Table.Head>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
@@ -155,7 +155,7 @@
 								</a>
 							</Table.Cell>
 							<Table.Cell class="p-2">
-								{data.utils.factionNames[list.topFactionEffortsId]}
+								{data.utils.factionNames[list.topFactionEffortsId ?? 0]}
 							</Table.Cell>
 							<Table.Cell class="p-2 text-right">
 								{list.topFactionEfforts.toLocaleString()}
@@ -168,7 +168,7 @@
 				</Table.Body>
 				<Table.Footer>
 					<Table.Row>
-						<Table.Cell class="p-2" colspan={4}>Total Efforts</Table.Cell>
+						<Table.Cell class="p-2" colspan={4}>Total Effort</Table.Cell>
 						<Table.Cell class="p-2 text-right">
 							{totalPastLeaderListEfforts.toLocaleString()}
 						</Table.Cell>
