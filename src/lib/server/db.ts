@@ -1,14 +1,14 @@
 import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { DB_URL } from '$env/static/private';
+import { DB_URL_PROD, DB_URL_DEV } from '$env/static/private';
 import { clan, factionLeader, player, schema } from "./schema";
 import { asc, count, desc, eq, or, inArray, like, sum, sql } from "drizzle-orm";
 import { alias, MySqlColumn } from "drizzle-orm/mysql-core";
-import { building } from "$app/environment";
+import { building, dev } from "$app/environment";
 
 let drizzleDb: MySql2Database | null = null;
 // if (!building) {
-let connection = mysql.createPool(DB_URL);
+let connection = mysql.createPool(dev ? DB_URL_DEV : DB_URL_PROD);
 drizzleDb = drizzle({ client: connection, casing: 'snake_case' });
 // }
 export const db = drizzleDb;
