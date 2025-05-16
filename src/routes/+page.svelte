@@ -17,6 +17,7 @@
 	<li><a href="clans">Clans</a></li>
 	<li><a href="players">Players</a></li>
 	<li><a href="faction-leaders">Faction Leaders</a></li>
+	<li><a href="territory-conflicts">Territory Conflicts</a></li>
 </ul>
 
 <h3>Books</h3>
