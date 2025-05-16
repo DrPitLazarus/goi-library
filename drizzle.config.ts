@@ -5,7 +5,7 @@ export default defineConfig({
   out: "./drizzle",
   dialect: 'mysql',
   dbCredentials: {
-    url: process.env.DB_URL as string,
+    url: process.env.DB_URL_DEV as string,
   },
   casing: 'snake_case',
 });
