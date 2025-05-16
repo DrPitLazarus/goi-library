@@ -495,6 +495,16 @@ export const getTerritoryConflicts = async (submissionId: number) => {
     return { success: true, results };
 };
 
+export const getEntityWorldLocations = async () => {
+    console.time("getEntityWorldLocations");
+    const results = await db.select({ json: sql`${schema.cachedRepository.json}->'$."Muse.Goi2.Entity.WorldLocation"'` })
+        .from(schema.cachedRepository)
+        .orderBy(desc(schema.cachedRepository.id))
+        .limit(1);
+    console.timeEnd("getEntityWorldLocations");
+    return { success: true, results };
+};
+
 
 export const query = {
     getCachedRepository,
@@ -518,4 +528,5 @@ export const query = {
     getTerritoryStates,
     getTerritoryConflictLastSubmissionId,
     getTerritoryConflicts,
+    getEntityWorldLocations,
 };
