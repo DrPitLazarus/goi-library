@@ -17,6 +17,13 @@
 		let result = data.worldLocations.find((item: any) => item.Id === territoryId).Name;
 		return result;
 	}
+
+	function printLeaderDiamonds(leaderCount: number) {
+		if (leaderCount < 2) {
+			return '';
+		}
+		return data.utils.diamondSymbol.repeat(leaderCount - 1);
+	}
 </script>
 
 <h1>{$title}</h1>
@@ -49,7 +56,7 @@
 							Effort: {conflict.efforts.toLocaleString()} / {totalGoal.toLocaleString()}{additionalGoalText}
 						</p>
 						{#if leadersText}
-							<p>Leaders Deployed: {leadersText}</p>
+							<p>Leaders Deployed: {leadersText} {printLeaderDiamonds(conflict.leadersDeployedCount)}</p>
 						{/if}
 						<div class="mt-4"></div>
 					{/each}

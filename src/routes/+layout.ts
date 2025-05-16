@@ -3,6 +3,7 @@ import { title } from "$lib/title";
 import { format, formatDistanceToNowStrict } from 'date-fns';
 import humanizeDuration from 'humanize-duration';
 
+const diamondSymbol = '✦';
 const clanRoles = ['Leader', 'Officer', 'Member'];
 const factionNames = [
     'Neutral',
@@ -25,12 +26,11 @@ const formatDuration = (rawSeconds: number) => {
 }
 
 const formatLevel = (totalLevel: number) => {
-    const diamond = '✦';
     if (totalLevel > 90) {
-        return `${diamond.repeat(2)}${totalLevel - 90}`;
+        return `${diamondSymbol.repeat(2)}${totalLevel - 90}`;
     }
     if (totalLevel > 45) {
-        return `${diamond}${totalLevel - 45}`;
+        return `${diamondSymbol}${totalLevel - 45}`;
     }
     return totalLevel;
 }
@@ -40,6 +40,7 @@ const formatLevels = (ranks: any) => {
 }
 
 const utils = {
+    diamondSymbol,
     clanRoles,
     factionNames,
     timeAgo,
