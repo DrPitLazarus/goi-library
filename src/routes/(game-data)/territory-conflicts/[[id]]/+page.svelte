@@ -31,9 +31,9 @@
 		return data.utils.diamondSymbol.repeat(leaderCount - 1);
 	}
 
-	function sumModifierAmounts(amounts: number[]) {
+	function sumModifierAmounts(amounts: number[]): number {
 		let result = amounts.reduce((total, value) => total + value, 0);
-		return result;
+		return Number(result.toFixed(2));
 	}
 
 	function formatPercent(percent: number): string {
