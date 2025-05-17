@@ -491,7 +491,32 @@ export const getTerritoryConflicts = async (submissionId: number) => {
         .where(eq(schema.territoryConflict.submissionId, submissionId))
         // orderBy is important for the isEqual check.
         .orderBy(asc(schema.territoryConflict.territoryId), asc(schema.territoryConflict.isDefender));
+        // console.log(results);
     console.timeEnd("getTerritoryConflicts");
+    return { success: true, results };
+};
+
+export const getTerritoryConflictModifiers = async () => {
+    console.time("getTerritoryConflictModifiers");
+    const results = await db.select()
+        .from(schema.territoryConflictModifier);
+    console.timeEnd("getTerritoryConflictModifiers");
+    return { success: true, results };
+};
+
+export const getTerritoryConflictModifiersByConflictId = async (conflictIds: number[]) => {
+    console.time("getTerritoryConflictModifiersByConflictId");
+    const results = await db.select({
+        conflictId: schema.territoryConflictModifierPair.conflictId,
+        modifierId: schema.territoryConflictModifierPair.modifierId,
+        modifier: schema.territoryConflictModifier.modifier,
+        amount: schema.territoryConflictModifier.amount,
+        additionalInfo: schema.territoryConflictModifier.additionalInfo,
+    })
+        .from(schema.territoryConflictModifierPair)
+        .where(inArray(schema.territoryConflictModifierPair.conflictId, conflictIds))
+        .innerJoin(schema.territoryConflictModifier, eq(schema.territoryConflictModifierPair.modifierId, schema.territoryConflictModifier.id));
+    console.timeEnd("getTerritoryConflictModifiersByConflictId");
     return { success: true, results };
 };
 
@@ -528,5 +553,7 @@ export const query = {
     getTerritoryStates,
     getTerritoryConflictLastSubmissionId,
     getTerritoryConflicts,
+    getTerritoryConflictModifiers,
+    getTerritoryConflictModifiersByConflictId,
     getEntityWorldLocations,
 };

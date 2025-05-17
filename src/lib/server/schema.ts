@@ -1,5 +1,5 @@
 import { SQL, sql } from "drizzle-orm";
-import { int, text, mysqlTable, json, timestamp, double, varchar, index, boolean, float } from "drizzle-orm/mysql-core";
+import { int, text, mysqlTable, json, timestamp, double, varchar, index, boolean, float, primaryKey, foreignKey } from "drizzle-orm/mysql-core";
 
 
 export const timestampColumns = {
@@ -188,6 +188,7 @@ export const clan = mysqlTable("clan", {
   xp: int("xp").notNull(),
   commendations: int("commendations").notNull(),
   memberCount: int("member_count").notNull(),
+  submitterId: int(),
 });
 
 export const player = mysqlTable("player", {
@@ -221,6 +222,7 @@ export const player = mysqlTable("player", {
   badges: json('badges').notNull(),
   achievements: json('achievements').notNull(),
   appearance: json('appearance').notNull(),
+  submitterId: int(),
 },
   (table) => {
     return {
@@ -245,6 +247,7 @@ export const factionLeader = mysqlTable("faction_leader", {
   userId: int("user_id").notNull(),
   userName: varchar("user_name", { length: 32 }).notNull(),
   efforts: int("efforts").notNull(),
+  submitterId: int(),
 },
   (table) => {
     return {
@@ -261,6 +264,7 @@ export const territoryState = mysqlTable("territory_state", {
   territoryId: int().notNull(),
   factionId: int().notNull(),
   allianceId: int().notNull(),
+  submitterId: int(),
 });
 
 export const territoryConflict = mysqlTable("territory_conflict", {
@@ -275,7 +279,26 @@ export const territoryConflict = mysqlTable("territory_conflict", {
   additionalGoal: int().notNull(),
   wall: int().notNull(),
   leadersDeployedCount: int().notNull(),
+  submitterId: int(),
 });
+
+export const territoryConflictModifier = mysqlTable("territory_conflict_modifier", {
+  ...timestampColumns,
+  id: int().primaryKey().autoincrement(),
+  modifier: varchar({ length: 64 }).notNull(),
+  amount: float().notNull(),
+  additionalInfo: varchar({ length: 64 }),
+  submitterId: int(),
+});
+
+export const territoryConflictModifierPair = mysqlTable("territory_conflict_modifier_pair", {
+  conflictId: int(),
+  modifierId: int(),
+}, table => [
+  primaryKey({ columns: [table.conflictId, table.modifierId] }),
+  foreignKey({ columns: [table.conflictId], foreignColumns: [territoryConflict.id], name: "conflict_id_fk" }),
+  foreignKey({ columns: [table.modifierId], foreignColumns: [territoryConflictModifier.id], name: "conflict_modifier_id_fk" }),
+]);
 
 export const schema = {
   cachedRepository,
@@ -295,4 +318,6 @@ export const schema = {
   factionLeader,
   territoryState,
   territoryConflict,
+  territoryConflictModifier,
+  territoryConflictModifierPair,
 };

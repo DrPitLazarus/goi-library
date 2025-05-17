@@ -10,11 +10,17 @@
 	$: uniqueTerritoryIds = [...new Set(conflicts.map((item) => item.territoryId))];
 
 	function getConflictsByTerritoryId(territoryId: number) {
-		return conflicts.filter((item) => item.territoryId === territoryId);
+		let result = conflicts.filter((item) => item.territoryId === territoryId);
+		return result;
 	}
 
 	function getTerritoryNameById(territoryId: number) {
 		let result = data.worldLocations.find((item: any) => item.Id === territoryId).Name;
+		return result;
+	}
+
+	function getModifiersByConflictId(conflictId: number) {
+		let result = data.conflictModifiers.results.filter((item) => item.conflictId === conflictId);
 		return result;
 	}
 
@@ -24,12 +30,23 @@
 		}
 		return data.utils.diamondSymbol.repeat(leaderCount - 1);
 	}
+
+	function sumModifierAmounts(amounts: number[]) {
+		let result = amounts.reduce((total, value) => total + value, 0);
+		return result;
+	}
+
+	function formatPercent(percent: number): string {
+		percent = percent * 100;
+		let result = percent > 0 ? `+${percent}%` : `${percent}%`;
+		return result;
+	}
 </script>
 
 <h1>{$title}</h1>
 
 <p>
-	View current territory conflicts (battles). <br />
+	Displays current territory conflicts (battles). <br />
 	<strong>ID</strong>: {data.submissionId.toLocaleString()}.
 	<strong>Date</strong>: {data.utils.formatDate(createdAt)} ({data.utils.timeAgo(createdAt)})
 </p>
@@ -58,7 +75,21 @@
 						{#if leadersText}
 							<p>Leaders Deployed: {leadersText} {printLeaderDiamonds(conflict.leadersDeployedCount)}</p>
 						{/if}
-						<div class="mt-4"></div>
+						{@const modifiers = getModifiersByConflictId(conflict.id)}
+						{#if modifiers.length}
+							{@const modifiersSum = sumModifierAmounts(modifiers.map((item) => item.amount))}
+							<p>Effort Modifier: {formatPercent(modifiersSum)}</p>
+							{#each modifiers as modifier}
+								<p class="text-yellow-900">
+									{formatPercent(modifier.amount)}
+									{modifier.modifier}
+									{modifier.additionalInfo ?? ''}
+								</p>
+							{/each}
+						{/if}
+						{#if !conflict.isDefender}
+							<div class="mt-4"></div>
+						{/if}
 					{/each}
 				</div>
 			{/each}

@@ -31,11 +31,14 @@ export const load = (async ({ params }) => {
 
     const worldLocations: any = (await query.getEntityWorldLocations()).results[0].json;
     // console.log(worldLocations);
+    const conflictIds = conflicts.results.map(item => item.id);
+    const conflictModifiers = (await query.getTerritoryConflictModifiersByConflictId(conflictIds));
 
     return {
         conflicts,
         isHistoricSubmissionId,
         submissionId,
         worldLocations,
+        conflictModifiers,
     };
 }) satisfies PageServerLoad;
