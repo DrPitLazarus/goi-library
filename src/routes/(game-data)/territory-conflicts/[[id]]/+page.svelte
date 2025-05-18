@@ -36,9 +36,9 @@
 		return Number(result.toFixed(2));
 	}
 
-	function formatPercent(percent: number): string {
-		percent = percent * 100;
-		let result = percent > 0 ? `+${percent}%` : `${percent}%`;
+	function formatPercent(percent: number, toFixed: number = 0): string {
+		let percentString = (percent * 100).toFixed(toFixed);
+		let result = percent > 0 ? `+${percentString}%` : `${percentString}%`;
 		return result;
 	}
 </script>
