@@ -5,7 +5,7 @@
 	export let data: PageData;
 	let title = data.title;
 	$title = 'Territory Conflicts';
-	let conflicts = data.conflicts.results;
+	$: conflicts = data.conflicts.results;
 	$: createdAt = data.conflicts.results[0].createdAt;
 	$: uniqueTerritoryIds = [...new Set(conflicts.map((item) => item.territoryId))];
 
@@ -57,7 +57,7 @@
 			{#each uniqueTerritoryIds as territoryId}
 				<div class="text-center">
 					<h2>{getTerritoryNameById(territoryId)}</h2>
-					{#each getConflictsByTerritoryId(territoryId) as conflict}
+					{#each getConflictsByTerritoryId(territoryId) as conflict (conflict.id)}
 						{@const totalGoal = conflict.goal + conflict.additionalGoal}
 						{@const progress = conflict.efforts / totalGoal}
 						{@const attackerDefenderText = conflict.isDefender ? 'Defender' : 'Attacker'}
