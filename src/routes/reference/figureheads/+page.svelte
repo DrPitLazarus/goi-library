@@ -1,45 +1,49 @@
-<script>
-  /** @type {import('./$types').PageData} */
-  export let data;
-  export let title = data.title;
-  $title = "Figureheads";
-  export let figureheads = data.figureheads;
+<script lang="ts">
+	import { page } from '$app/state';
 
-  const assets = import.meta.glob("$lib/items/figureheads/*.webp", { eager: true });
-  /**
-   * @param {string} filename
-   */
-  function getImage(filename) {
-    // @ts-ignore
-    return assets[`/src/lib/items/figureheads/item${filename}.webp`]?.default || "";
-  }
+	let figureheads = page.data.figureheads;
+
+	const assets = import.meta.glob('$lib/assets/items/figureheads/*.webp', { eager: true });
+
+	function getImage(filename: string) {
+		return (assets[`/src/lib/assets/items/figureheads/item${filename}.webp`] as { default: string })
+			?.default;
+	}
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <p>
-  Figureheads sorted by ID. There are {figureheads.length} figureheads.
-  <br />
-  <i>2023-12-19. Data source: cachedRepository.json.</i>
+	Figureheads sorted by ID. There are {figureheads.length} figureheads.
+	<br />
+	<i>2023-12-19. Data source: cachedRepository.json.</i>
 </p>
 
 <table>
-  {#each figureheads as figurehead}
-    <tr>
-      <td>
-        <img src={getImage(figurehead.id.toString())} alt="Figurehead." height="256" width="256" loading="lazy" />
-      </td>
-      <td>
-        <h3 class="mt-0">{figurehead.name}</h3>
-        <p>{figurehead.descriptionTextEn}</p>
-      </td>
-    </tr>
-  {/each}
+	{#each figureheads as figurehead}
+		<tbody>
+			<tr>
+				<td>
+					<img
+						src={getImage(figurehead.id.toString())}
+						alt="Figurehead."
+						height="256"
+						width="256"
+						loading="lazy"
+					/>
+				</td>
+				<td>
+					<h3 class="mt-0">{figurehead.name}</h3>
+					<p>{figurehead.descriptionTextEn}</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <style>
-  table img {
-    /* height: 175px; */
-    min-width: 175px;
-  }
+	table img {
+		/* height: 175px; */
+		min-width: 175px;
+	}
 </style>

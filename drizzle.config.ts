@@ -1,11 +1,12 @@
-import { defineConfig } from "drizzle-kit";
+import { defineConfig } from 'drizzle-kit';
+
+if (!process.env.DB_URL_DEV) throw new Error('DB_URL_DEV is not set');
 
 export default defineConfig({
-  schema: "./src/lib/server/schema.ts",
-  out: "./drizzle",
-  dialect: 'mysql',
-  dbCredentials: {
-    url: process.env.DB_URL_DEV as string,
-  },
-  casing: 'snake_case',
+	schema: './src/lib/server/db/schema.ts',
+	dialect: 'mysql',
+	dbCredentials: { url: process.env.DB_URL_DEV },
+	verbose: true,
+	strict: true,
+	casing: 'snake_case',
 });

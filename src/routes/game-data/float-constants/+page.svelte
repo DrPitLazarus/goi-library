@@ -1,37 +1,37 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
-	export let data: PageData;
-	data.title.set('Float Constants');
-	let title = data.title;
+	import { page } from '$app/state';
+	let { data } = $props();
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
-<p class="mt-4">All constants that are floating.</p>
+<p>All constants that are floating.</p>
 
 {#if data.floatConstants.length > 0}
-	<table>
-		<tr>
-			<th>Key</th>
-			<th>Value</th>
-		</tr>
-		{#each data.floatConstants as float}
+	<table class="inline-table">
+		<thead>
 			<tr>
-				<td>{float.key}</td>
-				<td class="text-right-align">{float.value.toFixed(2)}</td>
+				<th>Key</th>
+				<th>Value</th>
 			</tr>
-		{/each}
+		</thead>
+		<tbody>
+			{#each data.floatConstants as float}
+				<tr>
+					<td>{float.key}</td>
+					<td class="text-right">{float.value.toFixed(2)}</td>
+				</tr>
+			{/each}
+		</tbody>
 	</table>
 {/if}
 
 <style>
+	@reference 'tailwindcss';
 	table {
-		display: inline-table;
-
-		& th {
+		& thead th {
 			text-align: left;
-			border-bottom: 1px solid var(--color-heading);
+			border-bottom: 1px solid var(--color-goiyellow-header);
 		}
 	}
 </style>

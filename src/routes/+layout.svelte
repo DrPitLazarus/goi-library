@@ -1,32 +1,31 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import '../app.css';
-	import '../styles.css';
-	import { page } from '$app/stores';
-	import * as Breadcrumb from '$lib/components/ui/breadcrumb/';
+	import favicon from '$lib/assets/favicon.svg';
+	import { page } from '$app/state';
+	import { appName } from '$lib/shared';
+	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index';
 
-	export let data: PageData;
-	export let title = data.title;
-	$: fullTitle = `${$title} - ${data.APP_NAME}`;
-	$: breadcrumbs = $page.data.breadcrumbs;
+	let { children } = $props();
+	let fullTitle = $derived(page.data?.title ? `${page.data.title} - ${appName}` : appName);
 </script>
 
 <svelte:head>
 	<title>{fullTitle}</title>
+	<link rel="icon" href={favicon} />
 </svelte:head>
 
 <Breadcrumb.Root>
-	<Breadcrumb.List class="mt-2">
+	<Breadcrumb.List class="mt-4">
 		<Breadcrumb.Item>
-			<Breadcrumb.Link href="/">{data.APP_NAME}</Breadcrumb.Link>
+			<Breadcrumb.Link href="/">{appName}</Breadcrumb.Link>
 		</Breadcrumb.Item>
-		{#each breadcrumbs as breadcrumb}
+		{#each page.data.breadcrumbs as breadcrumb}
 			<Breadcrumb.Separator />
 			<Breadcrumb.Item>
-				<Breadcrumb.Link href="{breadcrumb.href}">{breadcrumb.name}</Breadcrumb.Link>
+				<Breadcrumb.Link href={breadcrumb.href}>{breadcrumb.name}</Breadcrumb.Link>
 			</Breadcrumb.Item>
 		{/each}
 	</Breadcrumb.List>
 </Breadcrumb.Root>
 
-<slot />
+{@render children?.()}

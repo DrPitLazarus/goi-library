@@ -1,158 +1,173 @@
-<script>
-  /** @type {import('./$types').PageData} */
-  export let data;
-  export let title = data.title;
-  $title = "Equipment";
-  export let equipment = data.equipment;
-  let sortById = (/** @type {{ id: number; }} */ a, /** @type {{ id: number; }} */ b) =>
-    a.id - b.id;
-  export let pilot = equipment.filter((item) => item.type === "Helm").sort(sortById);
-  export let gunner = equipment.filter((item) => item.type === "Gun").sort(sortById);
-  export let engineer = equipment.filter((item) => item.type === "Repair").sort(sortById);
-  export let specialPilot = equipment
-    .filter((item) => item.type === "SpecialPilot")
-    .sort(sortById);
-  export let specialGunner = equipment
-    .filter((item) => item.type === "SpecialGunner")
-    .sort(sortById);
-  export let specialEngineer = equipment
-    .filter((item) => item.type === "SpecialEngineer")
-    .sort(sortById);
-  export let equipmentCount = [
-    ...pilot,
-    ...gunner,
-    ...engineer,
-    ...specialPilot,
-    ...specialGunner,
-    ...specialEngineer,
-  ].length;
-  const assets = import.meta.glob("$lib/items/equipment/*.png", { eager: true });
-  /**
-   * @param {string} filename
-   */
-  function getImage(filename) {
-    // @ts-ignore
-    return assets[`/src/lib/items/equipment/skill${filename}.png`]?.default || "";
-  }
+<script lang="ts">
+	import { page } from '$app/state';
+
+	type Equipment = {
+		nameTextEn: string;
+		descriptionTextEn: string;
+		id: number;
+		type: string;
+	};
+
+	let equipment: Equipment[] = page.data.equipment;
+	let sortById = (a: { id: number }, b: { id: number }) => a.id - b.id;
+
+	let pilot = equipment.filter((item) => item.type === 'Helm').sort(sortById);
+	let gunner = equipment.filter((item) => item.type === 'Gun').sort(sortById);
+	let engineer = equipment.filter((item) => item.type === 'Repair').sort(sortById);
+	let specialPilot = equipment.filter((item) => item.type === 'SpecialPilot').sort(sortById);
+	let specialGunner = equipment.filter((item) => item.type === 'SpecialGunner').sort(sortById);
+	let specialEngineer = equipment.filter((item) => item.type === 'SpecialEngineer').sort(sortById);
+	let equipmentCount = [
+		...pilot,
+		...gunner,
+		...engineer,
+		...specialPilot,
+		...specialGunner,
+		...specialEngineer,
+	].length;
+
+	const assets = import.meta.glob('$lib/assets/items/equipment/*.png', { eager: true });
+
+	function getImage(filename: string) {
+		return (assets[`/src/lib/assets/items/equipment/skill${filename}.png`] as { default: string })
+			?.default;
+	}
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <p>
-  Equipment sorted by ID. There are {equipmentCount} equipment.
-  <br />
-  <i>
-    2023-12-22. Data source: cachedRepository.json. "Heroic Stamina Ability" is not in the
-    game.
-  </i>
+	Equipment sorted by ID. There are {equipmentCount} equipment.
+	<br />
+	<i>
+		2023-12-22. Data source: cachedRepository.json. "Heroic Stamina Ability" is not in the game.
+	</i>
 </p>
 
 <h2>Pilot</h2>
 
 <table>
-  {#each pilot as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" loading="lazy" />
-      </td>
-      <td>
-        <h3 class="mt-0">{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each pilot as item}
+		<tbody>
+			<tr>
+				<td>
+					<img
+						src={getImage(item.id.toString())}
+						alt="Equipment."
+						height="256"
+						width="256"
+						loading="lazy"
+					/>
+				</td>
+				<td>
+					<h3 class="mt-0">{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <h2>Pilot Specials (PvE)</h2>
 
 <table>
-  {#each specialPilot as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
-      </td>
-      <td>
-        <h3>{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each specialPilot as item}
+		<tbody>
+			<tr>
+				<td>
+					<img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+				</td>
+				<td>
+					<h3>{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <h2>Gunner</h2>
 
 <table>
-  {#each gunner as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
-      </td>
-      <td>
-        <h3>{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each gunner as item}
+		<tbody>
+			<tr>
+				<td>
+					<img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+				</td>
+				<td>
+					<h3>{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <h2>Gunner Specials (PvE)</h2>
 
 <table>
-  {#each specialGunner as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
-      </td>
-      <td>
-        <h3>{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each specialGunner as item}
+		<tbody>
+			<tr>
+				<td>
+					<img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+				</td>
+				<td>
+					<h3>{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <h2>Engineer</h2>
 
 <table>
-  {#each engineer as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
-      </td>
-      <td>
-        <h3>{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each engineer as item}
+		<tbody>
+			<tr>
+				<td>
+					<img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+				</td>
+				<td>
+					<h3>{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <h2>Enginner Specials (PvE)</h2>
 
 <table>
-  {#each specialEngineer as item}
-    <tr>
-      <td>
-        <img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
-      </td>
-      <td>
-        <h3>{item.nameTextEn}</h3>
-        <p>
-          {item.descriptionTextEn}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each specialEngineer as item}
+		<tbody>
+			<tr>
+				<td>
+					<img src={getImage(item.id.toString())} alt="Equipment." height="256" width="256" />
+				</td>
+				<td>
+					<h3>{item.nameTextEn}</h3>
+					<p>
+						{item.descriptionTextEn}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <!-- <table>
@@ -172,14 +187,11 @@
 </table> -->
 
 <style>
-  table {
-    & img {
-      /* height: 128px; */
-      min-width: 128px;
-      width: 128px;
-    }
-    & h2 {
-      margin-top: 0;
-    }
-  }
+	table {
+		& img {
+			/* height: 128px; */
+			min-width: 128px;
+			width: 128px;
+		}
+	}
 </style>

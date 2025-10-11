@@ -1,56 +1,57 @@
-<script>
-  /** @type {import('./$types').PageData} */
-  export let data;
-  export let title = data.title;
-  $title = "Badges";
-  export let badges = data.badges;
+<script lang="ts">
+	import { page } from '$app/state';
 
-  const assets = import.meta.glob("$lib/items/badges/*.webp", { eager: true });
-  /**
-   * @param {string} filename
-   */
-  function getImage(filename) {
-    // @ts-ignore
-    return assets[`/src/lib/items/badges/item${filename}.webp`]?.default || "";
-  }
+	let badges = page.data.badges;
+
+	const assets = import.meta.glob('$lib/assets/items/badges/*.webp', { eager: true });
+
+	function getImage(filename: string) {
+		return (assets[`/src/lib/assets/items/badges/item${filename}.webp`] as { default: string })
+			?.default;
+	}
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <p>
-  Badges sorted by ID. There are {badges.length} badges.
-  <br />
-  <i>
-    2023-12-20. Data source: cachedRepository.json. Missing images for "Japanese Tournament",
-    "Second Anniversary", and all BFA.
-  </i>
+	Badges sorted by ID. There are {badges.length} badges.
+	<br />
+	<i>
+		2023-12-20. Data source: cachedRepository.json. Missing images for "Japanese Tournament",
+		"Second Anniversary", and all BFA.
+	</i>
 </p>
 
 <table>
-  {#each badges as badge}
-    <tr>
-      <td>
-        <img src={getImage(badge.id.toString())} alt="Badge." height="256" width="256" loading="lazy" />
-      </td>
-      <td>
-        <h3 class="mt-0">{badge.nameTextEn || badge.name}</h3>
-        <p>
-          {badge.descriptionTextEn}
-          {#if badge.nameTextEn !== badge.name && badge.nameTextEn.length}({badge.name}){/if}
-        </p>
-      </td>
-    </tr>
-  {/each}
+	{#each badges as badge}
+		<tbody>
+			<tr>
+				<td>
+					<img
+						src={getImage(badge.id.toString())}
+						alt="Badge."
+						height="256"
+						width="256"
+						loading="lazy"
+					/>
+				</td>
+				<td>
+					<h3 class="mt-0">{badge.nameTextEn || badge.name}</h3>
+					<p>
+						{badge.descriptionTextEn}
+						{#if badge.nameTextEn !== badge.name && badge.nameTextEn.length}({badge.name}){/if}
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	{/each}
 </table>
 
 <style>
-  table {
-    & img {
-      height: 175px;
-      width: 175px;
-    }
-    & h2 {
-      margin-top: 0;
-    }
-  }
+	table {
+		& img {
+			height: 175px;
+			width: 175px;
+		}
+	}
 </style>

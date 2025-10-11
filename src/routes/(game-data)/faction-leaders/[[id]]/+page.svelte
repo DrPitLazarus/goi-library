@@ -1,19 +1,18 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { sub, isBefore } from 'date-fns';
+	import { factionNames, formatDate, timeAgo } from '$lib/shared';
+	import slug from 'slug';
 	import * as Card from '$lib/components/ui/card';
 	import * as Table from '$lib/components/ui/table';
-	import { slugify } from '$lib/util';
 
-	export let data: PageData;
-	let title = data.title;
+	let { data } = $props();
 
-	$: updatedAt = data.leaders.results[0].updatedAt;
-	$: nextLeaderDate = $page.url && nextLeaderCycleDate();
-	$: isOutdated = $page.url && isUpdatedAtOutdated();
-	$: $title = data.isHistoricSubmissionId ? 'Past Faction Leaders' : 'Faction Leaders';
-	$: totalPastLeaderListEfforts = $page.url && getTotalPastLeaderListEfforts();
+	let title = $derived(page.data.title);
+	let updatedAt = $derived(data.leaders.results[0].updatedAt);
+	let nextLeaderDate = $derived(page.url && nextLeaderCycleDate());
+	let isOutdated = $derived(page.url && isUpdatedAtOutdated());
+	let totalPastLeaderListEfforts = $derived(page.url && getTotalPastLeaderListEfforts());
 
 	function isUpdatedAtOutdated() {
 		// If updatedAt is 7+ days away from nextLeaderDate, it is outdated.
@@ -23,9 +22,7 @@
 
 	function factionTotalLeaderEffort(factionId: number) {
 		// Sum effort for all leaders of a specified faction.
-		const filteredLeaders = data.leaders.results.filter(
-			(leader) => leader.factionId === factionId
-		);
+		const filteredLeaders = data.leaders.results.filter((leader) => leader.factionId === factionId);
 		const totalEffort = filteredLeaders.reduce((total, leader) => total + leader.efforts, 0);
 		return totalEffort;
 	}
@@ -55,36 +52,37 @@
 	}
 </script>
 
-<h1>{$title}</h1>
+<h1>{title}</h1>
+
 {#if !data.isHistoricSubmissionId}
-	<p class="mt-4">
-		Displays current faction leaders. Updated {data.utils.timeAgo(updatedAt)}. New leaders are
-		chosen {data.utils.timeAgo(nextLeaderDate)}.
+	<p>
+		Displays current faction leaders. Updated {timeAgo(updatedAt)}. New leaders are chosen {timeAgo(
+			nextLeaderDate,
+		)}.
 	</p>
 	{#if isOutdated}
 		<p>Leader list is OUTDATED! Please wait for the next scan.</p>
 	{/if}
 {:else}
-	<p class="mt-4">
-		You are viewing a past leader list. <a href="/faction-leaders">Click here</a> for the current
-		leader list.
+	<p>
+		You are viewing a past leader list. <a href="/faction-leaders">Click here</a> for the current leader
+		list.
 	</p>
 	<p>
-		<span class="font-medium">List ID:</span>
-		{$page.params.id}.
 		<span class="font-medium">Date:</span>
-		{data.utils.formatDate(updatedAt)} ({data.utils.timeAgo(updatedAt)})
+		{formatDate(updatedAt)} ({timeAgo(updatedAt)})
 	</p>
 {/if}
 
-<Card.Root class="mt-4">
+<Card.Root class="my-4">
 	<Card.Content>
 		{#if data.leaders.success && data.leaders.results != null}
 			<div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
-				{#each data.utils.factionNames as faction, factionIndex}
+				{#each factionNames as faction, factionIndex}
 					{#if factionIndex !== 0}
+						{@const factionSlug = slug(faction)}
 						<div>
-							<h2 id="{slugify(faction)}" class="mt-0"><a href="#{slugify(faction)}">{faction}</a></h2>
+							<h2 id={factionSlug} class="mt-0!"><a href="#{factionSlug}">{faction}</a></h2>
 							<Table.Root>
 								<Table.Header>
 									<Table.Row>
@@ -100,7 +98,8 @@
 												{leader.rank}
 											</Table.Cell>
 											<Table.Cell class="p-2">
-												<a href="/players/{leader.userId}">{leader.userName.replace(' [PC]', '')}</a>
+												<a href="/players/{leader.userId}">{leader.userName.replace(' [PC]', '')}</a
+												>
 											</Table.Cell>
 											<Table.Cell class="p-2 text-right">
 												{leader.efforts.toLocaleString()}
@@ -112,7 +111,7 @@
 									<Table.Row>
 										<Table.Cell class="p-2" colspan={2}>Total Effort</Table.Cell>
 										<Table.Cell class="p-2 text-right">
-											{$page.url && factionTotalLeaderEffort(factionIndex).toLocaleString()}
+											{page.url && factionTotalLeaderEffort(factionIndex).toLocaleString()}
 										</Table.Cell>
 									</Table.Row>
 								</Table.Footer>
@@ -126,9 +125,11 @@
 </Card.Root>
 
 {#if data.pastLeaderLists.results}
-	<Card.Root class="sm:w-fit mt-4">
+	<Card.Root class="my-4 sm:w-fit">
 		<Card.Content>
-			<h2 id="past-leader-lists" class="mt-0"><a href="#past-leader-lists">Past Leader Lists</a></h2>
+			<h2 id="past-leader-lists" class="mt-0">
+				<a href="#past-leader-lists">Past Leader Lists</a>
+			</h2>
 			<Table.Root>
 				<Table.Header>
 					<Table.Row>
@@ -151,11 +152,11 @@
 							</Table.Cell>
 							<Table.Cell class="p-2">
 								<a href="/faction-leaders/{list.submissionId}">
-									{data.utils.formatDate(list.updatedAt)}
+									{formatDate(list.updatedAt)}
 								</a>
 							</Table.Cell>
 							<Table.Cell class="p-2">
-								{data.utils.factionNames[list.topFactionEffortsId ?? 0]}
+								{factionNames[list.topFactionEffortsId ?? 0]}
 							</Table.Cell>
 							<Table.Cell class="p-2 text-right">
 								{list.topFactionEfforts.toLocaleString()}

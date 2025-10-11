@@ -1,11 +1,13 @@
-import type { PageServerLoad } from '../$types';
-import { db, query } from '$lib/server/db';
+import type { PageServerLoad } from './$types';
+import { query } from '$lib/server/db';
 
+export const load = (async ({ url }) => {
+	let title = 'Float Constants';
+	const floatConstants = await query.getFloatConstants();
 
-export const load = (async () => {
-    const floatConstants = await query.getFloatConstants();
-
-    return {
-        floatConstants,
-    };
+	return {
+		title,
+		breadcrumbs: [{ name: title, href: url.pathname }],
+		floatConstants,
+	};
 }) satisfies PageServerLoad;

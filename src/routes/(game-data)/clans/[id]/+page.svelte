@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import { page } from '$app/state';
 	import { Badge } from '$lib/components/ui/badge';
+	import { clanRoles, formatDate, timeAgo } from '$lib/shared';
 
-	export let data: PageData;
-	const clan = data.clan.results[0];
-	data.title.set(`Clan: [${clan.tag}] ${clan.name}`);
-	const title = data.title;
-	const updatedAt = data.utils.formatDate(clan.updatedAt);
-	const updatedAtAgo = data.utils.timeAgo(clan.updatedAt);
+	let { data } = $props();
+	let clan = data.clan.results[0];
+	let updatedAt = formatDate(clan.updatedAt);
+	let updatedAtAgo = timeAgo(clan.updatedAt);
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <blockquote>
 	{clan.quote}
@@ -25,8 +24,8 @@
 
 {#if clan.message1 && clan.message1.length > 0}
 	<div class="overflow-x-auto">
-		<h4>Message 1</h4>
-		<p class="whitespace-pre-wrap border-l-2 pl-6 leading-7">
+		<h3>Message 1</h3>
+		<p class="border-l-2 pl-6 leading-7 whitespace-pre-wrap">
 			{clan.message1.replaceAll('\r', '')}
 		</p>
 	</div>
@@ -34,21 +33,23 @@
 
 {#if clan.message2 && clan.message2.length > 0}
 	<div class="overflow-x-auto">
-		<h4>Message 2</h4>
-		<p class="whitespace-pre-wrap border-l-2 pl-6 leading-7">
+		<h3>Message 2</h3>
+		<p class="border-l-2 pl-6 leading-7 whitespace-pre-wrap">
 			{clan.message2.replaceAll('\r', '')}
 		</p>
 	</div>
 {/if}
 
 {#if data.members}
-	<h4>Members ({data.members.results.length?.toLocaleString()} discovered)</h4>
+	<h3>Members ({data.members.results.length?.toLocaleString()} discovered)</h3>
 	<p>Sorted by last online.</p>
-	{#each data.members.results as member}
-		<li>
-			<a href="/players/{member.id}">{member.name.slice(0, -5)}</a>
-			{#if member.clanRole < 2}<span> ({data.utils.clanRoles[member.clanRole]})</span>{/if}
-			<span class="text-yellow-900"> ({data.utils.timeAgo(member.lastOnline)})</span>
-		</li>
-	{/each}
+	<ul class="list-inside list-decimal">
+		{#each data.members.results as member}
+			<li>
+				<a href="/players/{member.id}">{member.name.slice(0, -5)}</a>
+				{#if member.clanRole < 2}<span> ({clanRoles[member.clanRole]})</span>{/if}
+				<span class="text-yellow-900"> ({timeAgo(member.lastOnline)})</span>
+			</li>
+		{/each}
+	</ul>
 {/if}

@@ -1,25 +1,21 @@
-<script>
-	/** @type {import('./$types').PageData} */
-	export let data;
-	export let title = data.title;
-	$title = 'Decals';
-	export let decals = data.decals;
+<script lang="ts">
+	import { page } from '$app/state';
 
-	const assets = import.meta.glob('$lib/items/decals/*.webp', { eager: true });
-	/**
-	 * @param {string} filename
-	 */
-	function getImage(filename) {
-		// @ts-ignore
-		return assets[`/src/lib/items/decals/item${filename}.webp`]?.default || '';
+	let decals = page.data.decals;
+
+	const assets = import.meta.glob('$lib/assets/items/decals/*.webp', { eager: true });
+
+	function getImage(filename: string) {
+		return (assets[`/src/lib/assets/items/decals/item${filename}.webp`] as { default: string })
+			?.default;
 	}
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <p>
 	Decals sorted by ID. There are {decals.length} decals,
-	{decals.filter((decal) => decal.workshop).length} are from the
+	{page.data.decals.filter((decal: { workshop: boolean }) => decal.workshop).length} are from the
 	<a
 		target="_blank"
 		href="https://steamcommunity.com/workshop/browse/?appid=209080&browsesort=accepted&requiredtags%5B%5D=Decals"
@@ -32,21 +28,23 @@
 
 <table>
 	{#each decals as decal}
-		<tr>
-			<td>
-				<img
-					src={getImage(decal.id.toString())}
-					alt="Decal."
-					height="256"
-					width="256"
-					loading="lazy"
-				/>
-			</td>
-			<td>
-				<h3 class="mt-0">{decal.name}</h3>
-				<p>{@html decal.descriptionTextEn}</p>
-			</td>
-		</tr>
+		<tbody>
+			<tr>
+				<td>
+					<img
+						src={getImage(decal.id.toString())}
+						alt="Decal."
+						height="256"
+						width="256"
+						loading="lazy"
+					/>
+				</td>
+				<td>
+					<h3 class="mt-0">{decal.name}</h3>
+					<p>{@html decal.descriptionTextEn}</p>
+				</td>
+			</tr>
+		</tbody>
 	{/each}
 </table>
 

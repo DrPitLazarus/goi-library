@@ -1,39 +1,40 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
-	export let data: PageData;
-	data.title.set('Text');
-	let title = data.title;
+	import { page } from '$app/state';
+	let { data } = $props();
 </script>
 
-<h1>{$title}</h1>
+<h1>{page.data.title}</h1>
 
 <p class="mt-4">All text strings.</p>
 
 {#if data.text.length > 0}
 	<table>
-		<tr>
-			<th>ID</th>
-			<th>Key</th>
-			<th>Value</th>
-		</tr>
-		{#each data.text as text}
+		<thead>
 			<tr>
-				<td>{text.id}</td>
-				<td>{text.key}</td>
-				<td>{text.en}</td>
+				<th>ID</th>
+				<th>Key</th>
+				<th>Value</th>
 			</tr>
-		{/each}
+		</thead>
+		<tbody>
+			{#each data.text as text}
+				<tr>
+					<td>{text.id}</td>
+					<td>{text.key}</td>
+					<td>{text.en}</td>
+				</tr>
+			{/each}
+		</tbody>
 	</table>
 {/if}
 
 <style>
-	table {
-		display: inline-table;
+	@reference 'tailwindcss';
 
+	table {
 		& th {
 			text-align: left;
-			border-bottom: 1px solid var(--color-heading);
+			border-bottom: 1px solid var(--color-goiyellow-header);
 		}
 	}
 </style>
