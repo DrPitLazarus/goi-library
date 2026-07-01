@@ -4,9 +4,9 @@
 	import { clanRoles, formatDate, timeAgo } from '$lib/shared';
 
 	let { data } = $props();
-	let clan = data.clan.results[0];
-	let updatedAt = formatDate(clan.updatedAt);
-	let updatedAtAgo = timeAgo(clan.updatedAt);
+	let clan = $derived(data.clan.results[0]);
+	let updatedAt = $derived(formatDate(clan.updatedAt));
+	let updatedAtAgo = $derived(timeAgo(clan.updatedAt));
 </script>
 
 <h1>{page.data.title}</h1>

@@ -19,7 +19,6 @@ export const load = (async ({ params, url }) => {
 			{ name: 'Player Detail', href: url.pathname },
 		],
 		player,
-		clanTag,
 		playerName,
 	};
 }) satisfies PageServerLoad;

@@ -16,18 +16,15 @@
 	};
 
 	let { data } = $props();
-	let { clanTag } = data;
 
-	let player = {
-		...data.player.results[0],
-		playedTime: data.player.results[0].playedTime as PlayedTime,
-	};
-	let updatedAt = formatDate(player.updatedAt);
-	let updatedAtAgo = timeAgo(player.updatedAt);
-	let joinDate = formatDate(player.joinDate);
-	let joinDateAgo = timeAgo(player.joinDate);
-	let lastOnline = formatDate(player.lastOnline);
-	let lastOnlineAgo = timeAgo(player.lastOnline);
+	let player = $derived(data.player.results[0]);
+	let playedTime = $derived(data.player.results[0].playedTime as PlayedTime);
+	let updatedAt = $derived(formatDate(player.updatedAt));
+	let updatedAtAgo = $derived(timeAgo(player.updatedAt));
+	let joinDate = $derived(formatDate(player.joinDate));
+	let joinDateAgo = $derived(timeAgo(player.joinDate));
+	let lastOnline = $derived(formatDate(player.lastOnline));
+	let lastOnlineAgo = $derived(timeAgo(player.lastOnline));
 </script>
 
 <h1>{page.data.title}</h1>
@@ -47,7 +44,7 @@
 	<p>
 		Clan:
 		{#if player.clanId && player.clanId > 0 && player.clanTag}
-			<a href="/clans/{player.clanId}">{clanTag}{player.clanName}</a>
+			<a href="/clans/{player.clanId}">[{player.clanTag}] {player.clanName}</a>
 			{#if player.clanRole < 2}
 				<span> ({clanRoles[player.clanRole]})</span>
 			{/if}
@@ -77,15 +74,15 @@
 		<tbody>
 			<tr>
 				<td>Pilot</td>
-				<td>{formatDuration(player.playedTime.Pilot)}</td>
+				<td>{formatDuration(playedTime.Pilot)}</td>
 			</tr>
 			<tr>
 				<td>Gunner</td>
-				<td>{formatDuration(player.playedTime.Gunner)}</td>
+				<td>{formatDuration(playedTime.Gunner)}</td>
 			</tr>
 			<tr>
 				<td>Engineer</td>
-				<td>{formatDuration(player.playedTime.Engineer)}</td>
+				<td>{formatDuration(playedTime.Engineer)}</td>
 			</tr>
 			<tr>
 				<td>Total</td>

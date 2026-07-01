@@ -4,10 +4,6 @@
 
 <h1>{page.data.title}</h1>
 
-<blockquote class="mt-6 border-l-2 pl-6 italic">
-	The library is under construction! Pardon the mess! <br />-Dr. Pit Lazarus
-</blockquote>
-
 <h3>Game Data</h3>
 <ul class="mt-2 ml-6 list-disc">
 	<li><a href="clans">Clans</a></li>

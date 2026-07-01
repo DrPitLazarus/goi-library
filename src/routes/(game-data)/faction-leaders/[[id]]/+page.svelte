@@ -35,7 +35,6 @@
 
 	function nextLeaderCycleDate() {
 		// New leaders chosen every Tuesday at 9:21 AM UTC. -Pit 2025-01-20.
-		// Copilot helped me with this (had to fix bugs twice) ＞﹏＜
 		const now = new Date();
 		const nextTuesday = new Date(now);
 
@@ -127,7 +126,7 @@
 {#if data.pastLeaderLists.results}
 	<Card.Root class="my-4 sm:w-fit">
 		<Card.Content>
-			<h2 id="past-leader-lists" class="mt-0">
+			<h2 id="past-leader-lists" class="mt-0!">
 				<a href="#past-leader-lists">Past Leader Lists</a>
 			</h2>
 			<Table.Root>
