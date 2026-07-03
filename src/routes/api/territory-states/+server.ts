@@ -78,7 +78,9 @@ export const GET: RequestHandler = async ({ url }) => {
 };
 
 export const POST: RequestHandler = async ({ request }) => {
-	const rawString = await request.text();
+	const rawJson = await request.json();
+	const submitterId: number = rawJson.submitterId;
+	const rawString: string = rawJson.dataString;
 	const regex = /(?<factionId>\d+)\((?<allianceId>\d+);(?<territoryIds>\[.*?\]);(?<idk>\[.*?\])/gm;
 	const matches: any = [...rawString.matchAll(regex)];
 	if (matches.length === 0) {
@@ -116,21 +118,24 @@ export const POST: RequestHandler = async ({ request }) => {
 		};
 	});
 	if (isEqual(transformedJson, lastStates)) {
+		console.log(`territoryState: No changes to update.`);
 		return json({ success: true, message: 'Current. Database not updated.' });
 	}
-	// Add the submission ID to the input data.
+	// Add the submission ID and submitter ID to the input data.
 	transformedJson = transformedJson.map((territory) => ({
 		...territory,
 		submissionId: lastSubmissionId + 1,
+		submitterId,
 	}));
+	console.log(`territoryState: inserting ${transformedJson.length} records...`);
 	await db
 		.insert(territoryState)
 		.values(transformedJson)
 		.onDuplicateKeyUpdate({
 			set: {
-				...transformedJson,
 				updatedAt: sql`(utc_timestamp())`,
 			},
 		});
+	console.log(`territoryState: inserted!`);
 	return json({ success: true });
 };
