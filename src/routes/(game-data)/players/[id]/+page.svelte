@@ -34,6 +34,10 @@
 	{player.description || 'No quote set.'}
 </blockquote>
 
+<ul class="mt-2 ml-6 list-disc">
+	<li><a href="/faction-leaders/leader-history/{player.id}">Leader History</a></li>
+</ul>
+
 <div class="mt-4">
 	<p>Join date: {joinDate} ({joinDateAgo})</p>
 	<p>Last online: {lastOnline} ({lastOnlineAgo})</p>

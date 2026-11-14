@@ -421,6 +421,68 @@ export const getFactionLeaders = async (submissionId: number) => {
 	return { success: true, results };
 };
 
+export const getFactionLeaderHistoryForPlayer = async (playerId: number) => {
+	console.time('getFactionLeaderHistoryForPlayer');
+	const results = await db
+		.select()
+		.from(factionLeader)
+		.where(eq(factionLeader.userId, playerId))
+		.orderBy(desc(factionLeader.createdAt));
+	console.timeEnd('getFactionLeaderHistoryForPlayer');
+	return { success: true, results };
+};
+
+export const getPlayersFromFactionLeaders = async (search: string = '') => {
+	console.time('getPlayersFromFactionLeaders');
+	const results = await db
+		.select({
+			userId: factionLeader.userId,
+			userName: factionLeader.userName,
+			timesAsLeader: count().as('timesAsLeader'),
+			effort: sum(factionLeader.efforts).mapWith(Number).as('effort'),
+			topEffort: sql<number>`MAX(${factionLeader.efforts})`.as('topEffort'),
+		})
+		.from(factionLeader)
+		.where(like(factionLeader.userName, `%${search}%`))
+		.groupBy(factionLeader.userId, factionLeader.userName)
+		.orderBy(desc(sql`effort`), asc(factionLeader.userName))
+		.limit(100);
+	console.timeEnd('getPlayersFromFactionLeaders');
+	return { success: true, results };
+};
+
+export const getFactionEffortFromFactionLeaders = async () => {
+	console.time('getFactionEffortFromFactionLeaders');
+	const results = await db
+		.select({
+			factionId: factionLeader.factionId,
+			effort: sum(factionLeader.efforts).mapWith(Number).as('effort'),
+			topEffort: sql<number>`MAX(${factionLeader.efforts})`.as('topEffort'),
+			fromDate: sql<Date>`MIN(${factionLeader.createdAt})`.as('fromDate'),
+			toDate: sql<Date>`MAX(${factionLeader.createdAt})`.as('toDate'),
+		})
+		.from(factionLeader)
+		.groupBy(factionLeader.factionId)
+		.orderBy(desc(sql`effort`), asc(factionLeader.factionId));
+	console.timeEnd('getFactionEffortFromFactionLeaders');
+	return { success: true, results };
+};
+
+export const getFactionEffortFromFactionLeadersWeekly = async () => {
+	console.time('getFactionEffortFromFactionLeadersWeekly');
+	const results = await db
+		.select({
+			factionId: factionLeader.factionId,
+			effort: sum(factionLeader.efforts).mapWith(Number).as('effort'),
+			createdAt: factionLeader.createdAt,
+		})
+		.from(factionLeader)
+		.groupBy(factionLeader.factionId, factionLeader.submissionId)
+		.orderBy(asc(factionLeader.submissionId), asc(factionLeader.factionId));
+	console.timeEnd('getFactionEffortFromFactionLeadersWeekly');
+	return { success: true, results };
+};
+
 export const getFactionLeaderSubmissions = async () => {
 	console.time('getFactionLeaderSubmissions');
 	// Sum efforts for each faction per submissionId.
@@ -583,6 +645,7 @@ export const query = {
 	getClan,
 	getPlayerList,
 	getClanMembers,
+	getFactionLeaderHistoryForPlayer,
 	getFactionLeaderLastSubmissionId,
 	getFactionLeaders,
 	getFactionLeaderSubmissions,

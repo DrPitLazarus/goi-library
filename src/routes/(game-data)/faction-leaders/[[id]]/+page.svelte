@@ -73,6 +73,11 @@
 	</p>
 {/if}
 
+<ul class="mt-2 ml-6 list-disc">
+	<li><a href="/faction-leaders/faction-effort">Faction Effort</a></li>
+	<li><a href="/faction-leaders/leader-history">Leader History</a></li>
+</ul>
+
 <Card.Root class="my-4">
 	<Card.Content>
 		{#if data.leaders.success && data.leaders.results != null}
@@ -124,7 +129,7 @@
 </Card.Root>
 
 {#if data.pastLeaderLists.results}
-	<Card.Root class="my-4 sm:w-fit">
+	<Card.Root class="my-4 sm:w-fit max-h-svh overflow-auto scrollbar-thumb-accent">
 		<Card.Content>
 			<h2 id="past-leader-lists" class="mt-0!">
 				<a href="#past-leader-lists">Past Leader Lists</a>
@@ -151,7 +156,7 @@
 							</Table.Cell>
 							<Table.Cell class="p-2">
 								<a href="/faction-leaders/{list.submissionId}">
-									{formatDate(list.updatedAt)}
+									{formatDate(list.updatedAt, true)}
 								</a>
 							</Table.Cell>
 							<Table.Cell class="p-2">

@@ -9,6 +9,10 @@
 	<li><a href="clans">Clans</a></li>
 	<li><a href="players">Players</a></li>
 	<li><a href="faction-leaders">Faction Leaders</a></li>
+	<ul class="ml-6 list-disc">
+		<li><a href="faction-leaders/faction-effort">Faction Effort</a></li>
+		<li><a href="faction-leaders/leader-history">Leader History</a></li>
+	</ul>
 	<li><a href="world-map-battles">World Map Battles</a></li>
 </ul>
 
