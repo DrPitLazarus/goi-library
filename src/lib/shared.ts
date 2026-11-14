@@ -21,8 +21,8 @@ export const timeAgo = (pastDate: Date) => {
 	return formatDistanceToNowStrict(pastDate, { addSuffix: true, roundingMethod: 'floor' });
 };
 
-export const formatDate = (date: Date) => {
-	const formatString = 'yyyy-MM-dd HH:mm';
+export const formatDate = (date: Date, dateOnly: boolean = false) => {
+	const formatString = dateOnly ? 'yyyy-MM-dd' : 'yyyy-MM-dd HH:mm';
 	return format(date, formatString);
 };
 
@@ -43,3 +43,7 @@ export const formatLevel = (totalLevel: number) => {
 export const formatLevels = (ranks: any) => {
 	return `P${formatLevel(ranks.Pilot)} G${formatLevel(ranks.Gunner)} E${formatLevel(ranks.Engineer)}`;
 };
+
+export const hidePcFromPlayerName = (playerName: string) => {
+	return playerName.replace(' [PC]', '');
+}
