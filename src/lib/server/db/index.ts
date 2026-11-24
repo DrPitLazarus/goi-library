@@ -625,7 +625,7 @@ export const getTerritoryConflictLog = async () => {
 		.select()
 		.from(schema.territoryConflictLog)
 		.orderBy(desc(schema.territoryConflictLog.time), asc(schema.territoryConflictLog.type))
-		.limit(100);
+		.limit(300);
 	console.timeEnd('getTerritoryConflictLog');
 	return { success: true, results };
 };
