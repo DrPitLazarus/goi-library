@@ -15,6 +15,7 @@
 	</ul>
 	<li><a href="world-map-battles">World Map Battles</a></li>
 	<li><a href="world-map-missions">World Map Missions</a></li>
+	<li><a href="https://goi-world-map.drpitlazar.us">GOI World Map</a></li>
 </ul>
 
 <h3>Books</h3>
