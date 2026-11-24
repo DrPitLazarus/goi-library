@@ -14,6 +14,7 @@
 		<li><a href="faction-leaders/leader-history">Leader History</a></li>
 	</ul>
 	<li><a href="world-map-battles">World Map Battles</a></li>
+	<li><a href="world-map-missions">World Map Missions</a></li>
 </ul>
 
 <h3>Books</h3>
