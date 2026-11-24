@@ -372,6 +372,35 @@ export const territoryConflictLog = mysqlTable(
 	],
 );
 
+export const worldEvent = mysqlTable(
+	'world_event',
+	{
+		...timestampColumns,
+		id: int().primaryKey().notNull(),
+		name: varchar({ length: 255 }).notNull(),
+		type: varchar({ length: 128 }).notNull(),
+		rawObjectives: json().$type<any[]>().notNull(),
+		objectives: text().notNull(),
+		description: text(),
+		imageId: int().notNull(),
+		startTime: timestamp().notNull(),
+		endTime: timestamp().notNull(),
+		completeTime: timestamp(),
+		completedFactions: json().$type<number[]>().default([]).notNull(),
+		progress: json().$type<any[]>().default([]).notNull(),
+		rewards: json().$type<any[]>().default([]),
+		rewardBuff: varchar({ length: 128 }).notNull(),
+		rewardBuffAmount: float().notNull(),
+		rewardBuffHours: float().notNull(),
+		rewardMultiplier: float().notNull(),
+		durationModifier: float().notNull(),
+		originalDurationSeconds: int().notNull(),
+		eventType: varchar({ length: 64 }).notNull(),
+		allianceId: int().notNull(),
+		submitterId: int(),
+	}
+);
+
 export const schema = {
 	cachedRepository,
 	cachedRepositoryFloatConstant,
@@ -393,4 +422,5 @@ export const schema = {
 	territoryConflictModifier,
 	territoryConflictModifierPair,
 	territoryConflictLog,
+	worldEvent,
 };

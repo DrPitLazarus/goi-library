@@ -630,6 +630,16 @@ export const getTerritoryConflictLog = async () => {
 	return { success: true, results };
 };
 
+export const getWorldEvents = async () => {
+	console.time('getWorldEvents');
+	const base = db.select().from(schema.worldEvent);
+	const results = await base.orderBy(
+		sql`${schema.worldEvent.completeTime} IS NULL DESC, ${schema.worldEvent.completeTime} DESC, ${schema.worldEvent.startTime} DESC`,
+	);
+	console.timeEnd('getWorldEvents');
+	return { success: true, results };
+};
+
 export const query = {
 	getCachedRepository,
 	getSkillConfig,
@@ -657,4 +667,5 @@ export const query = {
 	getTerritoryConflictModifiers,
 	getTerritoryConflictModifiersByConflictId,
 	getEntityWorldLocations,
+	getWorldEvents,
 };
